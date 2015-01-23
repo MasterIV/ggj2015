@@ -39,9 +39,14 @@ function moveEntity (xPos, yPos, speed, angle)
 	}
 }
 
-// Checks if two objects have collided. Tolerance states the pixel-distance for collision
-function checkCollision (oneX, oneY, twoX, twoY, tolerance)
+// Checks if two DOM objects have collided. Tolerance states the pixel-distance for collision
+function checkCollision (objectOne, objectTwo, tolerance)
 {
+	// Center points of both objects are taken into account
+	oneX = objectOne.css('left') + objectOne.css('width') / 2;
+	oneY = objectOne.css('top') + objectOne.css('height') / 2;
+	twoX = objectTwo.css('left') + objectTwo.css('width') / 2;
+	twoY = objectTwo.css('top') + objectTwo.css('height') / 2;
 	if (calculateDistance (oneX, oneY, twoX, twoY) <= tolerance)
 	{
 		return true;
@@ -66,11 +71,18 @@ function animateSprite (target, frames, loop, playSpeed)
 // playSpeed -> pause in milliseconds between animations
 function animateSpriteHelper (target, frames, currentFrame, loop, playSpeed)
 {
-	target.css('background-position', target.css('width') + target.css('background-position').split(' ')[0] + 'px 0px');
-	currentFrame++;
-	if (currentFrame < frames)
+	if (target.length > 0)
 	{
-		window.setTimeout(animateSpriteHelper(target, frames, currentFrame, loop, playSpeed), playSpeed);
+		target.css('background-position', target.css('width') + target.css('background-position').split(' ')[0] + 'px 0px');
+		currentFrame++;
+		if (currentFrame < frames)
+		{
+			window.setTimeout(animateSpriteHelper(target, frames, currentFrame, loop, playSpeed), playSpeed);
+		}
+		if (currentFrame == frames && loop)
+		{	
+			window.setTimeout(animateSpriteHelper(target, frames, 1, loop, playSpeed), playSpeed);
+		}
 	}
 }
 
