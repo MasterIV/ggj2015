@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="Sprite-Kevin" tilewidth="32" tileheight="32">
+  <image source="../images/Sprite-Kevin.png" width="640" height="480"/>
+ </tileset>
+ <tileset firstgid="301" name="Waypoints-Sprite-15-1" tilewidth="32" tileheight="32">
+  <image source="../images/Waypoints-Sprite-15-1.png" width="480" height="32"/>
+ </tileset>
+ <layer name="map" width="20" height="15">
+  <data encoding="base64" compression="zlib">
+   eJwTZ2BgEB9CWBSImUjAYgTMYyTRfkLqR82jnXnY5Ig1D1u60aLAPGL9ja4OlxvINQ8X1sRiFzaMLQwGMwYAsOoXNw==
+  </data>
+ </layer>
+ <layer name="objects" width="20" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjYBhaQJ+RNPUGJKofBdQDpoMo7I2xuMVkANyni2anHo3cYESkuYaDKI6IAQBy+AHD
+  </data>
+ </layer>
+</map>
