@@ -1,3 +1,5 @@
+//console.log (moveEntity(0,0,5,225));
+
 // Calculates the pixel-distance between two objects
 function calculateDistance (oneX, oneY, twoX, twoY)
 {
@@ -7,20 +9,18 @@ function calculateDistance (oneX, oneY, twoX, twoY)
 	return Math.sqrt((xDist * xDist) + (yDist * yDist));
 }
 
-// Calculates the looking angle from object ONE at object TWO
+// Calculates the looking angle from object ONE at object TWO. Returned value is in DEGREE.
 function calculateAngle (oneX, oneY, twoX, twoY)
 {
-	xDist = oneX - twoX;
-	yDist = oneY - twoY;
-	if (xDist != 0 || yDist != 0)
-	{
-		return Math.atan2(yDist, xDist);
-	}
+	xDist = twoX - oneX;
+	yDist = twoY - oneY;
+	return 180 + 180 / Math.PI * Math.atan2(-xDist, -yDist);
 }
 
 // Returns the new position of an object after moving it
 function moveEntity (xPos, yPos, speed, angle)
-{	
+{
+	angle = toRadians(angle);
 	if (angle >= 0 && angle <= 90)
 	{
 		return [xPos + (speed * Math.sin(angle)), yPos + (speed * Math.cos(angle))];
@@ -54,10 +54,11 @@ function checkCollision (oneX, oneY, twoX, twoY, tolerance)
 
 function toDegrees (radian)
 {
-  return radian * (180 / Math.PI);
+	return radian * (180 / Math.PI);
+  
 }
 
 function toRadians (angle)
 {
-  return angle * (Math.PI / 180);
+	return angle * (Math.PI / 180);
 }
