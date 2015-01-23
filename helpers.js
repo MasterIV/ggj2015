@@ -71,9 +71,9 @@ function animateSprite (target, frames, loop, playSpeed)
 // playSpeed -> pause in milliseconds between animations
 function animateSpriteHelper (target, frames, currentFrame, loop, playSpeed)
 {
-	if (target.length > 0)
+	if (target.length > 0 && data.killAllTimers == false)
 	{
-		target.css('background-position', target.css('width') + target.css('background-position').split(' ')[0] + 'px 0px');
+		target.css("background-position", target.css('width') + target.css('background-position').split(' ')[0] + "px 0px");
 		currentFrame++;
 		if (currentFrame < frames)
 		{
