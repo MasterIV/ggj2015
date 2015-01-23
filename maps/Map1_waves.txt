@@ -1,0 +1,2 @@
+wave1= {Marine,Marine,Marine,Private,Private,Marine,Tank},
+Wave2= {Jeep,Jeep,Tank}
