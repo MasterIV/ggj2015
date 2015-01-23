@@ -3,6 +3,7 @@ data =			{
 					currentLevel:		0,
 					life:				10,
 					waypoints:			[],
+					killAllTimers:		false,
 					
 					enemies:			{
 											human1:			{

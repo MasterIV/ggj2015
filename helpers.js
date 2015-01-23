@@ -52,6 +52,30 @@ function checkCollision (oneX, oneY, twoX, twoY, tolerance)
 	}
 }
 
+// Initiates the animation of a sprite. First call is to cause a delay
+function animateSprite (target, frames, loop, playSpeed)
+{
+	window.setTimeout(animateSpriteHelper(target, frames, 1, loop, playSpeed), playSpeed);
+}
+
+// Animates a sprite.
+// Target -> JQUERY DIV Object
+// frames -> total amount of frames in the animation, including the start frame!
+// currentFrame -> currently displayed frame
+// loop -> true / false (true: animation will be looped infinitely)
+// playSpeed -> pause in milliseconds between animations
+function animateSpriteHelper (target, frames, currentFrame, loop, playSpeed)
+{
+	target.css('background-position', target.css('width') + target.css('background-position').split(' ')[0] + 'px 0px');
+	currentFrame++;
+	if (currentFrame < frames)
+	{
+		window.setTimeout(animateSpriteHelper(target, frames, currentFrame, loop, playSpeed), playSpeed);
+	}
+}
+
+
+
 function toDegrees (radian)
 {
 	return radian * (180 / Math.PI);
