@@ -5,6 +5,7 @@ data =			{
 					waypoints:			[],
 					killAllTimers:		false,
 					
+					currentEnemies:		[],
 					enemies:			{
 											human1:			{
 																hitpoints:	1,

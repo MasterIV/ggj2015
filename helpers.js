@@ -60,7 +60,7 @@ function checkCollision (objectOne, objectTwo, tolerance)
 // Initiates the animation of a sprite. First call is to cause a delay
 function animateSprite (target, frames, loop, playSpeed)
 {
-	window.setTimeout(animateSpriteHelper(target, frames, 1, loop, playSpeed), playSpeed);
+	window.setTimeout(function(){ animateSpriteHelper(target, frames, 1, loop, playSpeed) }, playSpeed);
 }
 
 // Animates a sprite.
@@ -77,16 +77,29 @@ function animateSpriteHelper (target, frames, currentFrame, loop, playSpeed)
 		currentFrame++;
 		if (currentFrame < frames)
 		{
-			window.setTimeout(animateSpriteHelper(target, frames, currentFrame, loop, playSpeed), playSpeed);
+			window.setTimeout(function(){ animateSpriteHelper(target, frames, currentFrame, loop, playSpeed) }, playSpeed);
 		}
 		if (currentFrame == frames && loop)
 		{	
-			window.setTimeout(animateSpriteHelper(target, frames, 1, loop, playSpeed), playSpeed);
+			window.setTimeout(function(){ animateSpriteHelper(target, frames, 1, loop, playSpeed) }, playSpeed);
 		}
 	}
 }
 
-
+// Spawns all enemies from a given list one by one in a 500ms interval
+function spawnEnemies (startingWaypoint, enemyList)
+{
+	if (data.killAllTimers == false)
+	{
+		var domRepresentative = $("<div class='enemy " + data.enemies[enemyList[0]] + "'></div>");
+		data.currentEnemies[] = jQuery.extend(true, {domElement : domRepresentative }, data.enemies[enemyList.shift()]);
+		$("#objects").append(domRepresentative);
+		
+		// TODO!!! Add X and Y coordinate to the added element !!!
+		
+		window.setTimeout(function(){ spawnEnemies(startingWaypoint, enemyList) }, 500);
+	}
+}
 
 function toDegrees (radian)
 {
