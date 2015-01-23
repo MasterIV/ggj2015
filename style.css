@@ -1,0 +1,39 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	background-color: #444444;
+	font-family: Verdana, Arial;
+	font-size: 12px;
+}
+
+table {
+	border: 0;
+}
+
+#wrapper {
+	width: 640px;
+	height: 480px;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 30px;
+}
+
+#map {
+	z-index: 1;
+}
+
+#objects {
+	z-index: 2;
+}
+
+#particles {
+	z-index: 3;
+}
+
+#interface {
+	z-index: 4;
+}

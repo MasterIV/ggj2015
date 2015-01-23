@@ -13,13 +13,14 @@ data =			{
 																resistence:	"",
 															},
 										},
+					
 					towers:				{
 											tower1:			{
 																costs:		[1, 1, 1, 1],
 																level:		0,
 																damage:		[1, 1, 1, 1],
-																firerate:	[1, 1, 1, 1],
-																range:		[],
+																firerate:	[1.0, 1.0, 1.0, 1.0],
+																range:		[1, 1, 1, 1],
 																damageType:	"",
 																special:	"",
 															},
