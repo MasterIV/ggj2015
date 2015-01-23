@@ -37,3 +37,10 @@ table {
 #interface {
 	z-index: 4;
 }
+
+#map div {
+    float: left;
+    width: 32px;
+    height: 32px;
+    background: blue;
+}
