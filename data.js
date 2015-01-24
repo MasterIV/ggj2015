@@ -288,6 +288,7 @@ data =			{
 																speed:				5,
 																damage:				0,
 																tagetID:			0,
+																type:				"normal",
 																special:			"",
 															},
 															
@@ -295,6 +296,7 @@ data =			{
 																speed:				4,
 																damage:				0,
 																tagetID:			0,
+																type:				"pierce",
 																special:			"",
 															},
 											
@@ -302,6 +304,7 @@ data =			{
 																speed:				5,
 																damage:				0,
 																tagetID:			0,
+																type:				"field",
 																special:			"splash",
 															},
 								
@@ -309,6 +312,7 @@ data =			{
 																speed:				6,
 																damage:				0,
 																tagetID:			0,
+																type:				"field",
 																special:			"slow",
 															},
 										}
