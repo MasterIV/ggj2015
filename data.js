@@ -171,6 +171,7 @@ data =			{
 																animationFrames:	4,
 																nextWaypoints:		[],
 																currentWaypoint:	1,
+																slowedTurns:		0,
 															},
 															
 											elite:			{
@@ -184,6 +185,7 @@ data =			{
 																animationFrames:	4,
 																nextWaypoints:		[],
 																currentWaypoint:	1,
+																slowedTurns:		0,
 															},
 															
 											tank:			{
@@ -197,6 +199,7 @@ data =			{
 																animationFrames:	4,
 																nextWaypoints:		[],
 																currentWaypoint:	1,
+																slowedTurns:		0,
 															},
 															
 											hoverBike:			{
@@ -210,6 +213,7 @@ data =			{
 																animationFrames:	4,
 																nextWaypoints:		[],
 																currentWaypoint:	1,
+																slowedTurns:		0,
 															},
 															
 											jeep:			{
@@ -223,6 +227,7 @@ data =			{
 																animationFrames:	4,
 																nextWaypoints:		[],
 																currentWaypoint:	1,
+																slowedTurns:		0,
 															},
 															
 											spaceKnight:	{
@@ -236,6 +241,7 @@ data =			{
 																animationFrames:	4,
 																nextWaypoints:		[],
 																currentWaypoint:	1,
+																slowedTurns:		0,
 															},
 															
 											rocketeer:		{
@@ -249,6 +255,7 @@ data =			{
 																animationFrames:	4,
 																nextWaypoints:		[],
 																currentWaypoint:	1,
+																slowedTurns:		0,
 															},
 															
 											jet:			{
@@ -262,6 +269,7 @@ data =			{
 																animationFrames:	4,
 																nextWaypoints:		[],
 																currentWaypoint:	1,
+																slowedTurns:		0,
 															},
 															
 											ironclad:		{
@@ -275,6 +283,7 @@ data =			{
 																animationFrames:	4,
 																nextWaypoints:		[],
 																currentWaypoint:	1,
+																slowedTurns:		0,
 															},
 															
 											specOps:		{
@@ -288,9 +297,8 @@ data =			{
 																animationFrames:	4,
 																nextWaypoints:		[],
 																currentWaypoint:	1,
+																slowedTurns:		0,
 															},
-															
-																														
 											},
 					
 					towers:				{
