@@ -122,8 +122,10 @@ function spawnEnemies (startingWaypoint, enemyList)
 }
 
 // Checks if unit has reached its next waypoint
-function checkForNextWaypoint ()
+function checkForNextWaypoint (enemyID)
 {
+	distance = calculateDistance (data.currentEnemies[data.currentEnemyID].posX, data.currentEnemies[data.currentEnemyID].posY, twoX, twoY)
+	if ()
 }
 
 function toDegrees (radian)
