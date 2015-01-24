@@ -36,6 +36,10 @@ jQuery(document).ready(function()
 
 function updateGame ()
 {
+    var percent = data.kills / (data.requiredKills / 100);
+    $('#fullTitleBar').css('width', percent * 4);
+    $('#lifeIcon').text(data.life);
+    $('#creditIcon').text(data.currentCredits);
 	for(key in data.currentEnemies)
 	{
 		checkForNextWaypoint(key);

@@ -70,6 +70,34 @@ table {
 	background-color: green;
 }
 
+#interface #combatInterface {
+    background-image: url('images/ui/titlebar-empty.png');
+    width: 640px;
+    height: 50px;
+}
+
+#interface #fullTitleBar {
+    background-image: url('images/ui/titlebar-full.png');
+    width: 20px;
+    height: 50px;
+}
+
+#interface #combatInterface #lifeIcon {
+    position: absolute;
+    top: 13px;
+    left: 388px;
+    font-size: 20px;
+    color: #5A8629;
+}
+
+#interface #combatInterface #creditIcon {
+    position: absolute;
+    top: 13px;
+    left: 514px;
+    font-size: 20px;
+    color: #5A8629;
+}
+
 #objects .enemy {
 	width: 32px;
 	height: 32px;
