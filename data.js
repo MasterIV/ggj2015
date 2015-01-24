@@ -1,3 +1,4 @@
+moneyGiver = {}
 data =			{
 					currentLevel:		1,
 					life:				10,
@@ -7,6 +8,8 @@ data =			{
 					currentEnemyID:		0,
 					currentTowerID:		0,
 					currentProjectileID:0,
+					currentCredits:		0,
+					currentCreditBoosts:[],
 					
 					currentEnemies:		{},
 					enemiesToDelete:	[],
@@ -168,6 +171,7 @@ data =			{
 																animationFrames:	4,
 																nextWaypoints:		[],
 																currentWaypoint:	1,
+																slowedTurns:		0,
 															},
 															
 											elite:			{
@@ -181,6 +185,7 @@ data =			{
 																animationFrames:	4,
 																nextWaypoints:		[],
 																currentWaypoint:	1,
+																slowedTurns:		0,
 															},
 															
 											tank:			{
@@ -194,6 +199,7 @@ data =			{
 																animationFrames:	4,
 																nextWaypoints:		[],
 																currentWaypoint:	1,
+																slowedTurns:		0,
 															},
 															
 											hoverBike:			{
@@ -207,6 +213,7 @@ data =			{
 																animationFrames:	4,
 																nextWaypoints:		[],
 																currentWaypoint:	1,
+																slowedTurns:		0,
 															},
 															
 											jeep:			{
@@ -220,6 +227,7 @@ data =			{
 																animationFrames:	4,
 																nextWaypoints:		[],
 																currentWaypoint:	1,
+																slowedTurns:		0,
 															},
 															
 											spaceKnight:	{
@@ -233,6 +241,7 @@ data =			{
 																animationFrames:	4,
 																nextWaypoints:		[],
 																currentWaypoint:	1,
+																slowedTurns:		0,
 															},
 															
 											rocketeer:		{
@@ -246,6 +255,7 @@ data =			{
 																animationFrames:	4,
 																nextWaypoints:		[],
 																currentWaypoint:	1,
+																slowedTurns:		0,
 															},
 															
 											jet:			{
@@ -259,6 +269,7 @@ data =			{
 																animationFrames:	4,
 																nextWaypoints:		[],
 																currentWaypoint:	1,
+																slowedTurns:		0,
 															},
 															
 											ironclad:		{
@@ -272,6 +283,7 @@ data =			{
 																animationFrames:	4,
 																nextWaypoints:		[],
 																currentWaypoint:	1,
+																slowedTurns:		0,
 															},
 															
 											specOps:		{
@@ -285,9 +297,8 @@ data =			{
 																animationFrames:	4,
 																nextWaypoints:		[],
 																currentWaypoint:	1,
+																slowedTurns:		0,
 															},
-															
-																														
 											},
 					
 					towers:				{

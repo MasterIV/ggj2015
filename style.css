@@ -161,3 +161,8 @@ table {
     float: right;
     margin: 13px 20px;
 }
+
+#buildMenu .close {
+    cursor: pointer;
+    float: right;
+}
