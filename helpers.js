@@ -150,6 +150,7 @@ function checkForNextWaypoint (enemyID)
 		{
 			removeEnemy (enemyID);
 			reduceLife();
+			data.kills++;
 		}
 		// enemy is still on the go
 		else
@@ -212,6 +213,7 @@ function checkForHittingProjectile (projectileID)
 			{
 				// TODO add emitter here
 				removeEnemy (data.currentProjectiles[projectileID].targetID);
+				data.kills++;
 			}
 			// TODO add emitter here
 			removeProjectile (projectileID);
@@ -272,6 +274,15 @@ function reduceLife ()
 		// Game Over
 		// TODO
 		console.log("Lost game!");
+	}
+}
+
+function determineRequiredKills ()
+{
+	data.requiredKills = 0;
+	for (key in data.waves[data.currentLevel])
+	{
+		data.requiredKills += data.waves[data.currentLevel][key].length;
 	}
 }
 
