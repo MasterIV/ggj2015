@@ -5,7 +5,7 @@ function buildBuilderMenu()
     
     $.each(data.towers, function(key, value) {
         buildTowerHTML = buildTowerHTML +
-            '<div data-name="'+ key +'" class="towerStoreItem" id="'+key+'">'+
+            '<div id="rockets">'+
                 '<img src="images/turrets/'+ key +'.png" />'+
 //                '<div>Price: '+value.costs[value.level]+'</div>'+
                 '<h4 class="name">'+ key +'</h4>'+
@@ -23,10 +23,11 @@ function buildBuilderMenu()
                         '<div class="weaknessIcon"></div><span class="weakness">Weakness: '+ value.damageType +'</span>'+
                     '</li>'+
                 '</ul>'+
+                '<button name="'+key+'" class="buildButton">Bauen</button>'+
             '</div>';
     });
 
-    $('#buildMenu .close').after(buildTowerHTML);
+    $('.buildExplanationHeader').after(buildTowerHTML);
 }
 
 // Calculates the pixel-distance between two objects
@@ -405,14 +406,17 @@ function reduceLife ()
 		// Game Over
 		// TODO
 		console.log("Lost game!");
-		cancelGame();
+		//cancelGame();
 	}
 }
 
 function cancelGame ()
 {
-	clearInterval(moneyGiver);
 	data.killAllTimers = true;
+	for (key in data.currentTowers)
+	{
+		clearInterval(data.currentTowers[key].firePulse);
+	}
 }
 
 function determineRequiredKills ()

@@ -8,12 +8,12 @@
  </tileset>
  <layer name="map" width="20" height="15">
   <data encoding="base64" compression="zlib">
-   eJxTZGBgUBzFNMV5VDaPm0rmyAMxDxB7QGkFCs0yQRMzpsBMXH4k1+8jzTxjaJyCsDsSGz2OqOlWepgHAMteJhs=
+   eJyNk9ENwyAMRPmnZIUWGCFBjNBO0/0/C5ItXU8HyscJxzHPB05aCOEANVvTUB7qQ9XWbPljo7ZhJVOF2PNqXxPsTt6KPRfy2AWTuewhEU+9X53be6I33/OFmD0qZlr0dkWR4zo+Yxd1z6HH0MfWl+B1Yq56TtZlOde5YOJdrrxF4CSIo+B14qleEXIVavguedbKG/PSDZ5/j7uZZqHdrHe802Y69Yb42vCOBevO96eYyPM7L+H/31I8rMFZzfP+AAXdGvk=
   </data>
  </layer>
  <layer name="objects" width="20" height="15">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFtAYmjNQ1z5pK5lkwQswyhtJGFJhrBtRrjqbfEMg3INNMXH4k1+8jzTxTaJyCsB4SW58KaYda6Q8GdEkwDwCT8gYr
+   eJyzZmRgsMaCkQE2PikYHeASo8QscszEBvCZh89MfMCEgDwpZuFzGzYz8QELqBpjKG1EhDtxATOgnDmavCGQb4BHDz7zCMUPJXK42NSwa7CYZ4qUnvSQ2PpkmkepOuR8ha5fF0f5gs0MADPWFpM=
   </data>
  </layer>
 </map>

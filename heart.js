@@ -16,7 +16,7 @@ jQuery(document).ready(function()
             var offsetTop = clicked.offsetTop;
             var offsetLeft = clicked.offsetLeft;
             var towerName = this.name;
-            if(clicked.dataset.blocker == "false" && data.currentCredits > data.towers[towerName].costs[0])
+            if(clicked.dataset.blocker == "false" && data.currentCredits >= data.towers[towerName].costs[0])
             {
                 spawnTower(offsetTop, offsetLeft, towerName);
                 $('#buildMenu').css('display', 'none');
@@ -33,10 +33,10 @@ jQuery(document).ready(function()
 
 function updateGame ()
 {
-    var percent = data.kills / (data.requiredKills / 100);
-    $('#fullTitleBar').css('width', percent * 4);
-    $('#lifeIcon').text(data.life);
-    $('#creditIcon').text(data.currentCredits);
+	var percent = data.kills / (data.requiredKills / 100);
+	$('#fullTitleBar').css('width', percent * 4);
+	$('#lifeIcon').text(data.life);
+	$('#creditIcon').text(data.currentCredits);
 	for(key in data.currentEnemies)
 	{
 		checkForNextWaypoint(key);

@@ -1,4 +1,3 @@
-moneyGiver = {}
 data =			{
 					currentLevel:		1,
 					life:				10,
