@@ -100,9 +100,15 @@ table {
 }
 
 #objects .laser {
-	width: 22px;
-	height: 8px;
+	width: 32px;
+	height: 32px;
 	background-image: url("images/bullets/blaster.png");
+}
+
+#objects .rocket {
+    width: 32px;
+    height: 32px;
+    background-image: url("images/bullets/rocket.png");
 }
 
 #objects .bloodSplash {
@@ -112,7 +118,7 @@ table {
 	background-image: url("images/animation/splatter.png");
 }
 
-#objects .explosions {
+#objects .explosion {
 	width: 32px;
 	height: 32px;
 	position: absolute;

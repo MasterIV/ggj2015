@@ -278,15 +278,38 @@ function checkForHittingProjectile (projectileID)
 	// Check if target is still there
 	if (typeof data.currentEnemies[data.currentProjectiles[projectileID].targetID]  != "undefined")
 	{
-		
+        // reduce HP of the hit enemy & remove it if applicable
 		if (checkCollision(data.currentEnemies[data.currentProjectiles[projectileID].targetID].domElement, data.currentProjectiles[projectileID].domElement, 12))
 		{
-			// reduce HP of the hit enemy & remove it if applicable
-			data.currentEnemies[data.currentProjectiles[projectileID].targetID].hitpoints -= data.currentProjectiles[projectileID].damage;
+            if(data.currentEnemies[data.currentProjectiles[projectileID].targetID].resistence == data.currentProjectiles[projectileID].type)
+            {
+                data.currentEnemies[data.currentProjectiles[projectileID].targetID].hitpoints -= Math.floor(data.currentProjectiles[projectileID].damage / 3);
+            } else {
+                data.currentEnemies[data.currentProjectiles[projectileID].targetID].hitpoints -= data.currentProjectiles[projectileID].damage;
+            }
 			if (data.currentEnemies[data.currentProjectiles[projectileID].targetID].hitpoints <= 0)
 			{
 				if (data.currentProjectiles[projectileID].special == "splash")
 				{
+                    for (var key in data.currentEnemies)
+                    {console.log(data.currentProjectiles[projectileID].domElement);
+                        if (checkCollision(data.currentEnemies[key].domElement, data.currentProjectiles[projectileID].domElement, 50) && key != data.currentProjectiles[projectileID].targetID)
+                        {
+                            if(data.currentEnemies[key].resistence == data.currentProjectiles[projectileID].type)
+                            {
+                                data.currentEnemies[key].hitpoints -= Math.floor(data.currentProjectiles[projectileID].damage / 3);
+                            } else {
+                                data.currentEnemies[key].hitpoints -= data.currentProjectiles[projectileID].damage;
+                            }
+
+                            if( data.currentEnemies[key].hitpoints <= 0 )
+                            {
+                                removeEnemy (key);
+                                spawnEmitter ("bloodSplash", 5, 40, 0, 0, data.currentEnemies[key].posX, data.currentEnemies[key].posY);
+                                data.kills++;
+                            }
+                        }
+                    }
 					spawnEmitter ("explosion", 5, 40, 0, 0, data.currentEnemies[data.currentProjectiles[projectileID].targetID].posX, data.currentEnemies[data.currentProjectiles[projectileID].targetID].posY);
 				}
 				else
@@ -431,8 +454,8 @@ function spawnTower(offsetTop, offsetLeft, towerName){
 	{
 		setTimeout (function () { generateCredits();}, 2500);
 	}
-	
+
+    data.currentCredits = data.currentCredits - data.currentTowers[data.currentTowerID].costs[data.currentTowers[data.currentTowerID].level -1];
     data.currentTowerID++;
-    data.currentCredits = data.currentCredits - data.currentTowers[data.currentTowerID].costs[data.currentLevel -1];
     $('#objects').append(tower);
 }
