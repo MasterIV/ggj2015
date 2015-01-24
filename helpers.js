@@ -94,7 +94,16 @@ function spawnEnemies (startingWaypoint, enemyList)
 		var domRepresentative = $("<div class='enemy " + data.enemies[enemyList[0]] + "' id='" + data.currentEnemyID + "'></div>");
 		data.currentEnemies[data.currentEnemyID] = jQuery.extend(true, {domElement : domRepresentative }, data.enemies[enemyList.shift()]);
 		data.currentEnemyID++;
+		
+		// give initial position
+		data.currentEnemies[data.currentEnemyID].posX = startingWaypoint[0]*32;
+		data.currentEnemies[data.currentEnemyID].posY = startingWaypoint[1]*32;
+		domRepresentative.css('left', startingWaypoint[0]*32 + " px");
+		domRepresentative.css('top', startingWaypoint[1]*32 + " px");
 		$("#objects").append(domRepresentative);
+		
+		// initiate animation
+		
 		
 		// TODO!!! Add X and Y coordinate to the added element !!!
 		
