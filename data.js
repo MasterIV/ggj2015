@@ -4,6 +4,7 @@ data =			{
 					killAllTimers:		false,
 					currentEnemyID:		0,
 					currentTowerID:		0,
+					currentProjectileID:0,
 					
 					currentEnemies:		{},
 					enemiesToDelete:	[],
@@ -85,7 +86,7 @@ data =			{
 					towers:				{
 											laserChaser:	{
 																costs:				[150, 200, 250, 300, 350],
-																level:				0,
+																level:				1,
 																damage:				[5, 6, 7, 8, 9],
 																firerate:			[1000, 9500, 900, 850, 800],
 																range:				[64, 72, 80, 88, 96],
@@ -94,6 +95,16 @@ data =			{
 																posX:				0,
 																posY:				0,
 																angle:				0,
+																projectile:			"laser",
 															},
 										},
+										
+					projectiles:		{
+											laser:			{
+																speed:				5,
+																damage:				0,
+																tagetID:			0,
+																special:			"",
+															}
+										}
 				};
