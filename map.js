@@ -1,5 +1,8 @@
 /**
+ *
  * @param mapData
+ * @param objectData
+ * @returns {boolean}
  */
 function renderMap(mapData, objectData)
 {

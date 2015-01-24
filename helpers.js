@@ -99,7 +99,7 @@ function spawnEnemies (startingWaypoint, enemyList)
 	{
 		var domRepresentative = $("<div class='enemy " + data.enemies[enemyList[0]] + "' id='" + data.currentEnemyID + "'></div>");
 		data.currentEnemies[data.currentEnemyID] = jQuery.extend(true, {domElement : domRepresentative }, data.enemies[enemyList.shift()]);
-		
+		console.log(data.currentEnemies[data.currentEnemyID]);
 		// give initial position and rotation
 		variation = Math.floor((Math.random() * 5) + 1); 
 		data.currentEnemies[data.currentEnemyID].posX = startingWaypoint[0]*32 + variation;
@@ -162,8 +162,8 @@ function checkForNextWaypoint (enemyID)
 function calculateNextWaypointPosition (enemyID)
 {
 	nextWaypoint = data.currentEnemies[enemyID].nextWaypoints[data.currentEnemies[enemyID].currentWaypoint + 1];
-	nextWaypointX = data.waypoints[data.currentLevel].nextWaypoint[0] * 32;
-	nextWaypointY = data.waypoints[data.currentLevel].nextWaypoint[1] * 32;
+	nextWaypointX = data.waypoints[data.currentLevel][nextWaypoint][0] * 32;
+	nextWaypointY = data.waypoints[data.currentLevel][nextWaypoint][1] * 32;
 	return [nextWaypointX, nextWaypointY];
 }
 
