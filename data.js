@@ -86,7 +86,7 @@ data =			{
 					towers:				{
 											laserChaser:	{
 																costs:				[150, 200, 250, 300, 350],
-																level:				1,
+																level:				0,
 																damage:				[5, 6, 7, 8, 9],
 																firerate:			[1000, 9500, 900, 850, 800],
 																range:				[64, 72, 80, 88, 96],

@@ -24,10 +24,10 @@ jQuery(document).ready(function()
 
 function spawnTower(offsetTop, offsetLeft, towerName){
     var tower =
-        '<div id="'+ data.currentTowerID +'" class="tower '+towerName+'" style="top:'+offsetTop+'px; left:'+offsetLeft+'px;">'+
+        $('<div id="'+ data.currentTowerID +'" class="tower '+towerName+'" style="top:'+offsetTop+'px; left:'+offsetLeft+'px;">'+
             '<img class="turret" src="images/turrets/'+towerName+'.png"/>'+
             '<img class="base" src="images/turrets/base.png"/>'+
-        '</div>';
+        '</div>');
 
     data.currentTowers[data.currentTowerID] = jQuery.extend(true, {domElement : tower}, data.towers[towerName]);
     data.currentTowerID++;
@@ -69,14 +69,14 @@ function buildBuilderMenu()
                 '<h4 class="name">'+ key +'</h4>'+
                 '<ul>'+
                     '<li class="damageIcon">'+
-                        '<span class="damage">'+ value.damage +'</span>'+
+                        '<span class="damage">'+ value.damage[value.level] +'</span>'+
                     '</li>'+
                     '<li class="firerateIcon">'+
-                        '<span class="firerate">'+ value.firerate +'</span>'+
+                        '<span class="firerate">'+ value.firerate[value.level] +'</span>'+
                     '</li>'+
                     '<li class="rangeIcon">'+
-                        '<span class="range">'+ value.range +'</span>'+
-                    '</li'+
+                        '<span class="range">'+ value.range[value.level] +'</span>'+
+                    '</li>'+
                     '<li class="weaknessIcon">'+
                         'Weak: <span class="weakness">'+ value.damageType +'</span>'+
                     '</li>'+
