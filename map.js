@@ -3,59 +3,36 @@
  */
 function renderMap(mapData)
 {
-    var i = 0;
     var map = "";
-    var tiles = tileIdToClass(mapData);
+    var tiles = getTilesPosition(mapData);
 
     tiles.forEach(function (tile) {
-        map = map + "<div id='" + i +"' class='"+ tile +"'></div>";
-        i++;
+        map = map + "<div style='background-position: "+tile['top']+"px "+tile['left']+"px'></div>";
     });
 
     $('#map').append(map);
 }
 
 /**
- *
- * @param mapData TileIDs
- * @returns {Array} tiles
- */
-function tileIdToClass(mapData)
-{
-    var tiles = [];
-    mapData.forEach(function(tile) {
-        if(tile == 1)
-        {
-            tiles.push('wegHorizontal');
-        } else if(tile == 2)
-        {
-            tiles.push('wegVertikal');
-        }
-    });
-
-    return tiles;
-}
-
-/**
  * @returns {Array} waypointsWithPosition
- * @param waypoints
+ * @param tiles
  */
-function getWaypointsPosition(waypoints)
+function getTilesPosition(tiles)
 {
     var tileHeight = 32;
     var tileWidth = 32;
-    var waypointsWithPosition = [];
+    var tilesWithPosition = [];
 
-    waypoints.forEach(function(waypoint) {
-        var multiplikator = Math.floor((waypoint / 20));
+    tiles.forEach(function(tile) {
+        var multiplikator = Math.floor((tile / 20));
         var positions = [];
 
-        positions['id'] = waypoint;
+        positions['id'] = tile;
         positions['top'] = tileHeight * multiplikator;
-        positions['left'] = waypoint%20 * tileWidth;
+        positions['left'] = tile%20 * tileWidth;
 
-        waypointsWithPosition.push(positions);
+        tilesWithPosition.push(positions);
     });
 
-    return waypointsWithPosition;
+    return tilesWithPosition;
 }

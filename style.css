@@ -32,6 +32,12 @@ table {
 	background-color: grey;
 }
 
+#map div {
+    width: 32px;
+    height: 32px;
+    float: left;
+}
+
 #objects {
 	z-index: 2;
 }
