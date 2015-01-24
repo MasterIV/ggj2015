@@ -249,6 +249,7 @@ function spawnProjectile (towerID, targetID)
 	var domRepresentative = $("<div class='projectile " + data.currentTowers[towerID].projectile + "' id='projectile" + data.currentProjectileID + "'></div>");
 	data.currentProjectiles[data.currentProjectileID] = jQuery.extend(true, {domElement : domRepresentative }, data.projectiles[data.currentTowers[towerID].projectile]);
 	data.currentProjectiles[data.currentProjectileID].targetID = targetID;
+	data.currentProjectiles[data.currentProjectileID].damage = data.currentTowers[towerID].damage[data.currentTowers[towerID].level];
 	
 	// give initial position and rotation
 	data.currentProjectiles[data.currentProjectileID].posX = data.currentTowers[towerID].posX;
