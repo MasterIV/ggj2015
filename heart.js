@@ -30,6 +30,19 @@ function updateGame ()
 		newPos = moveEntity (data.currentEnemies[key].posX, data.currentEnemies[key].posY, data.currentEnemies[key].speed, data.currentEnemies[key].angle);
 		updatePosition(key, newPos);
 	}
+	for(key in data.currentProjectiles)
+	{
+		console.log(data.currentProjectiles[key].targetID);
+		var angle = calculateAngle (data.currentProjectiles[key].posX, data.currentProjectiles[key].posY, data.currentEnemies[data.currentProjectiles[key].targetID].posX, data.currentEnemies[data.currentProjectiles[key].targetID].posY);
+		data.currentProjectiles[key].angle = angle;
+		rotate(data.currentProjectiles[key].domElement, angle);
+		var newPos = moveEntity (data.currentProjectiles[key].posX, data.currentProjectiles[key].posY, data.currentProjectiles[key].speed, angle);
+		data.currentProjectiles[key].posX = newPos[0];
+		data.currentProjectiles[key].posY = newPos[1];
+		data.currentProjectiles[key].domElement.css('left', (Math.floor(newPos[0])) + "px");
+		data.currentProjectiles[key].domElement.css('top', (Math.floor(newPos[1])) + "px");
+		checkForHittingProjectile (key);
+	}
 	processEnemiesToDelete();
 	processProjectilesToDelete();
 }
@@ -45,32 +58,4 @@ function initiateLevel(){
     })(key);
 }
 
-function buildBuilderMenu()
-{
-    var buildTowerHTML = "";
-    
-    $.each(data.towers, function(key, value) {
-        buildTowerHTML = buildTowerHTML +
-            '<div id="rockets">'+
-                '<img src="images/turrets/'+ key +'.png" />'+
-                '<h4 class="name">'+ key +'</h4>'+
-                '<ul>'+
-                    '<li class="damageIcon">'+
-                        '<span class="damage">'+ value.damage[value.level] +'</span>'+
-                    '</li>'+
-                    '<li class="firerateIcon">'+
-                        '<span class="firerate">'+ value.firerate[value.level] +'</span>'+
-                    '</li>'+
-                    '<li class="rangeIcon">'+
-                        '<span class="range">'+ value.range[value.level] +'</span>'+
-                    '</li>'+
-                    '<li class="weaknessIcon">'+
-                        'Weak: <span class="weakness">'+ value.damageType +'</span>'+
-                    '</li>'+
-                '</ul>'+
-                '<button name="'+key+'" class="buildButton">Bauen</button>'+
-            '</div>';
-    });
 
-    $('.buildExplanationHeader').after(buildTowerHTML);
-}

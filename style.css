@@ -95,6 +95,16 @@ table {
     margin-top: 4px;
 }
 
+#objects .projectile {
+	position: absolute;
+}
+
+#objects .laser {
+	width: 22px;
+	height: 8px;
+	background-image: url("images/bullets/blaster.png");
+}
+
 #buildMenu {
     display: none;
     top: 50px;

@@ -1,3 +1,34 @@
+// DOsplays the build menu for towers
+function buildBuilderMenu()
+{
+    var buildTowerHTML = "";
+    
+    $.each(data.towers, function(key, value) {
+        buildTowerHTML = buildTowerHTML +
+            '<div id="rockets">'+
+                '<img src="images/turrets/'+ key +'.png" />'+
+                '<h4 class="name">'+ key +'</h4>'+
+                '<ul>'+
+                    '<li class="damageIcon">'+
+                        '<span class="damage">'+ value.damage[value.level] +'</span>'+
+                    '</li>'+
+                    '<li class="firerateIcon">'+
+                        '<span class="firerate">'+ value.firerate[value.level] +'</span>'+
+                    '</li>'+
+                    '<li class="rangeIcon">'+
+                        '<span class="range">'+ value.range[value.level] +'</span>'+
+                    '</li>'+
+                    '<li class="weaknessIcon">'+
+                        'Weak: <span class="weakness">'+ value.damageType +'</span>'+
+                    '</li>'+
+                '</ul>'+
+                '<button name="'+key+'" class="buildButton">Bauen</button>'+
+            '</div>';
+    });
+
+    $('.buildExplanationHeader').after(buildTowerHTML);
+}
+
 // Calculates the pixel-distance between two objects
 function calculateDistance (oneX, oneY, twoX, twoY)
 {
@@ -50,10 +81,10 @@ function updatePosition (enemyID, newPos)
 function checkCollision (objectOne, objectTwo, tolerance)
 {
 	// Center points of both objects are taken into account
-	oneX = Math.floor(objectOne.css('left')) + Math.floor(objectOne.css('width')) / 2;
-	oneY = Math.floor(objectOne.css('top')) + Math.floor(objectOne.css('height')) / 2;
-	twoX = Math.floor(objectTwo.css('left')) + Math.floor(objectTwo.css('width')) / 2;
-	twoY = Math.floor(objectTwo.css('top')) + Math.floor(objectTwo.css('height')) / 2;
+	oneX = parseInt(objectOne.css('left').split("px")) + objectOne.width() / 2;
+	oneY = parseInt(objectOne.css('top').split("px")) + objectOne.height() / 2;
+	twoX = parseInt(objectTwo.css('left').split("px")) + objectTwo.width() / 2;
+	twoY = parseInt(objectTwo.css('top').split("px")) + objectTwo.height() / 2;
 	if (calculateDistance (oneX, oneY, twoX, twoY) <= tolerance)
 	{
 		return true;
@@ -178,6 +209,16 @@ function calculateNextWaypointPosition (enemyID)
 	return [nextWaypointX, nextWaypointY];
 }
 
+// Tower tries to emit a projectile
+function towerShoots (towerID)
+{
+	var target = scanForTargets(towerID);
+	if (target.id >= 0)
+	{
+		spawnProjectile (towerID, target.id);
+	}
+}
+
 // Scans for all targets within a towers range
 function scanForTargets (towerID)
 {
@@ -185,11 +226,11 @@ function scanForTargets (towerID)
 							id:			-1,
 							waypoint:	0,
 						};
-	for (key in currentEnemies)
+	for (key in data.currentEnemies)
 	{
-		if (checkCollision(data.currentEnemies[key].domElement, data.currentTowers[towerID].domElement, data.currentTowers[towerID].range))
+		if (checkCollision(data.currentEnemies[key].domElement, data.currentTowers[towerID].domElement, data.currentTowers[towerID].range[data.currentTowers[towerID].level]))
 		{
-			if (data.currentEnemies[key].currentWaypoint > besttarget.waypoint)
+			if (data.currentEnemies[key].currentWaypoint > bestTarget.waypoint)
 			{
 				bestTarget.id = key;
 				bestTarget.waypoint = data.currentEnemies[key].currentWaypoint;
@@ -197,6 +238,34 @@ function scanForTargets (towerID)
 		}
 	}
 	return bestTarget;
+}
+
+// Spawns a projectile from a turret's position
+function spawnProjectile (towerID, targetID)
+{
+	var domRepresentative = $("<div class='projectile " + data.currentTowers[towerID].projectile + "' id='projectile" + data.currentProjectileID + "'></div>");
+	data.currentProjectiles[data.currentProjectileID] = jQuery.extend(true, {domElement : domRepresentative }, data.projectiles[data.currentTowers[towerID].projectile]);
+	data.currentProjectiles[data.currentProjectileID].target = targetID;
+	
+	// give initial position and rotation
+	data.currentProjectiles[data.currentProjectileID].posX = data.currentTowers[towerID].posX;
+	data.currentProjectiles[data.currentProjectileID].posY = data.currentTowers[towerID].posY;
+	domRepresentative.css('left', (data.currentTowers[towerID].posX) + "px");
+	domRepresentative.css('top', (data.currentTowers[towerID].posY) + "px");
+	// calculate looking angle for next waypoint
+	var angle = calculateAngle (data.currentProjectiles[data.currentProjectileID].posX, data.currentProjectiles[data.currentProjectileID].posY, data.currentEnemies[targetID].posX, data.currentEnemies[targetID].posY);
+	data.currentProjectiles[data.currentProjectileID].angle = angle;
+	rotate(domRepresentative, angle);
+	// put projectile ahead of turret
+	var newPos = moveEntity (data.currentProjectiles[data.currentProjectileID].posX, data.currentProjectiles[data.currentProjectileID].posY, 8, angle);
+	data.currentProjectiles[data.currentProjectileID].posX = newPos[0];
+	data.currentProjectiles[data.currentProjectileID].posY = newPos[1];
+	domRepresentative.css('left', (Math.floor(newPos[0])) + "px");
+	domRepresentative.css('top', (Math.floor(newPos[1])) + "px");
+	
+	$("#objects").append(domRepresentative);
+	
+	data.currentProjectileID++;
 }
 
 // Projectile might hit and damage target
@@ -307,7 +376,7 @@ function toRadians (angle)
 
 function spawnTower(offsetTop, offsetLeft, towerName){
     var tower =
-        $('<div id="'+ data.currentTowerID +'" class="tower '+towerName+'" style="top:'+offsetTop+'px; left:'+offsetLeft+'px;">'+
+        $('<div id="tower'+ data.currentTowerID +'" class="tower '+towerName+'" style="top:'+offsetTop+'px; left:'+offsetLeft+'px;">'+
             '<img class="turret" src="images/turrets/'+towerName+'.png"/>'+
             '<img class="base" src="images/turrets/base.png"/>'+
             '</div>');
@@ -315,6 +384,9 @@ function spawnTower(offsetTop, offsetLeft, towerName){
     data.currentTowers[data.currentTowerID] = jQuery.extend(true, {domElement : tower}, data.towers[towerName]);
     data.currentTowers[data.currentTowerID].posY = offsetTop;
     data.currentTowers[data.currentTowerID].posX = offsetLeft;
+	var towerID = data.currentTowerID;
+    data.currentTowers[data.currentTowerID].firePulse = setInterval(function() { towerShoots(towerID) }, data.currentTowers[data.currentTowerID].firerate[data.currentTowers[data.currentTowerID].level]);
+		
     data.currentTowerID++;
 
     $('#objects').append(tower);
