@@ -1,6 +1,6 @@
 
 data =			{
-					currentLevel:		0,
+					currentLevel:		1,
 					life:				10,
 					currentWaypoints:	[],
 					killAllTimers:		false,
@@ -12,8 +12,13 @@ data =			{
 											// Level
 											1:				{
 																// Waypoint order
-																1:	[0,0],
-																2:	[0,0],
+																1:	[3,0],
+																2:	[3,6],
+																3:	[6,6],
+																4:	[6,10],
+																5:	[9,10],
+																6:	[9,9],
+																7:	[14,9],
 															},
 										}
 										
