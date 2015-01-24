@@ -8,12 +8,12 @@
  </tileset>
  <layer name="map" width="20" height="15">
   <data encoding="base64" compression="zlib">
-   eJxTZGBgUCQCcxOpjlg8at7QNI+HSJxHpLrB7t9R8waXeQAySyQ3
+   eJxTZmBgUCaAFYGYG0orEcAw9YQwNxFqRs2j3DxizCLWPBDmIRLnEamO2u4zpaJ55qPmUcU8QhjZPHMCGAD/JiaW
   </data>
  </layer>
  <layer name="objects" width="20" height="15">
   <data encoding="base64" compression="zlib">
-   eJzjZWBg4CUCGzASp45YbD1qHhzzDXL3IWNdRohaQliPCDX6JPhhKMfvqHmEsSGR5gEA9wkVQA==
+   eJyzZmRgsCaAQcAAShNSC1NPCBCjbtQ8ys0jFhCrVpeI+AdhPSLU6NPAfYM9PkaiecSUF4ZEli8A9EkUZQ==
   </data>
  </layer>
 </map>
