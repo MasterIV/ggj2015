@@ -11,7 +11,12 @@ jQuery(document).ready(function()
 
 function updateGame ()
 {
-	
+	for(key in data.currentEnemies)
+	{
+		checkForNextWaypoint(key);
+		newPos = moveEntity (data.currentEnemies[key].posX, data.currentEnemies[key].posY, data.currentEnemies[key].speed, data.currentEnemies[key].angle);
+		updatePosition(key, newPos);
+	}
 }
 
 function initiateLevel(){

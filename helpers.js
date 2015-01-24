@@ -37,6 +37,15 @@ function moveEntity (xPos, yPos, speed, angle)
 	}
 }
 
+function updatePosition (enemyID, newPos)
+{
+	data.currentEnemies[enemyID].posX = newPos[0];
+	data.currentEnemies[enemyID].posY = newPos[1];
+	
+	data.currentEnemies[enemyID].domElement.css('left', Math.floor(newPos[0]) + "px");
+	data.currentEnemies[enemyID].domElement.css('top', Math.floor(newPos[1]) + "px");
+}
+
 // Checks if two DOM objects have collided. Tolerance states the pixel-distance for collision
 function checkCollision (objectOne, objectTwo, tolerance)
 {
@@ -149,7 +158,7 @@ function checkForNextWaypoint (enemyID)
 			// calculate looking angle for next waypoint
 			data.currentEnemies[enemyID].angle = calculateAngle (data.currentEnemies[enemyID].posX, data.currentEnemies[enemyID].posY, nextWaypointPos[0], nextWaypointPos[1]);
 			// also change rotation for DOM Element
-			// TODO
+			rotate(data.currentEnemies[enemyID].domElement, data.currentEnemies[enemyID].angle);
 		}
 		return true;
 	}
