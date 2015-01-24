@@ -73,14 +73,20 @@ function animateSpriteHelper (target, frames, currentFrame, loop, playSpeed)
 {
 	if (target.length > 0 && data.killAllTimers == false)
 	{
+		if (currentFrame == 1)
+		{
+			target.css("background-position", "0px 0px");
+		}
+		
 		target.css("background-position", target.css('width') + target.css('background-position').split(' ')[0] + "px 0px");
 		currentFrame++;
+		
 		if (currentFrame < frames)
 		{
 			window.setTimeout(function(){ animateSpriteHelper(target, frames, currentFrame, loop, playSpeed) }, playSpeed);
 		}
 		if (currentFrame == frames && loop)
-		{	
+		{
 			window.setTimeout(function(){ animateSpriteHelper(target, frames, 1, loop, playSpeed) }, playSpeed);
 		}
 	}
@@ -102,10 +108,11 @@ function spawnEnemies (startingWaypoint, enemyList)
 		domRepresentative.css('top', startingWaypoint[1]*32 + " px");
 		$("#objects").append(domRepresentative);
 		
+		// give list of waypoints to entity
+		data.currentEnemies[data.currentEnemyID].nextWaypoints = data.waypoints[data.currentLevel];
+		
 		// initiate animation
-		
-		
-		// TODO!!! Add X and Y coordinate to the added element !!!
+		animateSprite(domRepresentative, data.currentEnemies[data.currentEnemyID].animationFrames, true, 100);
 		
 		if (enemyList.length > 0)
 		{
@@ -114,10 +121,14 @@ function spawnEnemies (startingWaypoint, enemyList)
 	}
 }
 
+// Checks if unit has reached its next waypoint
+function checkForNextWaypoint ()
+{
+}
+
 function toDegrees (radian)
 {
 	return radian * (180 / Math.PI);
-  
 }
 
 function toRadians (angle)
