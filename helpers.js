@@ -1,5 +1,3 @@
-//console.log (moveEntity(0,0,5,225));
-
 // Calculates the pixel-distance between two objects
 function calculateDistance (oneX, oneY, twoX, twoY)
 {
@@ -78,14 +76,14 @@ function animateSpriteHelper (target, frames, currentFrame, loop, playSpeed)
 			target.css("background-position", "0px 0px");
 		}
 		
-		target.css("background-position", target.css('width') + target.css('background-position').split(' ')[0] + "px 0px");
+		target.css("background-position", (target.width() * (currentFrame - 1) * (-1)) + "px 0px");
 		currentFrame++;
 		
-		if (currentFrame < frames)
+		if (currentFrame <= frames)
 		{
 			window.setTimeout(function(){ animateSpriteHelper(target, frames, currentFrame, loop, playSpeed) }, playSpeed);
 		}
-		if (currentFrame == frames && loop)
+		if (currentFrame > frames && loop)
 		{
 			window.setTimeout(function(){ animateSpriteHelper(target, frames, 1, loop, playSpeed) }, playSpeed);
 		}
@@ -97,9 +95,9 @@ function spawnEnemies (startingWaypoint, enemyList)
 {
 	if (data.killAllTimers == false)
 	{
-		var domRepresentative = $("<div class='enemy " + data.enemies[enemyList[0]] + "' id='" + data.currentEnemyID + "'></div>");
+		var domRepresentative = $("<div class='enemy " + enemyList[0] + "' id='" + data.currentEnemyID + "'></div>");
 		data.currentEnemies[data.currentEnemyID] = jQuery.extend(true, {domElement : domRepresentative }, data.enemies[enemyList.shift()]);
-		console.log(data.currentEnemies[data.currentEnemyID]);
+		
 		// give initial position and rotation
 		variation = Math.floor((Math.random() * 5) + 1); 
 		data.currentEnemies[data.currentEnemyID].posX = startingWaypoint[0]*32 + variation;
@@ -111,18 +109,21 @@ function spawnEnemies (startingWaypoint, enemyList)
 		nextWaypointPos = calculateNextWaypointPosition(data.currentEnemyID);
 		data.currentEnemies[data.currentEnemyID].angle = calculateAngle (data.currentEnemies[data.currentEnemyID].posX, data.currentEnemies[data.currentEnemyID].posY, nextWaypointPos[0], nextWaypointPos[1]);
 		// TODO - add initial CSS rotation
-		domRepresentative.css('left', (startingWaypoint[0]*32 + variation) + " px");
-		domRepresentative.css('top', (startingWaypoint[1]*32 + variation) + " px");
+		rotate(domRepresentative, data.currentEnemies[data.currentEnemyID].angle);
+		domRepresentative.css('left', (startingWaypoint[0]*32 + variation) + "px");
+		domRepresentative.css('top', (startingWaypoint[1]*32 + variation) + "px");
 		$("#objects").append(domRepresentative);
 		
 		// initiate animation
-		animateSprite(domRepresentative, data.currentEnemies[data.currentEnemyID].animationFrames, true, 100);
+		animateSprite(domRepresentative, data.currentEnemies[data.currentEnemyID].animationFrames, true, 200);
+		
+		data.currentEnemyID++;
 		
 		if (enemyList.length > 0)
 		{
 			window.setTimeout(function(){ spawnEnemies(startingWaypoint, enemyList) }, 500);
 		}
-		data.currentEnemyID++;
+		
 	}
 }
 
@@ -161,9 +162,9 @@ function checkForNextWaypoint (enemyID)
 // provides X and Y coordinates of the next waypoint
 function calculateNextWaypointPosition (enemyID)
 {
-	nextWaypoint = data.currentEnemies[enemyID].nextWaypoints[data.currentEnemies[enemyID].currentWaypoint + 1];
-	nextWaypointX = data.waypoints[data.currentLevel][nextWaypoint][0] * 32;
-	nextWaypointY = data.waypoints[data.currentLevel][nextWaypoint][1] * 32;
+	var nextWaypoint = data.currentEnemies[enemyID].nextWaypoints[data.currentEnemies[enemyID].currentWaypoint];
+	var nextWaypointX = nextWaypoint[0] * 32;
+	var nextWaypointY = nextWaypoint[1] * 32;
 	return [nextWaypointX, nextWaypointY];
 }
 
@@ -185,6 +186,15 @@ function reduceLife ()
 		Console.log("Lost game!");
 	}
 }
+
+function rotate(target, degree)
+{
+      // For webkit browsers: e.g. Chrome
+	target.css({ WebkitTransform: 'rotate(' + degree + 'deg)'});
+      // For Mozilla browser: e.g. Firefox
+	target.css({ '-moz-transform': 'rotate(' + degree + 'deg)'});
+}
+
 
 function toDegrees (radian)
 {

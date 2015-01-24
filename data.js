@@ -1,4 +1,3 @@
-
 data =			{
 					currentLevel:		1,
 					life:				10,
@@ -25,8 +24,9 @@ data =			{
 											// Level
 											1:				{
 																// Wavetime & list
-																5000:		["marine", "marine", "marine"],
-																8000:		["marine","marine"],
+																1000:		["marine"],
+																//1000:		["marine", "marine", "marine", "marine"],
+																//3100:		["marine","marine"],
 															},
 											// Level
 											2:				{
@@ -40,7 +40,6 @@ data =			{
 											marine:			{
 																hitpoints:			15,
 																speed:				0.8,
-																image:				"",
 																flying:				false,
 																resistence:			"",
 																posX:				0,
