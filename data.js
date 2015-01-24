@@ -2,11 +2,10 @@
 data =			{
 					currentLevel:		1,
 					life:				10,
-					currentWaypoints:	[],
 					killAllTimers:		false,
 					currentEnemyID:		0,
 					
-					currentEnemies:		[],
+					currentEnemies:		{},
 					
 					waypoints:			{
 											// Level
@@ -55,12 +54,12 @@ data =			{
 					
 					towers:				{
 											laserChaser:	{
-																costs:				[150, 200, 1, 1],
+																costs:				[150, 200, 250, 300, 350],
 																level:				0,
-																damage:				[1, 1, 1, 1],
-																firerate:			[1000, 1000, 1000, 1500],
-																range:				[1, 1, 1, 1],
-																damageType:			"",
+																damage:				[5, 6, 7, 8, 9],
+																firerate:			[1000, 9500, 900, 850, 800],
+																range:				[64, 72, 80, 88, 96],
+																damageType:			"normal",
 																special:			"",
 																posX:				0,
 																posY:				0,
