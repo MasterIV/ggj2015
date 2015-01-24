@@ -4,15 +4,23 @@ jQuery(document).ready(function()
    $('#mapData').attr('href', 'maps/Map'+mapVersion+'.js');
     renderMap(mapData.layers.mapData, mapData.layers.objectData);
     initiateLevel();
+    buildBuilderMenu();
 
    heartBeat = window.setInterval(updateGame, 25);
    window.setInterval(updateGame, 25);
-    $("#map div").click(function(){
+    $("#map div").on('click', function(){
         $('#buildMenu').css('display', 'block');
+        var clicked = this;
+        $("#buildMenu button").unbind().on('click', function() {
+            var offsetTop = clicked.offsetTop;
+            var offsetLeft = clicked.offsetLeft;
+            var towerName = this.name;
+            spawnTower(offsetTop, offsetLeft, towerName);
+            $('#buildMenu').css('display', 'none');
+        });
     });
 
 });
-
 
 function updateGame ()
 {
@@ -22,7 +30,23 @@ function updateGame ()
 		newPos = moveEntity (data.currentEnemies[key].posX, data.currentEnemies[key].posY, data.currentEnemies[key].speed, data.currentEnemies[key].angle);
 		updatePosition(key, newPos);
 	}
+	for(key in data.currentProjectiles)
+	{
+		if (typeof data.currentEnemies[data.currentProjectiles[key].targetID] != "undefined")
+		{
+			var angle = calculateAngle (data.currentProjectiles[key].posX, data.currentProjectiles[key].posY, data.currentEnemies[data.currentProjectiles[key].targetID].posX, data.currentEnemies[data.currentProjectiles[key].targetID].posY);
+			data.currentProjectiles[key].angle = angle;
+			rotate(data.currentProjectiles[key].domElement, angle);
+			var newPos = moveEntity (data.currentProjectiles[key].posX, data.currentProjectiles[key].posY, data.currentProjectiles[key].speed, angle);
+			data.currentProjectiles[key].posX = newPos[0];
+			data.currentProjectiles[key].posY = newPos[1];
+			data.currentProjectiles[key].domElement.css('left', (Math.floor(newPos[0])) + "px");
+			data.currentProjectiles[key].domElement.css('top', (Math.floor(newPos[1])) + "px");
+		}
+		checkForHittingProjectile (key);
+	}
 	processEnemiesToDelete();
+	processProjectilesToDelete();
 }
 
 function initiateLevel(){
@@ -35,3 +59,5 @@ function initiateLevel(){
 			}, key);
     })(key);
 }
+
+
