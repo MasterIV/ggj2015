@@ -91,13 +91,17 @@ function spawnEnemies (startingWaypoint, enemyList)
 {
 	if (data.killAllTimers == false)
 	{
-		var domRepresentative = $("<div class='enemy " + data.enemies[enemyList[0]] + "'></div>");
-		data.currentEnemies[] = jQuery.extend(true, {domElement : domRepresentative }, data.enemies[enemyList.shift()]);
+		var domRepresentative = $("<div class='enemy " + data.enemies[enemyList[0]] + "' id='" + data.currentEnemyID + "'></div>");
+		data.currentEnemies[data.currentEnemyID] = jQuery.extend(true, {domElement : domRepresentative }, data.enemies[enemyList.shift()]);
+		data.currentEnemyID++;
 		$("#objects").append(domRepresentative);
 		
 		// TODO!!! Add X and Y coordinate to the added element !!!
 		
-		window.setTimeout(function(){ spawnEnemies(startingWaypoint, enemyList) }, 500);
+		if (enemyList.length > 0)
+		{
+			window.setTimeout(function(){ spawnEnemies(startingWaypoint, enemyList) }, 500);
+		}
 	}
 }
 
