@@ -99,17 +99,21 @@ function spawnEnemies (startingWaypoint, enemyList)
 	{
 		var domRepresentative = $("<div class='enemy " + data.enemies[enemyList[0]] + "' id='" + data.currentEnemyID + "'></div>");
 		data.currentEnemies[data.currentEnemyID] = jQuery.extend(true, {domElement : domRepresentative }, data.enemies[enemyList.shift()]);
-		data.currentEnemyID++;
 		
-		// give initial position
-		data.currentEnemies[data.currentEnemyID].posX = startingWaypoint[0]*32;
-		data.currentEnemies[data.currentEnemyID].posY = startingWaypoint[1]*32;
-		domRepresentative.css('left', startingWaypoint[0]*32 + " px");
-		domRepresentative.css('top', startingWaypoint[1]*32 + " px");
-		$("#objects").append(domRepresentative);
+		// give initial position and rotation
+		variation = Math.floor((Math.random() * 5) + 1); 
+		data.currentEnemies[data.currentEnemyID].posX = startingWaypoint[0]*32 + variation;
+		data.currentEnemies[data.currentEnemyID].posY = startingWaypoint[1]*32 + variation;
 		
 		// give list of waypoints to entity
 		data.currentEnemies[data.currentEnemyID].nextWaypoints = data.waypoints[data.currentLevel];
+		// calculate looking angle for next waypoint
+		nextWaypointPos = calculateNextWaypointPosition(data.currentEnemyID);
+		data.currentEnemies[enemyID].angle = calculateAngle (data.currentEnemies[data.currentEnemyID].posX, data.currentEnemies[data.currentEnemyID].posY, nextWaypointPos[0], nextWaypointPos[1]);
+		// TODO - add initial CSS rotation
+		domRepresentative.css('left', (startingWaypoint[0]*32 + variation) + " px");
+		domRepresentative.css('top', (startingWaypoint[1]*32 + variation) + " px");
+		$("#objects").append(domRepresentative);
 		
 		// initiate animation
 		animateSprite(domRepresentative, data.currentEnemies[data.currentEnemyID].animationFrames, true, 100);
@@ -118,12 +122,68 @@ function spawnEnemies (startingWaypoint, enemyList)
 		{
 			window.setTimeout(function(){ spawnEnemies(startingWaypoint, enemyList) }, 500);
 		}
+		data.currentEnemyID++;
 	}
 }
 
 // Checks if unit has reached its next waypoint
-function checkForNextWaypoint ()
+function checkForNextWaypoint (enemyID)
 {
+	nextWaypointPos = calculateNextWaypointPosition(enemyID);
+	distance = calculateDistance (data.currentEnemies[enemyID].posX, data.currentEnemies[enemyID].posY, nextWaypointPos[0], nextWaypointPos[1]);
+	if (distance <= 10)
+	{
+		data.currentEnemies[enemyID].currentWaypoint++;
+		
+		// enemy has reached last waypoint
+		if (data.currentEnemies[enemyID].currentWaypoint == data.currentEnemies[enemyID].nextWaypoints.length)
+		{
+			removeEnemy (enemyID);
+			reduceLife();
+		}
+		// enemy is still on the go
+		else
+		{
+			nextWaypointPos = calculateNextWaypointPosition(enemyID);
+			// calculate looking angle for next waypoint
+			data.currentEnemies[enemyID].angle = calculateAngle (data.currentEnemies[enemyID].posX, data.currentEnemies[enemyID].posY, nextWaypointPos[0], nextWaypointPos[1]);
+			// also change rotation for DOM Element
+			// TODO
+		}
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+// provides X and Y coordinates of the next waypoint
+function calculateNextWaypointPosition (enemyID)
+{
+	nextWaypoint = data.currentEnemies[enemyID].nextWaypoints[data.currentEnemies[enemyID].currentWaypoint + 1];
+	nextWaypointX = data.waypoints[data.currentLevel].nextWaypoint[0] * 32;
+	nextWaypointY = data.waypoints[data.currentLevel].nextWaypoint[1] * 32;
+	return [nextWaypointX, nextWaypointY];
+}
+
+function removeEnemy (enemyID)
+{
+	$("#" + enemyID).remove();
+	data.currentEnemies.remove(enemyID);
+}
+
+function reduceLife ()
+{
+	data.life--;
+	// Adjust life display
+	// TODO
+	if (data.life <= 0)
+	{
+		// Game Over
+		// TODO
+		Console.log("Lost game!");
+	}
 }
 
 function toDegrees (radian)

@@ -2,24 +2,23 @@
 data =			{
 					currentLevel:		1,
 					life:				10,
-					currentWaypoints:	[],
 					killAllTimers:		false,
 					currentEnemyID:		0,
 					
-					currentEnemies:		[],
+					currentEnemies:		{},
 					
 					waypoints:			{
 											// Level
-											1:				{
-																// Waypoint order
-																1:	[3,0],
-																2:	[3,6],
-																3:	[6,6],
-																4:	[6,10],
-																5:	[9,10],
-																6:	[9,9],
-																7:	[14,9],
-															},
+											1:				[
+																// Waypoints in order
+																[3,0],
+																[3,6],
+																[6,6],
+																[6,10],
+																[9,10],
+																[9,9],
+																[14,9],
+															],
 										}
 										
 					waves:				{
@@ -48,19 +47,19 @@ data =			{
 																posY:				0,
 																angle:				0,
 																animationFrames:	4,
-																nextWaypoints:		{},
+																nextWaypoints:		[],
 																currentWaypoint:	1,
 															},
 										},
 					
 					towers:				{
 											laserChaser:	{
-																costs:				[150, 200, 1, 1],
+																costs:				[150, 200, 250, 300, 350],
 																level:				0,
-																damage:				[1, 1, 1, 1],
-																firerate:			[1000, 1000, 1000, 1500],
-																range:				[1, 1, 1, 1],
-																damageType:			"",
+																damage:				[5, 6, 7, 8, 9],
+																firerate:			[1000, 9500, 900, 850, 800],
+																range:				[64, 72, 80, 88, 96],
+																damageType:			"normal",
 																special:			"",
 																posX:				0,
 																posY:				0,
