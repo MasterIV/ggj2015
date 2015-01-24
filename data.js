@@ -3,9 +3,14 @@ data =			{
 					life:				10,
 					killAllTimers:		false,
 					currentEnemyID:		0,
+					currentTowerID:		0,
 					
 					currentEnemies:		{},
 					enemiesToDelete:	[],
+					currentTowers:		{},
+					towersToDelete:		[],
+					currentProjectiles:	{},
+					projectilesToDelete:[],
 					waypoints:			{
 											// Level
 											1:				[

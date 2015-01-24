@@ -50,10 +50,10 @@ function updatePosition (enemyID, newPos)
 function checkCollision (objectOne, objectTwo, tolerance)
 {
 	// Center points of both objects are taken into account
-	oneX = objectOne.css('left') + objectOne.css('width') / 2;
-	oneY = objectOne.css('top') + objectOne.css('height') / 2;
-	twoX = objectTwo.css('left') + objectTwo.css('width') / 2;
-	twoY = objectTwo.css('top') + objectTwo.css('height') / 2;
+	oneX = Math.floor(objectOne.css('left')) + Math.floor(objectOne.css('width')) / 2;
+	oneY = Math.floor(objectOne.css('top')) + Math.floor(objectOne.css('height')) / 2;
+	twoX = Math.floor(objectTwo.css('left')) + Math.floor(objectTwo.css('width')) / 2;
+	twoY = Math.floor(objectTwo.css('top')) + Math.floor(objectTwo.css('height')) / 2;
 	if (calculateDistance (oneX, oneY, twoX, twoY) <= tolerance)
 	{
 		return true;
@@ -177,18 +177,89 @@ function calculateNextWaypointPosition (enemyID)
 	return [nextWaypointX, nextWaypointY];
 }
 
+// Scans for all targets within a towers range
+function scanForTargets (towerID)
+{
+	var bestTarget =	{
+							id:			-1,
+							waypoint:	0,
+						};
+	for (key in currentEnemies)
+	{
+		if (checkCollision(data.currentEnemies[key].domElement, data.currentTowers[towerID].domElement, data.currentTowers[towerID].range))
+		{
+			if (data.currentEnemies[key].currentWaypoint > besttarget.waypoint)
+			{
+				bestTarget.id = key;
+				bestTarget.waypoint = data.currentEnemies[key].currentWaypoint;
+			}
+		}
+	}
+	return bestTarget;
+}
+
+// Projectile might hit and damage target
+function checkForHittingProjectile (projectileID)
+{
+	// Check if target is still there
+	if (typeof data.currentEnemies[data.currentProjectiles[projectileID].targetID]  != "undefined")
+	{
+		if (checkCollision(data.currentEnemies[data.currentProjectiles[projectileID].targetID].domElement), data.currentProjectiles[projectileID].domElement, 8)
+		{
+			// reduce HP of the hit enemy & remove it if applicable
+			data.currentEnemies[data.currentProjectiles[projectileID].targetID].hitpoints -= data.currentProjectiles[projectileID].damage;
+			if (data.currentEnemies[data.currentProjectiles[projectileID].targetID].hitpoints <= 0)
+			{
+				// TODO add emitter here
+				removeEnemy (data.currentProjectiles[projectileID].targetID);
+			}
+			// TODO add emitter here
+			removeProjectile (projectileID);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	else
+	{
+		// TODO add emitter here
+		removeProjectile (projectileID);
+		return false;
+	}
+}
+
 // removes DOM objects and marks items for deletion
 function removeEnemy (enemyID)
 {
 	$("#" + enemyID).remove();
 	data.enemiesToDelete.push(enemyID);
-	//delete data.currentEnemies[enemyID];
 }
 
 // Actually removes enemies after the FOR loop in heart.js has run out
 function processEnemiesToDelete ()
 {
-	delete data.currentEnemies[data.enemiesToDelete.pop()];
+	while (data.enemiesToDelete.length > 0)
+	{
+		delete data.currentEnemies[data.enemiesToDelete.pop()];
+	}
+}
+
+// removes DOM objects and marks items for deletion
+function removeProjectile (projectileID)
+{
+	$("#projectile" + projectileID).remove();
+	data.projectilesToDelete.push(projectileID);
+}
+
+// Actually removes projectiles after the FOR loop in heart.js has run out
+function processProjectilesToDelete ()
+{
+	while (data.projectilesToDelete.length > 0)
+	{
+		delete data.currentProjectiles[data.projectilesToDelete.pop()];
+	}
 }
 
 function reduceLife ()

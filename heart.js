@@ -23,6 +23,7 @@ function updateGame ()
 		updatePosition(key, newPos);
 	}
 	processEnemiesToDelete();
+	processProjectilesToDelete();
 }
 
 function initiateLevel(){
