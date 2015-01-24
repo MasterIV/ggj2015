@@ -4,6 +4,7 @@ data =			{
 					life:				10,
 					waypoints:			[],
 					killAllTimers:		false,
+					currentEnemyID:		0,
 					
 					currentEnemies:		[],
 					enemies:			{
