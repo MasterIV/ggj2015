@@ -109,7 +109,7 @@ function spawnEnemies (startingWaypoint, enemyList)
 		data.currentEnemies[data.currentEnemyID].nextWaypoints = data.waypoints[data.currentLevel];
 		// calculate looking angle for next waypoint
 		nextWaypointPos = calculateNextWaypointPosition(data.currentEnemyID);
-		data.currentEnemies[enemyID].angle = calculateAngle (data.currentEnemies[data.currentEnemyID].posX, data.currentEnemies[data.currentEnemyID].posY, nextWaypointPos[0], nextWaypointPos[1]);
+		data.currentEnemies[data.currentEnemyID].angle = calculateAngle (data.currentEnemies[data.currentEnemyID].posX, data.currentEnemies[data.currentEnemyID].posY, nextWaypointPos[0], nextWaypointPos[1]);
 		// TODO - add initial CSS rotation
 		domRepresentative.css('left', (startingWaypoint[0]*32 + variation) + " px");
 		domRepresentative.css('top', (startingWaypoint[1]*32 + variation) + " px");
