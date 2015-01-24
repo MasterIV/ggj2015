@@ -368,7 +368,14 @@ function reduceLife ()
 		// Game Over
 		// TODO
 		console.log("Lost game!");
+		cancelGame();
 	}
+}
+
+function cancelGame ()
+{
+	clearInterval(moneyGiver);
+	data.killAllTimers = true;
 }
 
 function determineRequiredKills ()
@@ -386,6 +393,15 @@ function rotate(target, degree)
 	target.css({ WebkitTransform: 'rotate(' + (-1) * degree + 'deg)'});
     // For Mozilla browser: e.g. Firefox
 	target.css({ '-moz-transform': 'rotate(' + (-1) * degree + 'deg)'});
+}
+
+function generateCredits ()
+{
+	if (data.killAllTimers == false)
+	{
+		data.currentCredits += 3;
+		setTimeout (function () { generateCredits(); }, 2500);
+	}
 }
 
 
@@ -411,7 +427,11 @@ function spawnTower(offsetTop, offsetLeft, towerName){
     data.currentTowers[data.currentTowerID].posX = offsetLeft;
 	var towerID = data.currentTowerID;
     data.currentTowers[data.currentTowerID].firePulse = setInterval(function() { towerShoots(towerID) }, data.currentTowers[data.currentTowerID].firerate[data.currentTowers[data.currentTowerID].level]);
-		
+	if (data.currentTowers[data.currentTowerID].special == "moneyBoost")
+	{
+		setTimeout (function () { generateCredits();}, 2500);
+	}
+	
     data.currentTowerID++;
 
     $('#objects').append(tower);
