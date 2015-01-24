@@ -66,3 +66,7 @@ table {
 	height: 32px;
 	position: absolute;
 }
+
+#objects .marine {
+	background-image: url("images/units/marine.png");
+}
