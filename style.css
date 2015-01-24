@@ -57,6 +57,7 @@ table {
 	left: 0px;
 	top: 0px;
 	background-color: green;
+	display: none;
 }
 
 #objects .enemy {
