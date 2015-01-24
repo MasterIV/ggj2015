@@ -32,7 +32,6 @@ function updateGame ()
 	}
 	for(key in data.currentProjectiles)
 	{
-		console.log(data.currentProjectiles[key].targetID);
 		var angle = calculateAngle (data.currentProjectiles[key].posX, data.currentProjectiles[key].posY, data.currentEnemies[data.currentProjectiles[key].targetID].posX, data.currentEnemies[data.currentProjectiles[key].targetID].posY);
 		data.currentProjectiles[key].angle = angle;
 		rotate(data.currentProjectiles[key].domElement, angle);

@@ -215,6 +215,9 @@ function towerShoots (towerID)
 	var target = scanForTargets(towerID);
 	if (target.id >= 0)
 	{
+		// Tower turns towards target on shooting
+		var angle = calculateAngle (data.currentTowers[towerID].posX, data.currentTowers[towerID].posY, data.currentEnemies[target.id].posX, data.currentEnemies[target.id].posY);
+		rotate(data.currentTowers[towerID].domElement, angle);
 		spawnProjectile (towerID, target.id);
 	}
 }
@@ -245,7 +248,7 @@ function spawnProjectile (towerID, targetID)
 {
 	var domRepresentative = $("<div class='projectile " + data.currentTowers[towerID].projectile + "' id='projectile" + data.currentProjectileID + "'></div>");
 	data.currentProjectiles[data.currentProjectileID] = jQuery.extend(true, {domElement : domRepresentative }, data.projectiles[data.currentTowers[towerID].projectile]);
-	data.currentProjectiles[data.currentProjectileID].target = targetID;
+	data.currentProjectiles[data.currentProjectileID].targetID = targetID;
 	
 	// give initial position and rotation
 	data.currentProjectiles[data.currentProjectileID].posX = data.currentTowers[towerID].posX;
@@ -274,7 +277,8 @@ function checkForHittingProjectile (projectileID)
 	// Check if target is still there
 	if (typeof data.currentEnemies[data.currentProjectiles[projectileID].targetID]  != "undefined")
 	{
-		if (checkCollision(data.currentEnemies[data.currentProjectiles[projectileID].targetID].domElement), data.currentProjectiles[projectileID].domElement, 8)
+		
+		if (checkCollision(data.currentEnemies[data.currentProjectiles[projectileID].targetID].domElement, data.currentProjectiles[projectileID].domElement, 12))
 		{
 			// reduce HP of the hit enemy & remove it if applicable
 			data.currentEnemies[data.currentProjectiles[projectileID].targetID].hitpoints -= data.currentProjectiles[projectileID].damage;

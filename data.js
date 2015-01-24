@@ -286,8 +286,8 @@ data =			{
 					projectiles:		{
 											laser:			{
 																speed:				5,
-																damage:				0,
-																tagetID:			0,
+																damage:				10,
+																targetID:			0,
 																type:				"normal",
 																special:			"",
 															},
@@ -295,7 +295,7 @@ data =			{
 											bolt:			{
 																speed:				4,
 																damage:				0,
-																tagetID:			0,
+																targetID:			0,
 																type:				"pierce",
 																special:			"",
 															},
@@ -303,7 +303,7 @@ data =			{
 											rocket:			{
 																speed:				5,
 																damage:				0,
-																tagetID:			0,
+																targetID:			0,
 																type:				"field",
 																special:			"splash",
 															},
@@ -311,7 +311,7 @@ data =			{
 											shockwave:		{
 																speed:				6,
 																damage:				0,
-																tagetID:			0,
+																targetID:			0,
 																type:				"field",
 																special:			"slow",
 															},
