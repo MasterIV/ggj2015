@@ -43,6 +43,7 @@ data =			{
 																posY:				0,
 																angle:				0,
 																animationFrames:	0,
+																nextWaypoints:		{},
 															},
 										},
 					
