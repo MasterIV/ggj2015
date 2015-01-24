@@ -413,6 +413,6 @@ function spawnTower(offsetTop, offsetLeft, towerName){
     data.currentTowers[data.currentTowerID].firePulse = setInterval(function() { towerShoots(towerID) }, data.currentTowers[data.currentTowerID].firerate[data.currentTowers[data.currentTowerID].level]);
 		
     data.currentTowerID++;
-
+    data.currentCredits = data.currentCredits - data.currentTowers[data.currentTowerID].costs[data.currentLevel -1];
     $('#objects').append(tower);
 }
