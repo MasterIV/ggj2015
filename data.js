@@ -7,6 +7,7 @@ data =			{
 					currentEnemyID:		0,
 					currentTowerID:		0,
 					currentProjectileID:0,
+					currentCredits:		0,
 					
 					currentEnemies:		{},
 					enemiesToDelete:	[],
