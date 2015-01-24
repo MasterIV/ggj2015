@@ -15,16 +15,12 @@ jQuery(document).ready(function()
             var offsetTop = clicked.offsetTop;
             var offsetLeft = clicked.offsetLeft;
             var towerName = this.name;
-            if(clicked.dataset.blocker == "false")
+            if(clicked.dataset.blocker == "false" && data.currentCredits > data.towers[towerName].costs[0])
             {
                 spawnTower(offsetTop, offsetLeft, towerName);
                 $('#buildMenu').css('display', 'none');
-            } else if(data.currentCredits < data.towers[towerName].costs[data.currentLevel - 1])
-            {
-                this.innerHTML = 'Not enough Credits!';
             } else {
-
-                this.innerHTML = 'Not allowed position!';
+                this.innerHTML = 'Not allowed position or not enough credits!';
             }
         });
     });
@@ -75,7 +71,7 @@ function initiateLevel(){
 	setTimeout (function() { generateCredits(50); }, 2500);
     for(key in data.waves[data.currentLevel])
     (function(key) {
-            setTimeout(function ()
+	setTimeout(function ()
 			{
 				spawnEnemies(data.waypoints[data.currentLevel][0], data.waves[data.currentLevel][key]);
 			}, key);

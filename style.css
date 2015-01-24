@@ -161,6 +161,12 @@ table {
     background-image: url("images/bullets/freeze.png");
 }
 
+#objects .bolt {
+	width: 32px;
+    height: 32px;
+    background-image: url("images/bullets/plasma.png");
+}
+
 #objects .bloodSplash {
 	width: 32px;
 	height: 32px;

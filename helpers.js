@@ -467,7 +467,7 @@ function spawnTower(offsetTop, offsetLeft, towerName){
     data.currentTowers[data.currentTowerID].firePulse = setInterval(function() { towerShoots(towerID) }, data.currentTowers[data.currentTowerID].firerate[data.currentTowers[data.currentTowerID].level]);
 	if (data.currentTowers[data.currentTowerID].special == "moneyBoost")
 	{
-		setTimeout (function () { generateCredits();}, 2500);
+		setTimeout (function () { generateCredits(3);}, 2500);
 	}
     data.currentCredits -= data.currentTowers[data.currentTowerID].costs[data.currentTowers[data.currentTowerID].level];
     data.currentTowerID++;
