@@ -271,7 +271,7 @@ function reduceLife ()
 	{
 		// Game Over
 		// TODO
-		Console.log("Lost game!");
+		console.log("Lost game!");
 	}
 }
 
