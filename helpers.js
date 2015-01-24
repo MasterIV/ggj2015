@@ -7,19 +7,20 @@ function buildBuilderMenu()
         buildTowerHTML = buildTowerHTML +
             '<div id="rockets">'+
                 '<img src="images/turrets/'+ key +'.png" />'+
+//                '<div>Price: '+value.costs[value.level]+'</div>'+
                 '<h4 class="name">'+ key +'</h4>'+
                 '<ul>'+
-                    '<li class="damageIcon">'+
-                        '<span class="damage">'+ value.damage[value.level] +'</span>'+
+                    '<li>'+
+                        '<div class="damageIcon"></div><span class="damage">Damage: '+ value.damage[value.level] +'</span>'+
                     '</li>'+
-                    '<li class="firerateIcon">'+
-                        '<span class="firerate">'+ value.firerate[value.level] +'</span>'+
+                    '<li>'+
+                        '<div class="firerateIcon"></div><span class="firerate">Firerate: '+ value.firerate[value.level] +'</span>'+
                     '</li>'+
-                    '<li class="rangeIcon">'+
-                        '<span class="range">'+ value.range[value.level] +'</span>'+
+                    '<li>'+
+                        '<div class="rangeIcon"></div><span class="range">Range: '+ value.range[value.level] +'</span>'+
                     '</li>'+
-                    '<li class="weaknessIcon">'+
-                        'Weak: <span class="weakness">'+ value.damageType +'</span>'+
+                    '<li>'+
+                        '<div class="weaknessIcon"></div><span class="weakness">Weakness: '+ value.damageType +'</span>'+
                     '</li>'+
                 '</ul>'+
                 '<button name="'+key+'" class="buildButton">Bauen</button>'+
