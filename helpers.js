@@ -304,3 +304,16 @@ function toRadians (angle)
 {
 	return angle * (Math.PI / 180);
 }
+
+function spawnTower(offsetTop, offsetLeft, towerName){
+    var tower =
+        $('<div id="'+ data.currentTowerID +'" class="tower '+towerName+'" style="top:'+offsetTop+'px; left:'+offsetLeft+'px;">'+
+            '<img class="turret" src="images/turrets/'+towerName+'.png"/>'+
+            '<img class="base" src="images/turrets/base.png"/>'+
+            '</div>');
+
+    data.currentTowers[data.currentTowerID] = jQuery.extend(true, {domElement : tower}, data.towers[towerName]);
+    data.currentTowerID++;
+
+    $('#objects').append(tower);
+}
