@@ -1,6 +1,8 @@
 data =			{
 					currentLevel:		1,
 					life:				10,
+					kills:				0,
+					requiredKills:		0,
 					killAllTimers:		false,
 					currentEnemyID:		0,
 					currentTowerID:		0,
@@ -86,9 +88,9 @@ data =			{
 					towers:				{
 											laserChaser:	{
 																costs:				[150, 200, 250, 300, 350],
-																level:				1,
-																damage:				[5, 6, 7, 8, 9],
-																firerate:			[1000, 9500, 900, 850, 800],
+																level:				0,
+																damage:				[5, 7, 9, 11, 13],
+																firerate:			[1000, 823, 690, 582, 500],
 																range:				[64, 72, 80, 88, 96],
 																damageType:			"normal",
 																special:			"",
@@ -97,6 +99,69 @@ data =			{
 																angle:				0,
 																projectile:			"laser",
 															},
+															
+											boltBasher:		{
+																costs:				[200, 250, 300, 350, 400],
+																level:				0,
+																damage:				[14, 23, 32, 41, 50],
+																firerate:			[1800, 1750, 1700, 1650, 1600],
+																range:				[72, 81, 90, 99, 108],
+																damageType:			"pierce",
+																special:			"",
+																posX:				0,
+																posY:				0,
+																angle:				0,
+																projectile:			"bolt",
+											
+															},
+											
+											sploder:		{
+																costs:				[200, 250, 300, 350, 400],
+																level:				0,
+																damage:				[8, 11, 14, 17, 20],
+																firerate:			[1616, 1338, 1194, 991, 875],
+																range:				[64, 72, 80, 88, 96],
+																damageType:			"field",
+																special:			"splash",
+																posX:				0,
+																posY:				0,
+																angle:				0,
+																projectile:			"rocket",
+															
+															},
+											
+											distorter:		{
+																costs:				[170, 220, 270, 320, 370],
+																level:				0,
+																damage:				[3, 4, 5, 6, 7],
+																firerate:			[1000, 833, 714, 625, 555],
+																range:				[70, 78, 86, 94, 102],
+																damageType:			"field",
+																special:			"slow",
+																posX:				0,
+																posY:				0,
+																angle:				0,
+																projectile:			"shockwave",
+															
+															},
+															
+											moneyMaker:		{
+															
+																costs:				[60],
+																level:				0,
+																damage:				[0],
+																firerate:			[10000000],
+																range:				[0],
+																damageType:			"field",
+																special:			"moneyBoost",
+																posX:				0,
+																posY:				0,
+																angle:				0,
+																projectile:			"shockwave",
+															
+															},
+										
+															
 										},
 										
 					projectiles:		{
@@ -105,6 +170,27 @@ data =			{
 																damage:				0,
 																tagetID:			0,
 																special:			"",
-															}
+															},
+															
+											bolt:			{
+																speed:				4,
+																damage:				0,
+																tagetID:			0,
+																special:			"",
+															},
+											
+											rocket:			{
+																speed:				5,
+																damage:				0,
+																tagetID:			0,
+																special:			"splash",
+															},
+								
+											shockwave:		{
+																speed:				6,
+																damage:				0,
+																tagetID:			0,
+																special:			"slow",
+															},
 										}
 				};
