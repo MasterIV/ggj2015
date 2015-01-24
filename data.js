@@ -39,22 +39,23 @@ data =			{
 					
 					enemies:			{
 											marine:			{
-																hitpoints:			1,
-																speed:				0.2,
+																hitpoints:			15,
+																speed:				0.8,
 																image:				"",
 																flying:				false,
 																resistence:			"",
 																posX:				0,
 																posY:				0,
 																angle:				0,
-																animationFrames:	0,
+																animationFrames:	4,
 																nextWaypoints:		{},
+																currentWaypoint:	1,
 															},
 										},
 					
 					towers:				{
-											tower1:			{
-																costs:				[1, 1, 1, 1],
+											laserChaser:	{
+																costs:				[150, 200, 1, 1],
 																level:				0,
 																damage:				[1, 1, 1, 1],
 																firerate:			[1000, 1000, 1000, 1500],
