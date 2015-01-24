@@ -39,7 +39,13 @@ function updateGame ()
 	for(key in data.currentEnemies)
 	{
 		checkForNextWaypoint(key);
-		newPos = moveEntity (data.currentEnemies[key].posX, data.currentEnemies[key].posY, data.currentEnemies[key].speed, data.currentEnemies[key].angle);
+		var speed = data.currentEnemies[key].speed;
+		if (data.currentEnemies[key].slowedTurns > 0)
+		{
+			speed *= 0.6;
+			data.currentEnemies[key].slowedTurns--;
+		}
+		newPos = moveEntity (data.currentEnemies[key].posX, data.currentEnemies[key].posY, speed, data.currentEnemies[key].angle);
 		updatePosition(key, newPos);
 	}
 	for(key in data.currentProjectiles)
@@ -71,6 +77,7 @@ function initiateLevel(){
 				spawnEnemies(data.waypoints[data.currentLevel][0], data.waves[data.currentLevel][key]);
 			}, key);
     })(key);
+	determineRequiredKills();
 }
 
 

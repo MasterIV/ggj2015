@@ -111,6 +111,12 @@ table {
     background-image: url("images/bullets/rocket.png");
 }
 
+#objects .shockwave {
+	width: 32px;
+    height: 32px;
+    background-image: url("images/bullets/freeze.png");
+}
+
 #objects .bloodSplash {
 	width: 32px;
 	height: 32px;

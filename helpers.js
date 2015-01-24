@@ -287,6 +287,11 @@ function checkForHittingProjectile (projectileID)
             } else {
                 data.currentEnemies[data.currentProjectiles[projectileID].targetID].hitpoints -= data.currentProjectiles[projectileID].damage;
             }
+			// apply slow effect
+			if (data.currentProjectiles[projectileID].special == "slow")
+			{
+				data.currentEnemies[data.currentProjectiles[projectileID].targetID].slowedTurns = 80;
+			}
 			if (data.currentEnemies[data.currentProjectiles[projectileID].targetID].hitpoints <= 0)
 			{
 				if (data.currentProjectiles[projectileID].special == "splash")
