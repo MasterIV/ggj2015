@@ -195,11 +195,7 @@ table {
 }
 
 #buildMenu div {
-    margin-top: 3px;
-    float: left;
-    width: 100%;
     border-bottom: 2px solid grey;
-    padding: 10px;
 }
 
 #buildMenu div ul {
@@ -207,40 +203,44 @@ table {
     margin-top: 5px;
 }
 
-#buildMenu div ul li span {
-    margin-left: 25px;
+#buildMenu div ul li {
+   width:136px;
 }
 
-#buildMenu div ul li {
+#buildMenu div ul li div {
     background: url('images/ui/icons-sprite.png') no-repeat;
     width: 20px;
     height: 20px;
-    margin: 2px 0 0 5px;
-}
+    border: none;
 
-#buildMenu div ul li:last-child {
-    width: 120px;
 }
 
 #buildMenu .damageIcon {
     background-position: 0 0;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
 }
 
 #buildMenu .firerateIcon {
     background-position: -20px 0;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
 }
 
 #buildMenu .rangeIcon {
     background-position: -40px 0;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
 }
 
 #buildMenu .weaknessIcon {
     background-position: -60px 0;
-}
-
-#buildMenu div button {
-    width: 100%;
-    margin: 3px 0 0 0;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
 }
 
 #buildMenu div h4 {
@@ -249,7 +249,12 @@ table {
 
 #buildMenu div img {
     float: right;
-    margin: 13px 20px;
+    margin: 13px 50px 0 0;
+}
+
+#buildMenu div .price {
+    float: right;
+    margin: 45px 50px 0 0;
 }
 
 #buildMenu .close {
