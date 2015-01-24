@@ -5,7 +5,7 @@ data =			{
 					currentEnemyID:		0,
 					
 					currentEnemies:		{},
-					
+					enemiesToDelete:	[],
 					waypoints:			{
 											// Level
 											1:				[
@@ -17,6 +17,19 @@ data =			{
 																[9,10],
 																[9,9],
 																[14,9],
+															],
+															
+											2:				[
+																[17,0],
+																[17,3],
+																[16,3],
+																[16,4],
+																[,],
+																[,],
+																[,],
+																[,],
+																[,],
+																[,],
 															],
 										},
 										
