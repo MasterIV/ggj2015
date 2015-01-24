@@ -15,7 +15,11 @@ jQuery(document).ready(function()
             var offsetTop = clicked.offsetTop;
             var offsetLeft = clicked.offsetLeft;
             var towerName = this.name;
-            spawnTower(offsetTop, offsetLeft, towerName);
+            console.log(clicked.dataset.blocker);
+            if(clicked.dataset.blocker == "false")
+            {
+                spawnTower(offsetTop, offsetLeft, towerName);
+            }
             $('#buildMenu').css('display', 'none');
         });
     });
