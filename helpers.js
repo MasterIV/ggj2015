@@ -410,8 +410,11 @@ function reduceLife ()
 
 function cancelGame ()
 {
-	clearInterval(moneyGiver);
 	data.killAllTimers = true;
+	for (key in data.currentTowers)
+	{
+		clearInterval(data.currentTowers[key].firePulse);
+	}
 }
 
 function determineRequiredKills ()
