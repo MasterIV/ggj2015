@@ -40,17 +40,17 @@ data =			{
 																[6,12],
 															],
 											
-											3:			[
-															[0,11],
-															[4,11],
-															[4,2],
-															[16,2],
-															[16,12],
-															[6,12],
-															[6,9],
-															[11,9],
-															[11,7],
-														]
+											3:				[
+																[0,11],
+																[4,11],
+																[4,2],
+																[16,2],
+																[16,12],
+																[6,12],
+																[6,9],
+																[11,9],
+																[11,7],
+															]
 															
 										},
 										
@@ -72,8 +72,8 @@ data =			{
 					
 					enemies:			{
 											marine:			{
-																hitpoints:			15,
-																speed:				0.8,
+																hitpoints:			14,
+																speed:				0.6,
 																flying:				false,
 																resistence:			"",
 																posX:				0,
@@ -83,7 +83,126 @@ data =			{
 																nextWaypoints:		[],
 																currentWaypoint:	1,
 															},
-										},
+															
+											elite:			{
+																hitpoints:			35,
+																speed:				0.65,
+																flying:				false,
+																resistence:			"",
+																posX:				0,
+																posY:				0,
+																angle:				0,
+																animationFrames:	4,
+																nextWaypoints:		[],
+																currentWaypoint:	1,
+															},
+															
+											tank:			{
+																hitpoints:			100,
+																speed:				0.2,
+																flying:				false,
+																resistence:			"normal",
+																posX:				0,
+																posY:				0,
+																angle:				0,
+																animationFrames:	4,
+																nextWaypoints:		[],
+																currentWaypoint:	1,
+															},
+															
+											hoverBike:			{
+																hitpoints:			20,
+																speed:				1.3,
+																flying:				false,
+																resistence:			"pierce",
+																posX:				0,
+																posY:				0,
+																angle:				0,
+																animationFrames:	4,
+																nextWaypoints:		[],
+																currentWaypoint:	1,
+															},
+															
+											jeep:			{
+																hitpoints:			45,
+																speed:				0.8,
+																flying:				false,
+																resistence:			"normal",
+																posX:				0,
+																posY:				0,
+																angle:				0,
+																animationFrames:	4,
+																nextWaypoints:		[],
+																currentWaypoint:	1,
+															},
+															
+											spaceKnight:	{
+																hitpoints:			150,
+																speed:				0.4,
+																flying:				false,
+																resistence:			"normal",
+																posX:				0,
+																posY:				0,
+																angle:				0,
+																animationFrames:	4,
+																nextWaypoints:		[],
+																currentWaypoint:	1,
+															},
+															
+											rocketeer:		{
+																hitpoints:			20,
+																speed:				0.6,
+																flying:				true,
+																resistence:			"field",
+																posX:				0,
+																posY:				0,
+																angle:				0,
+																animationFrames:	4,
+																nextWaypoints:		[],
+																currentWaypoint:	1,
+															},
+															
+											jet:			{
+																hitpoints:			25,
+																speed:				1.3,
+																flying:				true,
+																resistence:			"field",
+																posX:				0,
+																posY:				0,
+																angle:				0,
+																animationFrames:	4,
+																nextWaypoints:		[],
+																currentWaypoint:	1,
+															},
+															
+											ironclad:		{
+																hitpoints:			250,
+																speed:				0.2,
+																flying:				true,
+																resistence:			"normal",
+																posX:				0,
+																posY:				0,
+																angle:				0,
+																animationFrames:	4,
+																nextWaypoints:		[],
+																currentWaypoint:	1,
+															},
+															
+											specOps:		{
+																hitpoints:			35,
+																speed:				0.75,
+																flying:				false,
+																resistence:			"pierce",
+																posX:				0,
+																posY:				0,
+																angle:				0,
+																animationFrames:	4,
+																nextWaypoints:		[],
+																currentWaypoint:	1,
+															},
+															
+																														
+											},
 					
 					towers:				{
 											laserChaser:	{
