@@ -32,14 +32,17 @@ function updateGame ()
 	}
 	for(key in data.currentProjectiles)
 	{
-		var angle = calculateAngle (data.currentProjectiles[key].posX, data.currentProjectiles[key].posY, data.currentEnemies[data.currentProjectiles[key].targetID].posX, data.currentEnemies[data.currentProjectiles[key].targetID].posY);
-		data.currentProjectiles[key].angle = angle;
-		rotate(data.currentProjectiles[key].domElement, angle);
-		var newPos = moveEntity (data.currentProjectiles[key].posX, data.currentProjectiles[key].posY, data.currentProjectiles[key].speed, angle);
-		data.currentProjectiles[key].posX = newPos[0];
-		data.currentProjectiles[key].posY = newPos[1];
-		data.currentProjectiles[key].domElement.css('left', (Math.floor(newPos[0])) + "px");
-		data.currentProjectiles[key].domElement.css('top', (Math.floor(newPos[1])) + "px");
+		if (typeof data.currentEnemies[data.currentProjectiles[key].targetID] != "undefined")
+		{
+			var angle = calculateAngle (data.currentProjectiles[key].posX, data.currentProjectiles[key].posY, data.currentEnemies[data.currentProjectiles[key].targetID].posX, data.currentEnemies[data.currentProjectiles[key].targetID].posY);
+			data.currentProjectiles[key].angle = angle;
+			rotate(data.currentProjectiles[key].domElement, angle);
+			var newPos = moveEntity (data.currentProjectiles[key].posX, data.currentProjectiles[key].posY, data.currentProjectiles[key].speed, angle);
+			data.currentProjectiles[key].posX = newPos[0];
+			data.currentProjectiles[key].posY = newPos[1];
+			data.currentProjectiles[key].domElement.css('left', (Math.floor(newPos[0])) + "px");
+			data.currentProjectiles[key].domElement.css('top', (Math.floor(newPos[1])) + "px");
+		}
 		checkForHittingProjectile (key);
 	}
 	processEnemiesToDelete();

@@ -105,6 +105,20 @@ table {
 	background-image: url("images/bullets/blaster.png");
 }
 
+#objects .bloodSplash {
+	width: 32px;
+	height: 32px;
+	position: absolute;
+	background-image: url("images/animation/splatter.png");
+}
+
+#objects .explosions {
+	width: 32px;
+	height: 32px;
+	position: absolute;
+	background-image: url("images/animation/explosion.png");
+}
+
 #buildMenu {
     display: none;
     top: 50px;

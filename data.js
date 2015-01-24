@@ -144,9 +144,9 @@ data =			{
 											// Level
 											1:				{
 																// Wavetime & list
-																1000:		["marine", "marine", "marine"],
+																1000:		["marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine"],
 																//1000:		["marine", "marine", "marine", "marine"],
-																3100:		["marine","marine"],
+																3100:		["marine","marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine"],
 															},
 											// Level
 											2:				{

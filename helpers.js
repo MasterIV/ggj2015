@@ -284,7 +284,14 @@ function checkForHittingProjectile (projectileID)
 			data.currentEnemies[data.currentProjectiles[projectileID].targetID].hitpoints -= data.currentProjectiles[projectileID].damage;
 			if (data.currentEnemies[data.currentProjectiles[projectileID].targetID].hitpoints <= 0)
 			{
-				// TODO add emitter here
+				if (data.currentProjectiles[projectileID].special == "splash")
+				{
+					spawnEmitter ("explosion", 5, 40, 0, 0, data.currentEnemies[data.currentProjectiles[projectileID].targetID].posX, data.currentEnemies[data.currentProjectiles[projectileID].targetID].posY);
+				}
+				else
+				{
+					spawnEmitter ("bloodSplash", 5, 40, 0, 0, data.currentEnemies[data.currentProjectiles[projectileID].targetID].posX, data.currentEnemies[data.currentProjectiles[projectileID].targetID].posY);
+				}
 				removeEnemy (data.currentProjectiles[projectileID].targetID);
 				data.kills++;
 			}
@@ -303,6 +310,19 @@ function checkForHittingProjectile (projectileID)
 		removeProjectile (projectileID);
 		return false;
 	}
+}
+
+
+// Spawns a temporary GFX emitter
+function spawnEmitter (cssClass, frames, playSpeed, offsetX, offsetY, posX, posY)
+{
+	var domRepresentative = $("<div class='" + cssClass + "' id='emitter" + data.currentEmitterID + "'></div>");
+	domRepresentative.css("left", posX + offsetX); 
+	domRepresentative.css("top", posY + offsetY);
+	animateSprite (domRepresentative, frames, false, playSpeed);
+	$("#objects").append(domRepresentative);
+	// emitter terminates itself after being played
+	setTimeout(function(){ domRepresentative.remove(); }, frames * playSpeed);
 }
 
 // removes DOM objects and marks items for deletion
