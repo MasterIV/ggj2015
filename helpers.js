@@ -150,6 +150,7 @@ function checkForNextWaypoint (enemyID)
 		{
 			removeEnemy (enemyID);
 			reduceLife();
+			data.kills++;
 		}
 		// enemy is still on the go
 		else
@@ -212,6 +213,7 @@ function checkForHittingProjectile (projectileID)
 			{
 				// TODO add emitter here
 				removeEnemy (data.currentProjectiles[projectileID].targetID);
+				data.kills++;
 			}
 			// TODO add emitter here
 			removeProjectile (projectileID);
@@ -275,6 +277,15 @@ function reduceLife ()
 	}
 }
 
+function determineRequiredKills ()
+{
+	data.requiredKills = 0;
+	for (key in data.waves[data.currentLevel])
+	{
+		data.requiredKills += data.waves[data.currentLevel][key].length;
+	}
+}
+
 function rotate(target, degree)
 {
     // For webkit browsers: e.g. Chrome
@@ -292,4 +303,19 @@ function toDegrees (radian)
 function toRadians (angle)
 {
 	return angle * (Math.PI / 180);
+}
+
+function spawnTower(offsetTop, offsetLeft, towerName){
+    var tower =
+        $('<div id="'+ data.currentTowerID +'" class="tower '+towerName+'" style="top:'+offsetTop+'px; left:'+offsetLeft+'px;">'+
+            '<img class="turret" src="images/turrets/'+towerName+'.png"/>'+
+            '<img class="base" src="images/turrets/base.png"/>'+
+            '</div>');
+
+    data.currentTowers[data.currentTowerID] = jQuery.extend(true, {domElement : tower}, data.towers[towerName]);
+    data.currentTowers[data.currentTowerID].posY = offsetTop;
+    data.currentTowers[data.currentTowerID].posX = offsetLeft;
+    data.currentTowerID++;
+
+    $('#objects').append(tower);
 }
