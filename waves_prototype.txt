@@ -1,0 +1,55 @@
+waves:				{
+											// Level
+											1:				{
+																// Wavetime & list
+																12000:		["marine"],
+																21000:		["marine", "marine", "marine", "marine"],
+																34000:		["hoverBike","marine","marine", "marine", "marine", "marine"],
+																46000:		["hoverBike", "hoverBike", "marine", "marine"],
+																68000:		["marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine"],
+																84000:		["hoverBike", "hoverBike", "hoverBike", "hoverBike"],
+																104000:		["jeep"],
+																107000:		["marine", "marine", "marine", "marine"]
+																117000:		["jeep", "jeep", jeep"],
+															},
+											// Level
+											2:				{
+																// Wavetime & list
+																15000:		["marine", "marine", "marine"],
+																22000:		["hoverBike", "marine", "marine", "marine"],
+																35000:		["jeep"],
+																45000:		["marine", "marine", "marine", "hoverBike", "hoverBike"],
+																70000:		["marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine"],
+																93000:		["jeep", "jeep"],
+																97000:		["jeep", "jeep"],
+																100000:		["jeep", "jeep"],
+																102500:		["jeep", "jeep"],
+																104000:		["jeep", "jeep"],
+																115000:		["elite", "marine", "marine", "marine", "marine"],
+																130000:		["hoverBike", "hoverBike", "hoverBike", "hoverBike", "jeep"],
+																148000:		["jeep", "elite", "jeep", "elite", "specOps", "elite", "specOps"],
+															},
+															
+											3:				{
+																// Wavetime & list
+																12000:		["jeep", "jeep"],
+																28000:		["marine", "marine", "marine", "marine", "marine"],
+																35000:		["jeep"],
+																51000:		["elite", "specOps", "elite", "specOps"],
+																62000:		["hoverBike", "hoverBike", "hoverBike", "hoverBike"],
+																65000:		["jeep"],
+																72000:		["tank"],
+																78000:		["marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "elite"],
+																92000:		["jeep", "jeep", "jeep", "jeep", "jeep"],
+																100000:		["tank"],
+																107000:		["hoverBike", "hoverBike", "hoverBike", "hoverBike"],
+																127000:		["specOps", "specOps", "specOps", "specOps", "specOps", "specOps", "specOps"],
+																142000:		["tank"],
+																145000:		["hoverBike","marine","marine", "marine", "marine", "marine", "marine"],
+																151000:		["jeep", "jeep"],
+																155000:		["tank"],
+																157000:		["marine", "marine", "marine", "marine", "elite", "elite"],
+																162000:		["hoverBike", "hoverBike", "tank", "tank", "tank"]
+																
+															},
+										},
