@@ -11,7 +11,8 @@ jQuery(document).ready(function()
    $("#map div").on('click', function(){
 		$('#buildMenu').css('display', 'block');
 		var clicked = this;
-        $("#buildMenu button").unbind().on('click', function() {
+        $("#buildMenu .towerStoreItem").unbind().on('click', function() {
+            console.log('test');
             var offsetTop = clicked.offsetTop;
             var offsetLeft = clicked.offsetLeft;
             var towerName = this.name;

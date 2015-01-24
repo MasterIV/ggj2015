@@ -101,17 +101,17 @@ table {
 #interface #combatInterface #lifeIcon {
     position: absolute;
     top: 13px;
-    left: 388px;
+    left: 385px;
     font-size: 20px;
-    color: #5A8629;
+    color: lightgrey;
 }
 
 #interface #combatInterface #creditIcon {
     position: absolute;
     top: 13px;
-    left: 514px;
+    left: 504px;
     font-size: 20px;
-    color: #5A8629;
+    color: lightgrey;
 }
 
 #objects .enemy {
@@ -188,15 +188,18 @@ table {
     position: absolute;
     width: 265px;
     height: 480px;
-    background: red;
     overflow-y: scroll;
     overflow-x: hidden;
+    background-image: url("images/ui/menu-background.png");
+    color: lightgray;
 }
 
 #buildMenu div {
     margin-top: 3px;
     float: left;
     width: 100%;
+    border-bottom: 2px solid grey;
+    padding: 10px;
 }
 
 #buildMenu div ul {
@@ -204,10 +207,35 @@ table {
     margin-top: 5px;
 }
 
+#buildMenu div ul li span {
+    margin-left: 25px;
+}
+
 #buildMenu div ul li {
-    background: url('images/edit.png') -5px -5px no-repeat;
-    padding-left: 25px;
+    background: url('images/ui/icons-sprite.png') no-repeat;
+    width: 20px;
+    height: 20px;
     margin: 2px 0 0 5px;
+}
+
+#buildMenu div ul li:last-child {
+    width: 120px;
+}
+
+#buildMenu .damageIcon {
+    background-position: 0 0;
+}
+
+#buildMenu .firerateIcon {
+    background-position: -20px 0;
+}
+
+#buildMenu .rangeIcon {
+    background-position: -40px 0;
+}
+
+#buildMenu .weaknessIcon {
+    background-position: -60px 0;
 }
 
 #buildMenu div button {
@@ -226,5 +254,4 @@ table {
 
 #buildMenu .close {
     cursor: pointer;
-    float: right;
 }
