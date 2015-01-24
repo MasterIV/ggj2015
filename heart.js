@@ -43,6 +43,8 @@ function updateGame ()
 		newPos = moveEntity (data.currentEnemies[key].posX, data.currentEnemies[key].posY, data.currentEnemies[key].speed, data.currentEnemies[key].angle);
 		updatePosition(key, newPos);
 	}
+	processEnemiesToDelete();
+	processProjectilesToDelete();
 }
 
 function initiateLevel(){
