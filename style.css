@@ -36,6 +36,11 @@ table {
     height: 32px;
     float: left;
     background-image: url('images/Sprite-Kevin.png');
+    cursor: pointer;
+}
+
+#map div:hover {
+    box-shadow: inset 0 0 10px blue;
 }
 
 #objects {
@@ -61,7 +66,6 @@ table {
 	left: 0px;
 	top: 0px;
 	background-color: green;
-	display: none;
 }
 
 #objects .enemy {
@@ -72,4 +76,47 @@ table {
 
 #objects .marine {
 	background-image: url("images/units/marine.png");
+}
+
+#buildMenu {
+    display: none;
+    top: 50px;
+    left: 375px;
+    position: absolute;
+    width: 265px;
+    height: 480px;
+    background: red;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#buildMenu div {
+    margin-top: 3px;
+    float: left;
+    width: 100%;
+}
+
+#buildMenu div ul {
+    list-style-type: none;
+    margin-top: 5px;
+}
+
+#buildMenu div ul li {
+    background: url('images/edit.png') -5px -5px no-repeat;
+    padding-left: 25px;
+    margin: 2px 0 0 5px;
+}
+
+#buildMenu div button {
+    width: 100%;
+    margin: 3px 0 0 0;
+}
+
+#buildMenu div h4 {
+    padding-left: 5px;
+}
+
+#buildMenu div img {
+    float: right;
+    margin: 13px 20px;
 }

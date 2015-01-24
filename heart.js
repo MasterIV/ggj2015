@@ -6,6 +6,11 @@ jQuery(document).ready(function()
     initiateLevel();
 
    heartBeat = window.setInterval(updateGame, 25);
+   window.setInterval(updateGame, 25);
+    $("#map div").click(function(){
+        $('#buildMenu').css('display', 'block');
+    });
+
 });
 
 
