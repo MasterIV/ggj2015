@@ -8,12 +8,12 @@
  </tileset>
  <layer name="map" width="20" height="15">
   <data encoding="base64" compression="zlib">
-   eJxjZmBgYIZiRiQ2NfCoeYPLPE0gZoJisUHuVlqaJ4oUDjCcR0FYalHZraMYNwYA3AsEbg==
+   eJyVVEEOAyEIdOsbtr6hfZqQPmH9em0CyWRW1B4moLDDCLpXSil3lI7DfIG9n18N7qvFsvmYkwEHrRGYrxRTiOsGn+dIumtoFJOArwXcMqlZ6VvWVxYc16LWrH8zzRFeHQ/DM9AaAec9iq+0zmqM9nf48C6N+tmIrxhO6IPjM5k/ntm1Yi/fGxp9tnwHd8DnGp1dyP4zAwWLb4hnXQL+0Z2oYP0d8z8Ec3HdgLdS/S+ttyHk
   </data>
  </layer>
  <layer name="objects" width="20" height="15">
   <data encoding="base64" compression="zlib">
-   eJxjYEAAXUYGkoE1IypGlyMHUNs8ZDMHq3nY9FNqHjrQQwpXfSqbTW230tI8I0bMdGtMon0GSHoNqezWUYAbAACffgfo
+   eJydlF0KwDAIg7cD7f/R+99rFMYQiakxULDWfrWtaOvya/tsc75ho5Gte8V5XDNwHmNmPM9hMVUeYrP8q/nN/Mr7dbS7NziabPWOXSm8rI4y3g3q+RH+eeh0ey+hjliNVnJn3FlsNTfGUn1Z/0A9BDGi/wWYpBOg
   </data>
  </layer>
 </map>

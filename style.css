@@ -53,6 +53,22 @@ table {
     pointer-events: none;
 }
 
+#objects .lifebar {
+	z-index: 3000;
+	width: 20px;
+	height: 3px;
+	background: red;
+	position: absolute;
+}
+
+#objects .lifebar .currentLife {
+	width: 20px;
+	height: 3px;
+	position: relative;
+	float: left;
+	background: green;
+}
+
 #particles {
 	z-index: 3;
 }
@@ -68,6 +84,34 @@ table {
 	left: 0px;
 	top: 0px;
 	background-color: green;
+}
+
+#interface #combatInterface {
+    background-image: url('images/ui/titlebar-empty.png');
+    width: 640px;
+    height: 50px;
+}
+
+#interface #fullTitleBar {
+    background-image: url('images/ui/titlebar-full.png');
+    width: 20px;
+    height: 50px;
+}
+
+#interface #combatInterface #lifeIcon {
+    position: absolute;
+    top: 13px;
+    left: 385px;
+    font-size: 20px;
+    color: lightgrey;
+}
+
+#interface #combatInterface #creditIcon {
+    position: absolute;
+    top: 13px;
+    left: 504px;
+    font-size: 20px;
+    color: lightgrey;
 }
 
 #objects .enemy {
@@ -100,9 +144,27 @@ table {
 }
 
 #objects .laser {
-	width: 22px;
-	height: 8px;
+	width: 32px;
+	height: 32px;
 	background-image: url("images/bullets/blaster.png");
+}
+
+#objects .rocket {
+    width: 32px;
+    height: 32px;
+    background-image: url("images/bullets/rocket.png");
+}
+
+#objects .shockwave {
+	width: 32px;
+    height: 32px;
+    background-image: url("images/bullets/freeze.png");
+}
+
+#objects .bolt {
+	width: 32px;
+    height: 32px;
+    background-image: url("images/bullets/plasma.png");
 }
 
 #objects .bloodSplash {
@@ -112,7 +174,7 @@ table {
 	background-image: url("images/animation/splatter.png");
 }
 
-#objects .explosions {
+#objects .explosion {
 	width: 32px;
 	height: 32px;
 	position: absolute;
@@ -126,15 +188,18 @@ table {
     position: absolute;
     width: 265px;
     height: 480px;
-    background: red;
     overflow-y: scroll;
     overflow-x: hidden;
+    background-image: url("images/ui/menu-background.png");
+    color: lightgray;
 }
 
 #buildMenu div {
     margin-top: 3px;
     float: left;
     width: 100%;
+    border-bottom: 2px solid grey;
+    padding: 10px;
 }
 
 #buildMenu div ul {
@@ -142,10 +207,35 @@ table {
     margin-top: 5px;
 }
 
+#buildMenu div ul li span {
+    margin-left: 25px;
+}
+
 #buildMenu div ul li {
-    background: url('images/edit.png') -5px -5px no-repeat;
-    padding-left: 25px;
+    background: url('images/ui/icons-sprite.png') no-repeat;
+    width: 20px;
+    height: 20px;
     margin: 2px 0 0 5px;
+}
+
+#buildMenu div ul li:last-child {
+    width: 120px;
+}
+
+#buildMenu .damageIcon {
+    background-position: 0 0;
+}
+
+#buildMenu .firerateIcon {
+    background-position: -20px 0;
+}
+
+#buildMenu .rangeIcon {
+    background-position: -40px 0;
+}
+
+#buildMenu .weaknessIcon {
+    background-position: -60px 0;
 }
 
 #buildMenu div button {
@@ -164,5 +254,4 @@ table {
 
 #buildMenu .close {
     cursor: pointer;
-    float: right;
 }

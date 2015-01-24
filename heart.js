@@ -7,24 +7,21 @@ jQuery(document).ready(function()
    buildBuilderMenu();
 
    heartBeat = window.setInterval(updateGame, 25);
-   window.setInterval(updateGame, 25);
+   //window.setInterval(updateGame, 25);
    $("#map div").on('click', function(){
 		$('#buildMenu').css('display', 'block');
 		var clicked = this;
-        $("#buildMenu button").unbind().on('click', function() {
+        $("#buildMenu .towerStoreItem").unbind().on('click', function() {
+            console.log('test');
             var offsetTop = clicked.offsetTop;
             var offsetLeft = clicked.offsetLeft;
             var towerName = this.name;
-            if(clicked.dataset.blocker == "false")
+            if(clicked.dataset.blocker == "false" && data.currentCredits > data.towers[towerName].costs[0])
             {
                 spawnTower(offsetTop, offsetLeft, towerName);
                 $('#buildMenu').css('display', 'none');
-            } else if(data.currentCredits < data.towers[towerName].costs[data.currentLevel - 1])
-            {
-                this.innerHTML = 'Not enough Credits!';
             } else {
-
-                this.innerHTML = 'Not allowed position!';
+                this.innerHTML = 'Not allowed position or not enough credits!';
             }
         });
     });
@@ -36,10 +33,20 @@ jQuery(document).ready(function()
 
 function updateGame ()
 {
+    var percent = data.kills / (data.requiredKills / 100);
+    $('#fullTitleBar').css('width', percent * 4);
+    $('#lifeIcon').text(data.life);
+    $('#creditIcon').text(data.currentCredits);
 	for(key in data.currentEnemies)
 	{
 		checkForNextWaypoint(key);
-		newPos = moveEntity (data.currentEnemies[key].posX, data.currentEnemies[key].posY, data.currentEnemies[key].speed, data.currentEnemies[key].angle);
+		var speed = data.currentEnemies[key].speed;
+		if (data.currentEnemies[key].slowedTurns > 0)
+		{
+			speed *= 0.6;
+			data.currentEnemies[key].slowedTurns--;
+		}
+		newPos = moveEntity (data.currentEnemies[key].posX, data.currentEnemies[key].posY, speed, data.currentEnemies[key].angle);
 		updatePosition(key, newPos);
 	}
 	for(key in data.currentProjectiles)
@@ -62,15 +69,15 @@ function updateGame ()
 }
 
 function initiateLevel(){
-	moneyGiver = setInterval (function() { data.currentCredits += 50; console.log(data.currentCredits);}, 2500);
+	setTimeout (function() { generateCredits(50); }, 2500);
     for(key in data.waves[data.currentLevel])
     (function(key) {
-            setTimeout(function ()
+	setTimeout(function ()
 			{
-				console.log("Key: " + key);
 				spawnEnemies(data.waypoints[data.currentLevel][0], data.waves[data.currentLevel][key]);
 			}, key);
     })(key);
+	determineRequiredKills();
 }
 
 

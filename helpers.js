@@ -5,7 +5,7 @@ function buildBuilderMenu()
     
     $.each(data.towers, function(key, value) {
         buildTowerHTML = buildTowerHTML +
-            '<div id="rockets">'+
+            '<div data-name="'+ key +'" class="towerStoreItem" id="'+key+'">'+
                 '<img src="images/turrets/'+ key +'.png" />'+
                 '<h4 class="name">'+ key +'</h4>'+
                 '<ul>'+
@@ -19,14 +19,13 @@ function buildBuilderMenu()
                         '<span class="range">'+ value.range[value.level] +'</span>'+
                     '</li>'+
                     '<li class="weaknessIcon">'+
-                        'Weak: <span class="weakness">'+ value.damageType +'</span>'+
+                        '<span class="weakness">Weak: '+ value.damageType +'</span>'+
                     '</li>'+
                 '</ul>'+
-                '<button name="'+key+'" class="buildButton">Bauen</button>'+
             '</div>';
     });
 
-    $('.buildExplanationHeader').after(buildTowerHTML);
+    $('#buildMenu .close').after(buildTowerHTML);
 }
 
 // Calculates the pixel-distance between two objects
@@ -75,6 +74,8 @@ function updatePosition (enemyID, newPos)
 	
 	data.currentEnemies[enemyID].domElement.css('left', Math.floor(newPos[0]) + "px");
 	data.currentEnemies[enemyID].domElement.css('top', Math.floor(newPos[1]) + "px");
+	data.currentEnemies[enemyID].domLifebar.css('left', Math.floor(newPos[0]) + 6 + "px");
+	data.currentEnemies[enemyID].domLifebar.css('top', Math.floor(newPos[1]) - 6 + "px");
 }
 
 // Checks if two DOM objects have collided. Tolerance states the pixel-distance for collision
@@ -136,7 +137,8 @@ function spawnEnemies (startingWaypoint, enemyList)
 	if (data.killAllTimers == false)
 	{
 		var domRepresentative = $("<div class='enemy " + enemyList[0] + "' id='" + data.currentEnemyID + "'></div>");
-		data.currentEnemies[data.currentEnemyID] = jQuery.extend(true, {domElement : domRepresentative }, data.enemies[enemyList.shift()]);
+		var lifeBar = $("<div class='lifebar' id='lifebar" + data.currentEnemyID + "'><div class='currentLife'></div></div>");
+		data.currentEnemies[data.currentEnemyID] = jQuery.extend(true, {domElement : domRepresentative, domLifebar : lifeBar }, data.enemies[enemyList.shift()]);
 		
 		// give initial position and rotation
 		variation = Math.floor((Math.random() * 5) + 1); 
@@ -152,7 +154,10 @@ function spawnEnemies (startingWaypoint, enemyList)
 		rotate(domRepresentative, data.currentEnemies[data.currentEnemyID].angle);
 		domRepresentative.css('left', (startingWaypoint[0]*32 + variation) + "px");
 		domRepresentative.css('top', (startingWaypoint[1]*32 + variation) + "px");
+		lifeBar.css('left', (startingWaypoint[0]*32 + variation + 6) + "px");
+		lifeBar.css('top', (startingWaypoint[1]*32 + variation - 6) + "px");
 		$("#objects").append(domRepresentative);
+		$("#objects").append(lifeBar);
 		
 		// initiate animation
 		animateSprite(domRepresentative, data.currentEnemies[data.currentEnemyID].animationFrames, true, 200);
@@ -278,15 +283,45 @@ function checkForHittingProjectile (projectileID)
 	// Check if target is still there
 	if (typeof data.currentEnemies[data.currentProjectiles[projectileID].targetID]  != "undefined")
 	{
-		
+        // reduce HP of the hit enemy & remove it if applicable
 		if (checkCollision(data.currentEnemies[data.currentProjectiles[projectileID].targetID].domElement, data.currentProjectiles[projectileID].domElement, 12))
 		{
-			// reduce HP of the hit enemy & remove it if applicable
-			data.currentEnemies[data.currentProjectiles[projectileID].targetID].hitpoints -= data.currentProjectiles[projectileID].damage;
+            if(data.currentEnemies[data.currentProjectiles[projectileID].targetID].resistence == data.currentProjectiles[projectileID].type)
+            {
+                data.currentEnemies[data.currentProjectiles[projectileID].targetID].hitpoints -= Math.floor(data.currentProjectiles[projectileID].damage / 3);
+            } else {
+                data.currentEnemies[data.currentProjectiles[projectileID].targetID].hitpoints -= data.currentProjectiles[projectileID].damage;
+            }
+			$("#lifebar" + data.currentProjectiles[projectileID].targetID + " .currentLife").css("width", (Math.floor(data.currentEnemies[data.currentProjectiles[projectileID].targetID].hitpoints / data.currentEnemies[data.currentProjectiles[projectileID].targetID].maxHitpoints * 20)) + "px");
+			// apply slow effect
+			if (data.currentProjectiles[projectileID].special == "slow")
+			{
+				data.currentEnemies[data.currentProjectiles[projectileID].targetID].slowedTurns = 80;
+			}
 			if (data.currentEnemies[data.currentProjectiles[projectileID].targetID].hitpoints <= 0)
 			{
 				if (data.currentProjectiles[projectileID].special == "splash")
 				{
+                    for (var key in data.currentEnemies)
+                    {
+                        if (checkCollision(data.currentEnemies[key].domElement, data.currentProjectiles[projectileID].domElement, 50) && key != data.currentProjectiles[projectileID].targetID)
+                        {
+                            if(data.currentEnemies[key].resistence == data.currentProjectiles[projectileID].type)
+                            {
+                                data.currentEnemies[key].hitpoints -= Math.floor(data.currentProjectiles[projectileID].damage / 3);
+                            } else {
+                                data.currentEnemies[key].hitpoints -= data.currentProjectiles[projectileID].damage;
+                            }
+							$("#lifebar" + key + " .currentLife").css("width", (Math.floor(data.currentEnemies[key].hitpoints / data.currentEnemies[key].maxHitpoints * 20)) + "px");
+
+                            if( data.currentEnemies[key].hitpoints <= 0 )
+                            {
+                                removeEnemy (key);
+                                spawnEmitter ("bloodSplash", 5, 40, 0, 0, data.currentEnemies[key].posX, data.currentEnemies[key].posY);
+                                data.kills++;
+                            }
+                        }
+                    }
 					spawnEmitter ("explosion", 5, 40, 0, 0, data.currentEnemies[data.currentProjectiles[projectileID].targetID].posX, data.currentEnemies[data.currentProjectiles[projectileID].targetID].posY);
 				}
 				else
@@ -330,6 +365,7 @@ function spawnEmitter (cssClass, frames, playSpeed, offsetX, offsetY, posX, posY
 function removeEnemy (enemyID)
 {
 	$("#" + enemyID).remove();
+	$("#lifebar" + enemyID).remove();
 	data.enemiesToDelete.push(enemyID);
 }
 
@@ -395,12 +431,13 @@ function rotate(target, degree)
 	target.css({ '-moz-transform': 'rotate(' + (-1) * degree + 'deg)'});
 }
 
-function generateCredits ()
+function generateCredits (amount)
 {
 	if (data.killAllTimers == false)
 	{
-		data.currentCredits += 3;
-		setTimeout (function () { generateCredits(); }, 2500);
+		data.currentCredits += amount;
+		setTimeout (function () { generateCredits(amount); }, 2500);
+		console.log(data.currentCredits);
 	}
 }
 
@@ -429,10 +466,9 @@ function spawnTower(offsetTop, offsetLeft, towerName){
     data.currentTowers[data.currentTowerID].firePulse = setInterval(function() { towerShoots(towerID) }, data.currentTowers[data.currentTowerID].firerate[data.currentTowers[data.currentTowerID].level]);
 	if (data.currentTowers[data.currentTowerID].special == "moneyBoost")
 	{
-		setTimeout (function () { generateCredits();}, 2500);
+		setTimeout (function () { generateCredits(3);}, 2500);
 	}
-	
+    data.currentCredits -= data.currentTowers[data.currentTowerID].costs[data.currentTowers[data.currentTowerID].level];
     data.currentTowerID++;
-    data.currentCredits = data.currentCredits - data.currentTowers[data.currentTowerID].costs[data.currentLevel -1];
     $('#objects').append(tower);
 }

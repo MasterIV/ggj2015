@@ -147,6 +147,7 @@ data =			{
 											// Level
 											1:				{
 																// Wavetime & list
+																1000:		["marine"],
 																1000:		["marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine"],
 																//1000:		["marine", "marine", "marine", "marine"],
 																3100:		["marine","marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine"],
@@ -161,6 +162,7 @@ data =			{
 					
 					enemies:			{
 											marine:			{
+																maxHitpoints:		14,
 																hitpoints:			14,
 																speed:				0.6,
 																flying:				false,
@@ -175,6 +177,7 @@ data =			{
 															},
 															
 											elite:			{
+																maxHitpoints:		35,
 																hitpoints:			35,
 																speed:				0.65,
 																flying:				false,
@@ -189,6 +192,7 @@ data =			{
 															},
 															
 											tank:			{
+																maxHitpoints:		100,
 																hitpoints:			100,
 																speed:				0.2,
 																flying:				false,
@@ -202,7 +206,8 @@ data =			{
 																slowedTurns:		0,
 															},
 															
-											hoverBike:			{
+											hoverBike:		{
+																maxHitpoints:		20,
 																hitpoints:			20,
 																speed:				1.3,
 																flying:				false,
@@ -217,6 +222,7 @@ data =			{
 															},
 															
 											jeep:			{
+																maxHitpoints:		45,
 																hitpoints:			45,
 																speed:				0.8,
 																flying:				false,
@@ -231,6 +237,7 @@ data =			{
 															},
 															
 											spaceKnight:	{
+																maxHitpoints:		150,
 																hitpoints:			150,
 																speed:				0.4,
 																flying:				false,
@@ -245,6 +252,7 @@ data =			{
 															},
 															
 											rocketeer:		{
+																maxHitpoints:		20,
 																hitpoints:			20,
 																speed:				0.6,
 																flying:				true,
@@ -259,6 +267,7 @@ data =			{
 															},
 															
 											jet:			{
+																maxHitpoints:		25,
 																hitpoints:			25,
 																speed:				1.3,
 																flying:				true,
@@ -273,6 +282,7 @@ data =			{
 															},
 															
 											ironclad:		{
+																maxHitpoints:		250,
 																hitpoints:			250,
 																speed:				0.2,
 																flying:				true,
@@ -287,6 +297,7 @@ data =			{
 															},
 															
 											specOps:		{
+																maxHitpoints:		35,
 																hitpoints:			35,
 																speed:				0.75,
 																flying:				false,
