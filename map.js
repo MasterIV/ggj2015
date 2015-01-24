@@ -1,16 +1,46 @@
 /**
  * @param mapData
  */
-function renderMap(mapData)
+function renderMap(mapData, objectData)
 {
     var map = "";
     var tiles = getTilesPosition(mapData);
+    var blockers = getTileIDsForBlockers(objectData);
+    var i = 0;
+    var blocker;
 
     tiles.forEach(function (tile) {
-        map = map + "<div style='background-position: -"+ (tile['left'] - 32) +"px -"+ tile['top'] +"px'></div>";
+        blocker = false;
+        blockers.forEach(function(id){
+            if (id == i)
+            {
+                blocker = true;
+            }
+        });
+
+        map = map + "<div data-blocker='"+ blocker +"' style='background-position: -"+ (tile['left'] - 32) +"px -"+ tile['top'] +"px'></div>";
+        i++;
     });
 
     $('#map').append(map);
+}
+
+/**
+ *
+ * @param objectData
+ */
+function getTileIDsForBlockers(objectData)
+{
+    var tileIDs = [];
+    var i = 0;
+    objectData.forEach(function (object) {
+        if(object != 0) {
+            tileIDs.push(i);
+        }
+        i++;
+    });
+
+    return tileIDs;
 }
 
 /**

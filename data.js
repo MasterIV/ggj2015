@@ -19,22 +19,22 @@ data =			{
 																[9,9],
 																[14,9],
 															],
-										}
+										},
 										
 					waves:				{
 											// Level
 											1:				{
 																// Wavetime & list
-																5000:		[marine, marine, marine];
-																8000:		[marine, marine];
+																5000:		["marine", "marine", "marine"],
+																8000:		["marine","marine"],
 															},
 											// Level
 											2:				{
 																// Wavetime & list
-																5000:		[marine, marine, marine];
-																8000:		[marine, marine];
+																5000:		["marine", "marine", "marine"],
+																8000:		["marine", "marine"],
 															},
-										}
+										},
 					
 					enemies:			{
 											marine:			{
