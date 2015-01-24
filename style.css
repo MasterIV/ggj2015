@@ -36,6 +36,7 @@ table {
     width: 32px;
     height: 32px;
     float: left;
+    background-image: url('images/Sprite-Kevin.png');
 }
 
 #objects {

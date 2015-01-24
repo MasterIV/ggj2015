@@ -7,7 +7,7 @@ function renderMap(mapData)
     var tiles = getTilesPosition(mapData);
 
     tiles.forEach(function (tile) {
-        map = map + "<div style='background-position: "+tile['top']+"px "+tile['left']+"px'></div>";
+        map = map + "<div style='background-position: -"+ (tile['left'] - 32) +"px -"+ tile['top'] +"px'></div>";
     });
 
     $('#map').append(map);
