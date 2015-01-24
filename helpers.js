@@ -75,6 +75,8 @@ function updatePosition (enemyID, newPos)
 	
 	data.currentEnemies[enemyID].domElement.css('left', Math.floor(newPos[0]) + "px");
 	data.currentEnemies[enemyID].domElement.css('top', Math.floor(newPos[1]) + "px");
+	data.currentEnemies[enemyID].domLifebar.css('left', Math.floor(newPos[0]) + 6 + "px");
+	data.currentEnemies[enemyID].domLifebar.css('top', Math.floor(newPos[1]) - 6 + "px");
 }
 
 // Checks if two DOM objects have collided. Tolerance states the pixel-distance for collision
@@ -136,7 +138,8 @@ function spawnEnemies (startingWaypoint, enemyList)
 	if (data.killAllTimers == false)
 	{
 		var domRepresentative = $("<div class='enemy " + enemyList[0] + "' id='" + data.currentEnemyID + "'></div>");
-		data.currentEnemies[data.currentEnemyID] = jQuery.extend(true, {domElement : domRepresentative }, data.enemies[enemyList.shift()]);
+		var lifeBar = $("<div class='lifebar' id='lifebar" + data.currentEnemyID + "'><div class='currentLife'></div></div>");
+		data.currentEnemies[data.currentEnemyID] = jQuery.extend(true, {domElement : domRepresentative, domLifebar : lifeBar }, data.enemies[enemyList.shift()]);
 		
 		// give initial position and rotation
 		variation = Math.floor((Math.random() * 5) + 1); 
@@ -152,7 +155,10 @@ function spawnEnemies (startingWaypoint, enemyList)
 		rotate(domRepresentative, data.currentEnemies[data.currentEnemyID].angle);
 		domRepresentative.css('left', (startingWaypoint[0]*32 + variation) + "px");
 		domRepresentative.css('top', (startingWaypoint[1]*32 + variation) + "px");
+		lifeBar.css('left', (startingWaypoint[0]*32 + variation + 6) + "px");
+		lifeBar.css('top', (startingWaypoint[1]*32 + variation - 6) + "px");
 		$("#objects").append(domRepresentative);
+		$("#objects").append(lifeBar);
 		
 		// initiate animation
 		animateSprite(domRepresentative, data.currentEnemies[data.currentEnemyID].animationFrames, true, 200);
@@ -287,6 +293,7 @@ function checkForHittingProjectile (projectileID)
             } else {
                 data.currentEnemies[data.currentProjectiles[projectileID].targetID].hitpoints -= data.currentProjectiles[projectileID].damage;
             }
+			$("#lifebar" + data.currentProjectiles[projectileID].targetID + " .currentLife").css("width", (Math.floor(data.currentEnemies[data.currentProjectiles[projectileID].targetID].hitpoints / data.currentEnemies[data.currentProjectiles[projectileID].targetID].maxHitpoints * 20)) + "px");
 			// apply slow effect
 			if (data.currentProjectiles[projectileID].special == "slow")
 			{
@@ -297,7 +304,7 @@ function checkForHittingProjectile (projectileID)
 				if (data.currentProjectiles[projectileID].special == "splash")
 				{
                     for (var key in data.currentEnemies)
-                    {console.log(data.currentProjectiles[projectileID].domElement);
+                    {
                         if (checkCollision(data.currentEnemies[key].domElement, data.currentProjectiles[projectileID].domElement, 50) && key != data.currentProjectiles[projectileID].targetID)
                         {
                             if(data.currentEnemies[key].resistence == data.currentProjectiles[projectileID].type)
@@ -306,6 +313,7 @@ function checkForHittingProjectile (projectileID)
                             } else {
                                 data.currentEnemies[key].hitpoints -= data.currentProjectiles[projectileID].damage;
                             }
+							$("#lifebar" + key + " .currentLife").css("width", (Math.floor(data.currentEnemies[key].hitpoints / data.currentEnemies[key].maxHitpoints * 20)) + "px");
 
                             if( data.currentEnemies[key].hitpoints <= 0 )
                             {
@@ -358,6 +366,7 @@ function spawnEmitter (cssClass, frames, playSpeed, offsetX, offsetY, posX, posY
 function removeEnemy (enemyID)
 {
 	$("#" + enemyID).remove();
+	$("#lifebar" + enemyID).remove();
 	data.enemiesToDelete.push(enemyID);
 }
 
@@ -423,12 +432,13 @@ function rotate(target, degree)
 	target.css({ '-moz-transform': 'rotate(' + (-1) * degree + 'deg)'});
 }
 
-function generateCredits ()
+function generateCredits (amount)
 {
 	if (data.killAllTimers == false)
 	{
-		data.currentCredits += 3;
-		setTimeout (function () { generateCredits(); }, 2500);
+		data.currentCredits += amount;
+		setTimeout (function () { generateCredits(amount); }, 2500);
+		console.log(data.currentCredits);
 	}
 }
 
@@ -459,8 +469,7 @@ function spawnTower(offsetTop, offsetLeft, towerName){
 	{
 		setTimeout (function () { generateCredits();}, 2500);
 	}
-
-    data.currentCredits = data.currentCredits - data.currentTowers[data.currentTowerID].costs[data.currentTowers[data.currentTowerID].level -1];
+    data.currentCredits -= data.currentTowers[data.currentTowerID].costs[data.currentTowers[data.currentTowerID].level];
     data.currentTowerID++;
     $('#objects').append(tower);
 }

@@ -53,6 +53,22 @@ table {
     pointer-events: none;
 }
 
+#objects .lifebar {
+	z-index: 3000;
+	width: 20px;
+	height: 3px;
+	background: red;
+	position: absolute;
+}
+
+#objects .lifebar .currentLife {
+	width: 20px;
+	height: 3px;
+	position: relative;
+	float: left;
+	background: green;
+}
+
 #particles {
 	z-index: 3;
 }

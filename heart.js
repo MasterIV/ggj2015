@@ -7,7 +7,7 @@ jQuery(document).ready(function()
    buildBuilderMenu();
 
    heartBeat = window.setInterval(updateGame, 25);
-   window.setInterval(updateGame, 25);
+   //window.setInterval(updateGame, 25);
    $("#map div").on('click', function(){
 		$('#buildMenu').css('display', 'block');
 		var clicked = this;
@@ -72,12 +72,11 @@ function updateGame ()
 }
 
 function initiateLevel(){
-	moneyGiver = setInterval (function() { data.currentCredits += 50; console.log(data.currentCredits);}, 2500);
+	setTimeout (function() { generateCredits(50); }, 2500);
     for(key in data.waves[data.currentLevel])
     (function(key) {
             setTimeout(function ()
 			{
-				console.log("Key: " + key);
 				spawnEnemies(data.waypoints[data.currentLevel][0], data.waves[data.currentLevel][key]);
 			}, key);
     })(key);
