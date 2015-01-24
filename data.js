@@ -1,3 +1,4 @@
+moneyGiver = {}
 data =			{
 					currentLevel:		1,
 					life:				10,
@@ -8,6 +9,7 @@ data =			{
 					currentTowerID:		0,
 					currentProjectileID:0,
 					currentCredits:		0,
+					currentCreditBoosts:[],
 					
 					currentEnemies:		{},
 					enemiesToDelete:	[],
