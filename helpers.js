@@ -313,6 +313,8 @@ function spawnTower(offsetTop, offsetLeft, towerName){
             '</div>');
 
     data.currentTowers[data.currentTowerID] = jQuery.extend(true, {domElement : tower}, data.towers[towerName]);
+    data.currentTowers[data.currentTowerID].posY = offsetTop;
+    data.currentTowers[data.currentTowerID].posX = offsetLeft;
     data.currentTowerID++;
 
     $('#objects').append(tower);
