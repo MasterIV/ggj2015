@@ -177,10 +177,18 @@ function calculateNextWaypointPosition (enemyID)
 	return [nextWaypointX, nextWaypointY];
 }
 
+// removes DOM objects and marks items for deletion
 function removeEnemy (enemyID)
 {
 	$("#" + enemyID).remove();
-	data.currentEnemies.remove(enemyID);
+	data.enemiesToDelete.push(enemyID);
+	//delete data.currentEnemies[enemyID];
+}
+
+// Actually removes enemies after the FOR loop in heart.js has run out
+function processEnemiesToDelete ()
+{
+	delete data.currentEnemies[data.enemiesToDelete.pop()];
 }
 
 function reduceLife ()
@@ -198,10 +206,10 @@ function reduceLife ()
 
 function rotate(target, degree)
 {
-      // For webkit browsers: e.g. Chrome
-	target.css({ WebkitTransform: 'rotate(' + degree + 'deg)'});
-      // For Mozilla browser: e.g. Firefox
-	target.css({ '-moz-transform': 'rotate(' + degree + 'deg)'});
+    // For webkit browsers: e.g. Chrome
+	target.css({ WebkitTransform: 'rotate(' + (-1) * degree + 'deg)'});
+    // For Mozilla browser: e.g. Firefox
+	target.css({ '-moz-transform': 'rotate(' + (-1) * degree + 'deg)'});
 }
 
 
