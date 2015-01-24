@@ -108,6 +108,9 @@ function spawnEnemies (startingWaypoint, enemyList)
 		domRepresentative.css('top', startingWaypoint[1]*32 + " px");
 		$("#objects").append(domRepresentative);
 		
+		// give list of waypoints to entity
+		data.currentEnemies[data.currentEnemyID].nextWaypoints = data.waypoints[data.currentLevel];
+		
 		// initiate animation
 		animateSprite(domRepresentative, data.currentEnemies[data.currentEnemyID].animationFrames, true, 100);
 		
@@ -116,6 +119,11 @@ function spawnEnemies (startingWaypoint, enemyList)
 			window.setTimeout(function(){ spawnEnemies(startingWaypoint, enemyList) }, 500);
 		}
 	}
+}
+
+// Checks if unit has reached its next waypoint
+function checkForNextWaypoint ()
+{
 }
 
 function toDegrees (radian)
