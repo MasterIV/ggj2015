@@ -47,7 +47,7 @@ data =			{
 																posY:				0,
 																angle:				0,
 																animationFrames:	4,
-																nextWaypoints:		{},
+																nextWaypoints:		[],
 																currentWaypoint:	1,
 															},
 										},
