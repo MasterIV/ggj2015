@@ -305,6 +305,13 @@ function checkForHittingProjectile (projectileID)
 			{
 				data.currentEnemies[data.currentProjectiles[projectileID].targetID].slowedTurns = 80;
 			}
+			
+			// display explosion
+			if (data.currentProjectiles[projectileID].special == splash)
+			{
+				spawnEmitter ("explosion", 5, 40, 0, 0, data.currentEnemies[data.currentProjectiles[projectileID].targetID].posX, data.currentEnemies[data.currentProjectiles[projectileID].targetID].posY);
+			}
+			
 			if (data.currentEnemies[data.currentProjectiles[projectileID].targetID].hitpoints <= 0)
 			{
 				if (data.currentProjectiles[projectileID].special == "splash")
@@ -329,12 +336,9 @@ function checkForHittingProjectile (projectileID)
                             }
                         }
                     }
-					spawnEmitter ("explosion", 5, 40, 0, 0, data.currentEnemies[data.currentProjectiles[projectileID].targetID].posX, data.currentEnemies[data.currentProjectiles[projectileID].targetID].posY);
 				}
-				else
-				{
-					spawnEmitter ("bloodSplash", 5, 40, 0, 0, data.currentEnemies[data.currentProjectiles[projectileID].targetID].posX, data.currentEnemies[data.currentProjectiles[projectileID].targetID].posY);
-				}
+				spawnEmitter ("bloodSplash", 5, 40, 0, 0, data.currentEnemies[data.currentProjectiles[projectileID].targetID].posX, data.currentEnemies[data.currentProjectiles[projectileID].targetID].posY);
+				
 				removeEnemy (data.currentProjectiles[projectileID].targetID);
 				data.kills++;
 			}
