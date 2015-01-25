@@ -134,12 +134,15 @@ function animateSpriteHelper (target, frames, currentFrame, loop, playSpeed)
 }
 
 // Spawns all enemies from a given list one by one in a 500ms interval
-function spawnEnemies (startingWaypoint, enemyList)
+function spawnEnemies (startingWaypoint, enemyList, unitPath)
 {
 	if (data.killAllTimers == false)
 	{
-		// Waypoint information, which is always element 0, needs to be killed and stored differently!
-		var unitPath = enemyList.shift();
+		if (unitPath == 0)
+		{
+			// Waypoint information, which is always element 0, needs to be killed and stored differently!
+			var unitPath = enemyList.shift();
+		}
 		
 		var domRepresentative = $("<div class='enemy " + enemyList[0] + "' id='" + data.currentEnemyID + "'></div>");
 		var lifeBar = $("<div class='lifebar' id='lifebar" + data.currentEnemyID + "'><div class='currentLife'></div></div>");
@@ -171,7 +174,7 @@ function spawnEnemies (startingWaypoint, enemyList)
 		
 		if (enemyList.length > 0)
 		{
-			window.setTimeout(function(){ spawnEnemies(startingWaypoint, enemyList) }, 500);
+			window.setTimeout(function(){ spawnEnemies(startingWaypoint, enemyList, unitPath) }, 500);
 		}
 		
 	}

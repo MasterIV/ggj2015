@@ -33,10 +33,10 @@ jQuery(document).ready(function()
 
 function updateGame ()
 {
-	var percent = data.kills / (data.requiredKills / 100);
-	$('#fullTitleBar').css('width', percent * 4);
+	$('#fullTitleBar').css('width', (Math.floor(data.kills / data.requiredKills * 330)) + "px");
 	$('#lifeIcon').text(data.life);
 	$('#creditIcon').text(data.currentCredits);
+	// update movement of all enemies
 	for(key in data.currentEnemies)
 	{
 		checkForNextWaypoint(key);
@@ -49,6 +49,7 @@ function updateGame ()
 		newPos = moveEntity (data.currentEnemies[key].posX, data.currentEnemies[key].posY, speed, data.currentEnemies[key].angle);
 		updatePosition(key, newPos);
 	}
+	// update movement of all projectiles
 	for(key in data.currentProjectiles)
 	{
 		if (typeof data.currentEnemies[data.currentProjectiles[key].targetID] != "undefined")
@@ -64,6 +65,15 @@ function updateGame ()
 		}
 		checkForHittingProjectile (key);
 	}
+	// rotate the moneymakers!
+	for(key in data.currentTowers)
+	{
+		if (data.currentTowers[key].special == "moneyBoost")
+		{
+			data.currentTowers[key].angle += 5;
+			rotate(data.currentTowers[key].domElement, data.currentTowers[key].angle);
+		}
+	}
 	processEnemiesToDelete();
 	processProjectilesToDelete();
 }
@@ -74,7 +84,7 @@ function initiateLevel(){
     (function(key) {
 	setTimeout(function ()
 			{
-				spawnEnemies(data.waypoints[data.currentLevel][data.waves[data.currentLevel][key][0]][0], data.waves[data.currentLevel][key]);
+				spawnEnemies(data.waypoints[data.currentLevel][data.waves[data.currentLevel][key][0]][0], data.waves[data.currentLevel][key], 0);
 			}, key);
     })(key);
 	determineRequiredKills();
