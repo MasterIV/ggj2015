@@ -42,6 +42,14 @@ jQuery(document).ready(function()
     $("#buildMenu .close").on('click', function (){
         $('#buildMenu').css('display', 'none');
     });
+	
+	$(document).on("click", "#overlayLost .button", function(e) {
+		location.href = "index.html?level=" + data.currentLevel;
+	});
+	
+	$(document).on("click", "#overlayNextLevel .button", function(e) {
+		location.href = "index.html?level=" + data.currentLevel + 1;
+	});
 });
 
 function updateGame ()
@@ -89,6 +97,20 @@ function updateGame ()
 	}
 	processEnemiesToDelete();
 	processProjectilesToDelete();
+	
+	//check win condition
+	if (data.kills == data.requiredKills)
+	{
+		// next level possible
+		if (data.currentLevel < data.maxLevels)
+		{
+			winLevel();
+		}
+		else
+		{
+			winGame();
+		}
+	}
 }
 
 function initiateLevel(){

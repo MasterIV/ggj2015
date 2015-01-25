@@ -73,6 +73,48 @@ table {
 	z-index: 3;
 }
 
+#shroud {
+	z-index: 50000;
+	width: 640px;
+	height: 530px;
+	position: absolute;
+	top: 0px;
+	background: black;
+	opacity: 0.7;
+	display: none;
+}
+
+.overlay {
+	z-index: 60000;
+	width: 200px;
+	height: 100px;
+	position: absolute;
+	top: 230px;
+	left: 215px;
+	background: black;
+	font-size: 16px;
+	padding: 10px;
+	color: grey;
+	display: none;
+	border-radius: 5px;
+	border: 1px solid grey;
+}
+
+.button {
+	width: 150px;
+	height: 30px;
+	line-height: 30px;
+	position: absolute;
+	top: 76px;
+	left: 35px;
+	font-size: 18px;
+	text-align: center;
+	background: darkgreen;
+	border-radius: 3px;
+	border: 1px solid grey;
+	cursor: pointer;
+}
+
 #interface {
 	z-index: 5000;
 }
@@ -179,6 +221,14 @@ table {
 	height: 32px;
 	position: absolute;
 	background-image: url("images/animation/explosion.png");
+}
+
+#objects .summon {
+	z-index: 4000;
+	width: 32px;
+	height: 32px;
+	position: absolute;
+	background-image: url("images/animation/summon.png");
 }
 
 #buildMenu {

@@ -1,5 +1,6 @@
 data =			{
 					currentLevel:		1,
+					maxLevels:			13,
 					life:				10,
 					kills:				0,
 					requiredKills:		0,
@@ -399,7 +400,8 @@ data =			{
 											marine:			{
 																maxHitpoints:		14,
 																hitpoints:			14,
-																speed:				0.6,
+																//speed:				0.6,
+																speed:				2.0,
 																flying:				false,
 																resistence:			"",
 																posX:				0,

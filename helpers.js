@@ -408,20 +408,22 @@ function reduceLife ()
 	// TODO
 	if (data.life <= 0)
 	{
-		// Game Over
-		// TODO
-		console.log("Lost game!");
-		//cancelGame();
+		data.killAllTimers = true;
+		$("#shroud").css("display", "block");
+		$("#overlayLost").css("display", "block");
 	}
 }
 
-function cancelGame ()
+function winLevel ()
 {
-	data.killAllTimers = true;
-	for (key in data.currentTowers)
-	{
-		clearInterval(data.currentTowers[key].firePulse);
-	}
+	$("#shroud").css("display", "block");
+	$("#overlayNextLevel").css("display", "block");
+}
+
+function winGame ()
+{
+	$("#shroud").css("display", "block");
+	$("#overlayWon").css("display", "block");
 }
 
 function determineRequiredKills ()
@@ -472,6 +474,7 @@ function spawnTower(offsetTop, offsetLeft, towerName)
     data.currentTowers[data.currentTowerID] = jQuery.extend(true, {domElement : tower}, data.towers[towerName]);
     data.currentTowers[data.currentTowerID].posY = offsetTop;
     data.currentTowers[data.currentTowerID].posX = offsetLeft;
+	spawnEmitter ("summon", 7, 70, 0, 0, offsetLeft, offsetTop);
 	var towerID = data.currentTowerID;
     data.currentTowers[data.currentTowerID].firePulse = setInterval(function() { towerShoots(towerID) }, data.currentTowers[data.currentTowerID].firerate[data.currentTowers[data.currentTowerID].level]);
 	if (data.currentTowers[data.currentTowerID].special == "moneyBoost")
