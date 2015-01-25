@@ -1181,6 +1181,7 @@ data =			{
 																posY:				0,
 																angle:				0,
 																projectile:			"laser",
+																sound:				"blaster.mp3",
 															},
 															
 											boltBasher:		{
@@ -1195,6 +1196,7 @@ data =			{
 																posY:				0,
 																angle:				0,
 																projectile:			"bolt",
+																sound:				"plasma.mp3",
 											
 															},
 											
@@ -1210,6 +1212,7 @@ data =			{
 																posY:				0,
 																angle:				0,
 																projectile:			"rocket",
+																sound:				"rocket.mp3",
 															
 															},
 											
@@ -1225,6 +1228,7 @@ data =			{
 																posY:				0,
 																angle:				0,
 																projectile:			"shockwave",
+																sound:				"hit.mp3",
 															
 															},
 															
