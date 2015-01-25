@@ -20,7 +20,7 @@ jQuery(document).ready(function()
    $("#map div").on('click', function(){
 		$('#buildMenu').css('display', 'block');
 		var clicked = this;
-
+        $(this).addClass('blueBoxShadow');
        var nodes = $('#buildMenu').children();
        for (var i = 1; i < nodes.length; i++) {
            var towerName = nodes[i].dataset.name;
@@ -39,6 +39,7 @@ jQuery(document).ready(function()
             {
                 spawnTower(offsetTop, offsetLeft, towerName);
                 $('#buildMenu').css('display', 'none');
+                $(this).removeClass('blueBoxShadow');
             }
 
 
