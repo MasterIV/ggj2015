@@ -14,12 +14,28 @@ table {
 }
 
 #wrapper {
+	z-index: 0;
 	width: 640px;
 	height: 530px;
 	position: relative;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 30px;
+	overflow: hidden;
+}
+
+#wrapper.startScreen {
+	background-image: url("images/ui/start.png");
+}
+
+.startScreen .intro {
+	width: 640px;
+	height: 530px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 10;
+	background-image: url("images/ui/intro.png");
 }
 
 #map {
@@ -102,17 +118,20 @@ table {
 
 .button {
 	width: 150px;
-	height: 30px;
-	line-height: 30px;
+	height: 45px;
 	position: absolute;
-	top: 76px;
-	left: 35px;
-	font-size: 18px;
-	text-align: center;
-	background: darkgreen;
-	border-radius: 3px;
-	border: 1px solid grey;
 	cursor: pointer;
+	display: block;
+}
+
+.button#startGame {
+	top: 353px;
+	left: 151px;
+}
+
+.button#viewCredits {
+	top: 353px;
+	left: 339px;
 }
 
 #interface {
@@ -194,7 +213,7 @@ table {
 	background-image: url("images/units/jet.png");
 }
 
-#objects .ironClad {
+#objects .ironclad {
 	background-image: url("images/units/ironClad.png");
 }
 
