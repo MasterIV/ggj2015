@@ -1,6 +1,6 @@
 jQuery(document).ready(function()
 {
-	if (location.search != null)
+	if (location.search != "")
 	{
 		var queryString = location.search.split("=");
 		data.currentLevel = parseInt(queryString[1]);
@@ -109,7 +109,6 @@ function updateGame ()
 	//check win condition
 	if (data.kills == data.requiredKills)
 	{
-		console.log("win!");
 		// next level possible
 		if (data.currentLevel < data.maxLevels)
 		{

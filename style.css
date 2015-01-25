@@ -166,6 +166,42 @@ table {
 	background-image: url("images/units/marine.png");
 }
 
+#objects .elite {
+	background-image: url("images/units/elite.png");
+}
+
+#objects .tank {
+	background-image: url("images/units/tank.png");
+}
+
+#objects .hoverBike {
+	background-image: url("images/units/hoverBike.png");
+}
+
+#objects .jeep {
+	background-image: url("images/units/jeep.png");
+}
+
+#objects .spaceKnight {
+	background-image: url("images/units/spaceKnight.png");
+}
+
+#objects .rocketeer {
+	background-image: url("images/units/rocketeer.png");
+}
+
+#objects .jet {
+	background-image: url("images/units/jet.png");
+}
+
+#objects .ironClad {
+	background-image: url("images/units/ironClad.png");
+}
+
+#objects .specOps {
+	background-image: url("images/units/specOps.png");
+}
+
 #objects .tower {
     position: absolute;
     width: 32px;
