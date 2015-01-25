@@ -952,7 +952,7 @@ data =			{
 															
 												
 															
-											12:				{
+											13:				{
 																9000:		[1, "marine"],
 																10000:		[2, "marine"],
 																11000:		[3, "marine"],
@@ -997,7 +997,7 @@ data =			{
 																90000:		[2, "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer"],
 																91000:		[3, "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer"],
 																92000:		[4, "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer"],
-																92000:		[1, "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer"],
+																93000:		[1, "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer"],
 																94000:		[2, "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer"],
 																95000:		[3, "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer"],
 																96000:		[4, "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer"],
