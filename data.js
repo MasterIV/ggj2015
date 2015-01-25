@@ -436,11 +436,14 @@ data =			{
 																12000:		[1, "jeep", "jeep"],
 																16000:		[1, "marine", "marine", "marine", "marine", "marine"],
 																22000:		[1, "jeep"],
+																24000:		[1, "hoverBike", "marine", "marine", "marine"],
 																27000:		[1, "elite", "specOps", "elite", "specOps"],
 																30000:		[1, "hoverBike", "hoverBike", "hoverBike", "hoverBike"],
 																42000:		[1, "jeep"],
+																44000:		[1, "hoverBike", "marine", "marine", "marine"],
 																46000:		[1, "tank"],
 																52000:		[1, "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "elite"],
+																58000:		[1, "hoverBike"],
 																62000:		[1, "jeep", "jeep", "jeep", "jeep", "jeep"],
 																68000:		[1, "tank"],
 																70000:		[1, "hoverBike", "hoverBike", "hoverBike", "hoverBike"],
@@ -952,7 +955,7 @@ data =			{
 															
 												
 															
-											12:				{
+											13:				{
 																9000:		[1, "marine"],
 																10000:		[2, "marine"],
 																11000:		[3, "marine"],
@@ -997,7 +1000,7 @@ data =			{
 																90000:		[2, "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer"],
 																91000:		[3, "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer"],
 																92000:		[4, "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer"],
-																92000:		[1, "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer"],
+																93000:		[1, "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer"],
 																94000:		[2, "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer"],
 																95000:		[3, "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer"],
 																96000:		[4, "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer"],
@@ -1064,7 +1067,7 @@ data =			{
 															},
 															
 											tank:			{
-																maxHitpoints:		70,
+																maxHitpoints:		90,
 																hitpoints:			70,
 																speed:				0.4,
 																flying:				false,
@@ -1112,7 +1115,7 @@ data =			{
 															},
 															
 											spaceKnight:	{
-																maxHitpoints:		100,
+																maxHitpoints:		120,
 																hitpoints:			100,
 																speed:				0.6,
 																flying:				false,
@@ -1160,7 +1163,7 @@ data =			{
 															},
 															
 											ironclad:		{
-																maxHitpoints:		150,
+																maxHitpoints:		180,
 																hitpoints:			150,
 																speed:				0.4,
 																flying:				true,
@@ -1225,7 +1228,7 @@ data =			{
 															},
 											
 											sploder:		{
-																costs:				[250, 250, 300, 350, 400],
+																costs:				[280, 280, 350, 350, 400],
 																level:				0,
 																damage:				[8, 11, 14, 17, 20],
 																firerate:			[1616, 1338, 1194, 991, 875],
