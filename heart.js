@@ -1,5 +1,14 @@
 jQuery(document).ready(function()
 {
+	if (location.search != null)
+	{
+		var queryString = location.search.split("=");
+		data.currentLevel = parseInt(queryString[1]);
+	}
+	else
+	{
+		data.currentLevel = 1;
+	}
    var mapVersion = data.currentLevel;
    $('#mapData').attr('href', 'maps/Map'+mapVersion+'.js');
    renderMap(mapData.layers.mapData, mapData.layers.objectData);
@@ -11,32 +20,53 @@ jQuery(document).ready(function()
    $("#map div").on('click', function(){
 		$('#buildMenu').css('display', 'block');
 		var clicked = this;
-        $("#buildMenu .towerStoreItem").unbind().on('click', function() {
-            console.log('test');
+
+       var nodes = $('#buildMenu').children();
+       for (var i = 1; i < nodes.length - 1; i++) {
+           var towerName = nodes[i].dataset.name;
+           if(clicked.dataset.blocker == "true" || data.currentCredits < data.towers[towerName].costs[data.towers[towerName].level])
+           {
+               $(nodes[i]).addClass('redState');
+               console.log(nodes[i]);
+           } else {
+               $(nodes[i]).removeClass('redState');
+           }
+       }
+
+       $("#buildMenu .towerStoreItem").unbind().on('click', function() {
             var offsetTop = clicked.offsetTop;
             var offsetLeft = clicked.offsetLeft;
-            var towerName = this.name;
+            var towerName = this.dataset.name;
+
             if(clicked.dataset.blocker == "false" && data.currentCredits >= data.towers[towerName].costs[0])
             {
                 spawnTower(offsetTop, offsetLeft, towerName);
                 $('#buildMenu').css('display', 'none');
-            } else {
-                this.innerHTML = 'Not allowed position or not enough credits!';
             }
+
+
         });
     });
 
     $("#buildMenu .close").on('click', function (){
         $('#buildMenu').css('display', 'none');
     });
+	
+	$(document).on("click", "#overlayLost .button", function(e) {
+		location.href = "index.html?level=" + data.currentLevel;
+	});
+	
+	$(document).on("click", "#overlayNextLevel .button", function(e) {
+		location.href = "index.html?level=" + (data.currentLevel + 1);
+	});
 });
 
 function updateGame ()
 {
-	var percent = data.kills / (data.requiredKills / 100);
-	$('#fullTitleBar').css('width', percent * 4);
+	$('#fullTitleBar').css('width', (Math.floor(data.kills / data.requiredKills * 330)) + "px");
 	$('#lifeIcon').text(data.life);
 	$('#creditIcon').text(data.currentCredits);
+	// update movement of all enemies
 	for(key in data.currentEnemies)
 	{
 		checkForNextWaypoint(key);
@@ -49,6 +79,7 @@ function updateGame ()
 		newPos = moveEntity (data.currentEnemies[key].posX, data.currentEnemies[key].posY, speed, data.currentEnemies[key].angle);
 		updatePosition(key, newPos);
 	}
+	// update movement of all projectiles
 	for(key in data.currentProjectiles)
 	{
 		if (typeof data.currentEnemies[data.currentProjectiles[key].targetID] != "undefined")
@@ -64,8 +95,32 @@ function updateGame ()
 		}
 		checkForHittingProjectile (key);
 	}
+	// rotate the moneymakers!
+	for(key in data.currentTowers)
+	{
+		if (data.currentTowers[key].special == "moneyBoost")
+		{
+			data.currentTowers[key].angle += 1;
+			rotate($("#tower" + key + " > .turret"), data.currentTowers[key].angle);
+		}
+	}
 	processEnemiesToDelete();
 	processProjectilesToDelete();
+
+	//check win condition
+	if (data.kills == data.requiredKills)
+	{
+		console.log("win!");
+		// next level possible
+		if (data.currentLevel < data.maxLevels)
+		{
+			winLevel();
+		}
+		else
+		{
+			winGame();
+		}
+	}
 }
 
 function initiateLevel(){
@@ -74,7 +129,7 @@ function initiateLevel(){
     (function(key) {
 	setTimeout(function ()
 			{
-				spawnEnemies(data.waypoints[data.currentLevel][data.waves[data.currentLevel][key][0]][0], data.waves[data.currentLevel][key]);
+				spawnEnemies(data.waypoints[data.currentLevel][data.waves[data.currentLevel][key][0]][0], data.waves[data.currentLevel][key], 0);
 			}, key);
     })(key);
 	determineRequiredKills();

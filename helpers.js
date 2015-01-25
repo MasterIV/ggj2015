@@ -5,9 +5,9 @@ function buildBuilderMenu()
     
     $.each(data.towers, function(key, value) {
         buildTowerHTML = buildTowerHTML +
-            '<div id="rockets">'+
+            '<div data-name="'+key+'" class="towerStoreItem">'+
                 '<img src="images/turrets/'+ key +'.png" />'+
-//                '<div>Price: '+value.costs[value.level]+'</div>'+
+                '<div id="price">Price: '+value.costs[value.level + 1]+'</div>'+
                 '<h4 class="name">'+ key +'</h4>'+
                 '<ul>'+
                     '<li>'+
@@ -23,11 +23,10 @@ function buildBuilderMenu()
                         '<div class="weaknessIcon"></div><span class="weakness">Weakness: '+ value.damageType +'</span>'+
                     '</li>'+
                 '</ul>'+
-                '<button name="'+key+'" class="buildButton">Bauen</button>'+
             '</div>';
     });
 
-    $('.buildExplanationHeader').after(buildTowerHTML);
+    $('.close').after(buildTowerHTML);
 }
 
 // Calculates the pixel-distance between two objects
@@ -134,12 +133,15 @@ function animateSpriteHelper (target, frames, currentFrame, loop, playSpeed)
 }
 
 // Spawns all enemies from a given list one by one in a 500ms interval
-function spawnEnemies (startingWaypoint, enemyList)
+function spawnEnemies (startingWaypoint, enemyList, unitPath)
 {
 	if (data.killAllTimers == false)
 	{
-		// Waypoint information, which is always element 0, needs to be killed and stored differently!
-		var unitPath = enemyList.shift();
+		if (unitPath == 0)
+		{
+			// Waypoint information, which is always element 0, needs to be killed and stored differently!
+			var unitPath = enemyList.shift();
+		}
 		
 		var domRepresentative = $("<div class='enemy " + enemyList[0] + "' id='" + data.currentEnemyID + "'></div>");
 		var lifeBar = $("<div class='lifebar' id='lifebar" + data.currentEnemyID + "'><div class='currentLife'></div></div>");
@@ -171,7 +173,7 @@ function spawnEnemies (startingWaypoint, enemyList)
 		
 		if (enemyList.length > 0)
 		{
-			window.setTimeout(function(){ spawnEnemies(startingWaypoint, enemyList) }, 500);
+			window.setTimeout(function(){ spawnEnemies(startingWaypoint, enemyList, unitPath) }, 500);
 		}
 		
 	}
@@ -227,7 +229,7 @@ function towerShoots (towerID)
 	{
 		// Tower turns towards target on shooting
 		var angle = calculateAngle (data.currentTowers[towerID].posX, data.currentTowers[towerID].posY, data.currentEnemies[target.id].posX, data.currentEnemies[target.id].posY);
-		rotate(data.currentTowers[towerID].domElement, angle);
+		rotate($("#tower" + towerID + " > .turret"), angle);
 		spawnProjectile (towerID, target.id);
 	}
 }
@@ -406,20 +408,22 @@ function reduceLife ()
 	// TODO
 	if (data.life <= 0)
 	{
-		// Game Over
-		// TODO
-		console.log("Lost game!");
-		//cancelGame();
+		data.killAllTimers = true;
+		$("#shroud").css("display", "block");
+		$("#overlayLost").css("display", "block");
 	}
 }
 
-function cancelGame ()
+function winLevel ()
 {
-	data.killAllTimers = true;
-	for (key in data.currentTowers)
-	{
-		clearInterval(data.currentTowers[key].firePulse);
-	}
+	$("#shroud").css("display", "block");
+	$("#overlayNextLevel").css("display", "block");
+}
+
+function winGame ()
+{
+	$("#shroud").css("display", "block");
+	$("#overlayWon").css("display", "block");
 }
 
 function determineRequiredKills ()
@@ -427,7 +431,7 @@ function determineRequiredKills ()
 	data.requiredKills = 0;
 	for (key in data.waves[data.currentLevel])
 	{
-		data.requiredKills += data.waves[data.currentLevel][key].length;
+		data.requiredKills += data.waves[data.currentLevel][key].length - 1;
 	}
 }
 
@@ -470,6 +474,7 @@ function spawnTower(offsetTop, offsetLeft, towerName)
     data.currentTowers[data.currentTowerID] = jQuery.extend(true, {domElement : tower}, data.towers[towerName]);
     data.currentTowers[data.currentTowerID].posY = offsetTop;
     data.currentTowers[data.currentTowerID].posX = offsetLeft;
+	spawnEmitter ("summon", 7, 70, 0, 0, offsetLeft, offsetTop);
 	var towerID = data.currentTowerID;
     data.currentTowers[data.currentTowerID].firePulse = setInterval(function() { towerShoots(towerID) }, data.currentTowers[data.currentTowerID].firerate[data.currentTowers[data.currentTowerID].level]);
 	if (data.currentTowers[data.currentTowerID].special == "moneyBoost")
