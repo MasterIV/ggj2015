@@ -27,8 +27,6 @@ jQuery(document).ready(function()
            if(clicked.dataset.blocker == "true" || data.currentCredits < data.towers[towerName].costs[data.towers[towerName].level])
            {
                $(nodes[i]).addClass('redState');
-           } else {
-               $(nodes[i]).removeClass('redState');
            }
        }
 
