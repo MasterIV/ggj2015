@@ -106,16 +106,28 @@ table {
 
 .overlay {
 	z-index: 60000;
-	width: 305px;
-	height: 165px;
+	width: 265px;
+	height: 125px;
 	position: absolute;
-	top: 130px;
-	left: 50px;
+	top: 190px;
+	left: 164px;
 	background-image: url("images/ui/overlay.png");
-	font-size: 16px;
-	padding: 10px;
+	font-size: 40px;
+	padding: 20px;
 	color: white;
 	display: none;
+	line-height: 125px;
+	text-align: center;
+}
+
+#overlayWon {
+	z-index: 100000;
+	width: 640px;
+	height: 530px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	background-image: url("images/ui/win.png");
 }
 
 .button {
@@ -131,8 +143,12 @@ table {
 	width: 156px;
 	height: 47px;
 	background-image: url("images/ui/button.png");
-	top: 23px;
-	left:23px;
+	top: 173px;
+	left: 70px;
+	line-height: 47px;
+	font-size: 14px;
+	text-align: center;
+	text-weight: bold;
 }
 
 .button#startGame {
