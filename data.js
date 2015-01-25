@@ -444,7 +444,7 @@ data =			{
 																72000:		[1, "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine"],
 																75000:		[1, "jeep", "jeep"],
 																78000:		[1, "elite", "marine", "marine", "marine", "marine"],
-																810000:		[1, "hoverBike", "hoverBike", "hoverBike", "hoverBike", "jeep"],
+																81000:		[1, "hoverBike", "hoverBike", "hoverBike", "hoverBike", "jeep"],
 																85000:		[1, "jeep", "elite", "jeep", "elite", "specOps", "elite", "specOps"],
 															},
 															
@@ -473,7 +473,7 @@ data =			{
 																95000:		[1, "tank"],
 																105000:		[1, "marine", "marine", "marine", "marine", "elite", "elite"],
 																108000:		[1, "spaceknight"],
-																168000:		[1, "hoverBike", "hoverBike", "tank", "tank", "tank"],
+																118000:		[1, "hoverBike", "hoverBike", "tank", "tank", "tank"],
 																
 															},
 															
