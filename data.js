@@ -1064,7 +1064,7 @@ data =			{
 															},
 															
 											tank:			{
-																maxHitpoints:		70,
+																maxHitpoints:		90,
 																hitpoints:			70,
 																speed:				0.4,
 																flying:				false,
@@ -1112,7 +1112,7 @@ data =			{
 															},
 															
 											spaceKnight:	{
-																maxHitpoints:		100,
+																maxHitpoints:		120,
 																hitpoints:			100,
 																speed:				0.6,
 																flying:				false,
@@ -1160,7 +1160,7 @@ data =			{
 															},
 															
 											ironclad:		{
-																maxHitpoints:		150,
+																maxHitpoints:		180,
 																hitpoints:			150,
 																speed:				0.4,
 																flying:				true,
@@ -1225,7 +1225,7 @@ data =			{
 															},
 											
 											sploder:		{
-																costs:				[250, 250, 300, 350, 400],
+																costs:				[260, 250, 300, 350, 400],
 																level:				0,
 																damage:				[8, 11, 14, 17, 20],
 																firerate:			[1616, 1338, 1194, 991, 875],
