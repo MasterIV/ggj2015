@@ -22,7 +22,7 @@ jQuery(document).ready(function()
 		var clicked = this;
 
        var nodes = $('#buildMenu').children();
-       for (var i = 1; i < nodes.length - 1; i++) {
+       for (var i = 1; i < nodes.length; i++) {
            var towerName = nodes[i].dataset.name;
            if(clicked.dataset.blocker == "true" || data.currentCredits < data.towers[towerName].costs[data.towers[towerName].level])
            {
