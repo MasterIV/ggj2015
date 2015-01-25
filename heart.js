@@ -74,7 +74,7 @@ function initiateLevel(){
     (function(key) {
 	setTimeout(function ()
 			{
-				spawnEnemies(data.waypoints[data.currentLevel][0], data.waves[data.currentLevel][key]);
+				spawnEnemies(data.waypoints[data.currentLevel][data.waves[data.currentLevel][key][0]][0], data.waves[data.currentLevel][key]);
 			}, key);
     })(key);
 	determineRequiredKills();

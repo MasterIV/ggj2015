@@ -138,6 +138,9 @@ function spawnEnemies (startingWaypoint, enemyList)
 {
 	if (data.killAllTimers == false)
 	{
+		// Waypoint information, which is always element 0, needs to be killed and stored differently!
+		var unitPath = enemyList.shift();
+		
 		var domRepresentative = $("<div class='enemy " + enemyList[0] + "' id='" + data.currentEnemyID + "'></div>");
 		var lifeBar = $("<div class='lifebar' id='lifebar" + data.currentEnemyID + "'><div class='currentLife'></div></div>");
 		data.currentEnemies[data.currentEnemyID] = jQuery.extend(true, {domElement : domRepresentative, domLifebar : lifeBar }, data.enemies[enemyList.shift()]);
@@ -148,7 +151,7 @@ function spawnEnemies (startingWaypoint, enemyList)
 		data.currentEnemies[data.currentEnemyID].posY = startingWaypoint[1]*32 + variation;
 		
 		// give list of waypoints to entity
-		data.currentEnemies[data.currentEnemyID].nextWaypoints = data.waypoints[data.currentLevel];
+		data.currentEnemies[data.currentEnemyID].nextWaypoints = data.waypoints[data.currentLevel][unitPath];
 		// calculate looking angle for next waypoint
 		nextWaypointPos = calculateNextWaypointPosition(data.currentEnemyID);
 		data.currentEnemies[data.currentEnemyID].angle = calculateAngle (data.currentEnemies[data.currentEnemyID].posX, data.currentEnemies[data.currentEnemyID].posY, nextWaypointPos[0], nextWaypointPos[1]);
@@ -442,7 +445,6 @@ function generateCredits (amount)
 	{
 		data.currentCredits += amount;
 		setTimeout (function () { generateCredits(amount); }, 2500);
-		console.log(data.currentCredits);
 	}
 }
 
@@ -457,7 +459,8 @@ function toRadians (angle)
 	return angle * (Math.PI / 180);
 }
 
-function spawnTower(offsetTop, offsetLeft, towerName){
+function spawnTower(offsetTop, offsetLeft, towerName)
+{
     var tower =
         $('<div id="tower'+ data.currentTowerID +'" class="tower '+towerName+'" style="top:'+offsetTop+'px; left:'+offsetLeft+'px;">'+
             '<img class="turret" src="images/turrets/'+towerName+'.png"/>'+
