@@ -431,7 +431,7 @@ function determineRequiredKills ()
 	data.requiredKills = 0;
 	for (key in data.waves[data.currentLevel])
 	{
-		data.requiredKills += data.waves[data.currentLevel][key].length;
+		data.requiredKills += data.waves[data.currentLevel][key].length - 1;
 	}
 }
 
