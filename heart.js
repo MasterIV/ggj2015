@@ -8,7 +8,7 @@ jQuery(document).ready(function()
 	}
 	else
 	{
-		data.currentLevel = 1;
+		location.href = "start.html";
 	}
    var mapVersion = data.currentLevel;
    renderMap(mapData[mapVersion].layers.mapData, mapData[mapVersion].layers.objectData);
