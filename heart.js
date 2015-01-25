@@ -1,3 +1,4 @@
+var mapData = [];
 jQuery(document).ready(function()
 {
 	if (location.search != "")
