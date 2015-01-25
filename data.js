@@ -659,7 +659,7 @@ data =			{
 																32000:		[5, "rocketeer", "rocketeer", "rocketeer", "rocketeer"],
 																42000:		[1, "jeep", "jeep"],
 																44000:		[1, "jeep", "jeep"],
-																62000:		[1 "tank"],
+																62000:		[1, "tank"],
 																65000:		[2, "rocketeer", "rocketeer"],
 																65500:		[2, "rocketeer", "rocketeer"],
 																69000:		[2, "rocketeer", "rocketeer"],
