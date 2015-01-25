@@ -391,4 +391,8 @@ table {
 
 #buildMenu .close {
     cursor: pointer;
+    background: url('images/ui/icons-sprite.png') -80px 0;
+    width: 20px;
+    height: 20px;
+    border: none;
 }
