@@ -311,33 +311,30 @@ function checkForHittingProjectile (projectileID)
 			if (data.currentProjectiles[projectileID].special == "splash")
 			{
 				spawnEmitter ("explosion", 5, 40, 0, 0, data.currentEnemies[data.currentProjectiles[projectileID].targetID].posX, data.currentEnemies[data.currentProjectiles[projectileID].targetID].posY);
+				for (var key in data.currentEnemies)
+				{
+					if (checkCollision(data.currentEnemies[key].domElement, data.currentProjectiles[projectileID].domElement, 50) && key != data.currentProjectiles[projectileID].targetID)
+					{
+						if(data.currentEnemies[key].resistence == data.currentProjectiles[projectileID].type)
+						{
+							data.currentEnemies[key].hitpoints -= Math.floor(data.currentProjectiles[projectileID].damage / 3);
+						} else {
+							data.currentEnemies[key].hitpoints -= data.currentProjectiles[projectileID].damage;
+						}
+						$("#lifebar" + key + " .currentLife").css("width", (Math.floor(data.currentEnemies[key].hitpoints / data.currentEnemies[key].maxHitpoints * 20)) + "px");
+
+						if( data.currentEnemies[key].hitpoints <= 0 )
+						{
+							removeEnemy (key);
+							spawnEmitter ("bloodSplash", 5, 40, 0, 0, data.currentEnemies[key].posX, data.currentEnemies[key].posY);
+							data.kills++;
+						}
+					}
+				}
 			}
 			
 			if (data.currentEnemies[data.currentProjectiles[projectileID].targetID].hitpoints <= 0)
 			{
-				if (data.currentProjectiles[projectileID].special == "splash")
-				{
-                    for (var key in data.currentEnemies)
-                    {
-                        if (checkCollision(data.currentEnemies[key].domElement, data.currentProjectiles[projectileID].domElement, 50) && key != data.currentProjectiles[projectileID].targetID)
-                        {
-                            if(data.currentEnemies[key].resistence == data.currentProjectiles[projectileID].type)
-                            {
-                                data.currentEnemies[key].hitpoints -= Math.floor(data.currentProjectiles[projectileID].damage / 3);
-                            } else {
-                                data.currentEnemies[key].hitpoints -= data.currentProjectiles[projectileID].damage;
-                            }
-							$("#lifebar" + key + " .currentLife").css("width", (Math.floor(data.currentEnemies[key].hitpoints / data.currentEnemies[key].maxHitpoints * 20)) + "px");
-
-                            if( data.currentEnemies[key].hitpoints <= 0 )
-                            {
-                                removeEnemy (key);
-                                spawnEmitter ("bloodSplash", 5, 40, 0, 0, data.currentEnemies[key].posX, data.currentEnemies[key].posY);
-                                data.kills++;
-                            }
-                        }
-                    }
-				}
 				spawnEmitter ("bloodSplash", 5, 40, 0, 0, data.currentEnemies[data.currentProjectiles[projectileID].targetID].posX, data.currentEnemies[data.currentProjectiles[projectileID].targetID].posY);
 				
 				removeEnemy (data.currentProjectiles[projectileID].targetID);
