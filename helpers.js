@@ -447,6 +447,16 @@ function generateCredits (amount)
 	{
 		data.currentCredits += amount;
 		setTimeout (function () { generateCredits(amount); }, 2500);
+        var childs = $('#buildMenu').children();
+        for (var i = 1; i < childs.length - 1; i++)
+        {
+            var child = $(childs[i]).children()[1];
+            if((parseInt($('#creditIcon').text()) + amount) >= $(child).text().split(' ')[1])
+            {
+                $(childs[i]).removeClass('redState');
+            }
+        }
+
 	}
 }
 
@@ -469,16 +479,20 @@ function spawnTower(offsetTop, offsetLeft, towerName)
             '<img class="base" src="images/turrets/base.png"/>'+
             '</div>');
 
-    data.currentTowers[data.currentTowerID] = jQuery.extend(true, {domElement : tower}, data.towers[towerName]);
-    data.currentTowers[data.currentTowerID].posY = offsetTop;
-    data.currentTowers[data.currentTowerID].posX = offsetLeft;
-	var towerID = data.currentTowerID;
-    data.currentTowers[data.currentTowerID].firePulse = setInterval(function() { towerShoots(towerID) }, data.currentTowers[data.currentTowerID].firerate[data.currentTowers[data.currentTowerID].level]);
-	if (data.currentTowers[data.currentTowerID].special == "moneyBoost")
-	{
-		setTimeout (function () { generateCredits(3);}, 2500);
-	}
-    data.currentCredits -= data.currentTowers[data.currentTowerID].costs[data.currentTowers[data.currentTowerID].level];
-    data.currentTowerID++;
-    $('#objects').append(tower);
+        var selectedTile =  (offsetTop / 32) * (offsetLeft / 32);
+        $('#map').children().eq(selectedTile).data('blocker', true);
+        data.currentTowers[data.currentTowerID] = jQuery.extend(true, {domElement : tower}, data.towers[towerName]);
+        console.log(data.currentTowers);
+        data.currentTowers[data.currentTowerID].posY = offsetTop;
+        data.currentTowers[data.currentTowerID].posX = offsetLeft;
+        var towerID = data.currentTowerID;
+        data.currentTowers[data.currentTowerID].firePulse = setInterval(function() { towerShoots(towerID) }, data.currentTowers[data.currentTowerID].firerate[data.currentTowers[data.currentTowerID].level]);
+        if (data.currentTowers[data.currentTowerID].special == "moneyBoost")
+        {
+            setTimeout (function () { generateCredits(3);}, 2500);
+        }
+        data.currentCredits -= data.currentTowers[data.currentTowerID].costs[data.currentTowers[data.currentTowerID].level];
+        data.currentTowerID++;
+        $('#objects').append(tower);
+
 }
