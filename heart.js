@@ -105,7 +105,7 @@ function updateGame ()
 	processProjectilesToDelete();
 
 	//check win condition
-	if (data.kills == data.requiredKills)
+	if (data.kills >= data.requiredKills)
 	{
 		// next level possible
 		if (data.currentLevel < data.maxLevels)
