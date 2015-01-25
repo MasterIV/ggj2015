@@ -7,7 +7,7 @@ function buildBuilderMenu()
         buildTowerHTML = buildTowerHTML +
             '<div data-name="'+key+'" class="towerStoreItem">'+
                 '<img src="images/turrets/'+ key +'.png" />'+
-                '<div id="price">Price: '+value.costs[value.level + 1]+'</div>'+
+                '<div id="price">Price: '+value.costs[value.level]+'</div>'+
                 '<h4 class="name">'+ key +'</h4>'+
                 '<ul>'+
                     '<li>'+
