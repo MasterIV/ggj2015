@@ -382,7 +382,7 @@ data =			{
 																// Wavetime & list, first item is path for that unit
 																//800:		[2, "marine", "marine"],
 																//7000:		[1, "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine"],
-																2000:		[1, "marine","marine"],
+																2000:		[1, "marine","marine","marine","marine","marine","marine","marine","marine","marine","marine"],
 																//1000:		["marine", "marine", "marine", "marine"],
 																//3100:		[2, "marine","marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine"],
 																//4000:		[1, "marine","marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine"],
