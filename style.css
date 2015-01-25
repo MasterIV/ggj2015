@@ -128,6 +128,7 @@ table {
 	top: 0px;
 	left: 0px;
 	background-image: url("images/ui/win.png");
+	display: none;
 }
 
 .button {
