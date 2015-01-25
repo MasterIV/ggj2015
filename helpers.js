@@ -231,6 +231,7 @@ function towerShoots (towerID)
 		var angle = calculateAngle (data.currentTowers[towerID].posX, data.currentTowers[towerID].posY, data.currentEnemies[target.id].posX, data.currentEnemies[target.id].posY);
 		rotate($("#tower" + towerID + " > .turret"), angle);
 		spawnProjectile (towerID, target.id);
+		sound.play("sound/" + data.currentTowers[towerID].sound);
 	}
 }
 
