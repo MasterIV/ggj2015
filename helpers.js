@@ -167,7 +167,7 @@ function spawnEnemies (startingWaypoint, enemyList, unitPath)
 		$("#objects").append(lifeBar);
 		
 		// initiate animation
-		animateSprite(domRepresentative, data.currentEnemies[data.currentEnemyID].animationFrames, true, 200);
+		animateSprite(domRepresentative, data.currentEnemies[data.currentEnemyID].animationFrames, true, data.currentEnemies[data.currentEnemyID].animationSpeed);
 		
 		data.currentEnemyID++;
 		
