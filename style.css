@@ -196,6 +196,12 @@ table {
 
 #buildMenu div {
     border-bottom: 2px solid grey;
+    cursor: pointer;
+}
+
+#buildMenu #price {
+    border: none;
+    float: right;
 }
 
 #buildMenu div ul {
@@ -249,12 +255,17 @@ table {
 
 #buildMenu div img {
     float: right;
-    margin: 13px 50px 0 0;
+    margin: 40px 37px 0 0;
 }
 
 #buildMenu div .price {
     float: right;
     margin: 45px 50px 0 0;
+}
+
+#buildMenu .redState {
+    background-color: red;
+    opacity: 0.2;
 }
 
 #buildMenu .close {

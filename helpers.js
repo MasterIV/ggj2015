@@ -5,9 +5,9 @@ function buildBuilderMenu()
     
     $.each(data.towers, function(key, value) {
         buildTowerHTML = buildTowerHTML +
-            '<div id="rockets">'+
+            '<div data-name="'+key+'" class="towerStoreItem">'+
                 '<img src="images/turrets/'+ key +'.png" />'+
-//                '<div>Price: '+value.costs[value.level]+'</div>'+
+                '<div id="price">Price: '+value.costs[value.level + 1]+'</div>'+
                 '<h4 class="name">'+ key +'</h4>'+
                 '<ul>'+
                     '<li>'+
@@ -23,11 +23,10 @@ function buildBuilderMenu()
                         '<div class="weaknessIcon"></div><span class="weakness">Weakness: '+ value.damageType +'</span>'+
                     '</li>'+
                 '</ul>'+
-                '<button name="'+key+'" class="buildButton">Bauen</button>'+
             '</div>';
     });
 
-    $('.buildExplanationHeader').after(buildTowerHTML);
+    $('.close').after(buildTowerHTML);
 }
 
 // Calculates the pixel-distance between two objects

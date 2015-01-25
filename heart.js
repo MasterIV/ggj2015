@@ -11,18 +11,31 @@ jQuery(document).ready(function()
    $("#map div").on('click', function(){
 		$('#buildMenu').css('display', 'block');
 		var clicked = this;
-        $("#buildMenu .towerStoreItem").unbind().on('click', function() {
-            console.log('test');
+
+       var nodes = $('#buildMenu').children();
+       for (var i = 1; i < nodes.length - 1; i++) {
+           var towerName = nodes[i].dataset.name;
+           if(clicked.dataset.blocker == "true" || data.currentCredits < data.towers[towerName].costs[data.towers[towerName].level])
+           {
+               $(nodes[i]).addClass('redState');
+               console.log(nodes[i]);
+           } else {
+               $(nodes[i]).removeClass('redState');
+           }
+       }
+
+       $("#buildMenu .towerStoreItem").unbind().on('click', function() {
             var offsetTop = clicked.offsetTop;
             var offsetLeft = clicked.offsetLeft;
-            var towerName = this.name;
+            var towerName = this.dataset.name;
+
             if(clicked.dataset.blocker == "false" && data.currentCredits >= data.towers[towerName].costs[0])
             {
                 spawnTower(offsetTop, offsetLeft, towerName);
                 $('#buildMenu').css('display', 'none');
-            } else {
-                this.innerHTML = 'Not allowed position or not enough credits!';
             }
+
+
         });
     });
 
