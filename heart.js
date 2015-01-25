@@ -39,7 +39,7 @@ jQuery(document).ready(function()
             {
                 spawnTower(offsetTop, offsetLeft, towerName);
                 $('#buildMenu').css('display', 'none');
-                $(this).removeClass('blueBoxShadow');
+                $(clicked).removeClass('blueBoxShadow');
             }
 
 
