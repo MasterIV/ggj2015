@@ -106,18 +106,16 @@ table {
 
 .overlay {
 	z-index: 60000;
-	width: 200px;
-	height: 100px;
+	width: 305px;
+	height: 165px;
 	position: absolute;
-	top: 230px;
-	left: 215px;
-	background: black;
+	top: 130px;
+	left: 50px;
+	background-image: url("images/ui/overlay.png");
 	font-size: 16px;
 	padding: 10px;
-	color: grey;
+	color: white;
 	display: none;
-	border-radius: 5px;
-	border: 1px solid grey;
 }
 
 .button {
@@ -126,6 +124,15 @@ table {
 	position: absolute;
 	cursor: pointer;
 	display: block;
+	color: white;
+}
+
+.button.visual {
+	width: 156px;
+	height: 47px;
+	background-image: url("images/ui/button.png");
+	top: 23px;
+	left:23px;
 }
 
 .button#startGame {

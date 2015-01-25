@@ -1049,7 +1049,7 @@ data =			{
 																posX:				0,
 																posY:				0,
 																angle:				0,
-																animationFrames:	4,
+																animationFrames:	8,
 																animationSpeed:		200,
 																nextWaypoints:		[],
 																currentWaypoint:	1,
