@@ -436,11 +436,14 @@ data =			{
 																12000:		[1, "jeep", "jeep"],
 																16000:		[1, "marine", "marine", "marine", "marine", "marine"],
 																22000:		[1, "jeep"],
+																24000:		[1, "hoverBike", "marine", "marine", "marine"],
 																27000:		[1, "elite", "specOps", "elite", "specOps"],
 																30000:		[1, "hoverBike", "hoverBike", "hoverBike", "hoverBike"],
 																42000:		[1, "jeep"],
+																44000:		[1, "hoverBike", "marine", "marine", "marine"],
 																46000:		[1, "tank"],
 																52000:		[1, "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "elite"],
+																58000:		[1, "hoverBike"],
 																62000:		[1, "jeep", "jeep", "jeep", "jeep", "jeep"],
 																68000:		[1, "tank"],
 																70000:		[1, "hoverBike", "hoverBike", "hoverBike", "hoverBike"],
@@ -1225,7 +1228,7 @@ data =			{
 															},
 											
 											sploder:		{
-																costs:				[260, 250, 300, 350, 400],
+																costs:				[280, 280, 350, 350, 400],
 																level:				0,
 																damage:				[8, 11, 14, 17, 20],
 																firerate:			[1616, 1338, 1194, 991, 875],
