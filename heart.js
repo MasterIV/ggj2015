@@ -17,7 +17,8 @@ jQuery(document).ready(function()
 
    heartBeat = window.setInterval(updateGame, 25);
    //window.setInterval(updateGame, 25);
-   $("#map div").on('click', function(){
+   $("#map div[data-blocker = 'false']").on('click', function(){
+
        var mapNodes = $('#map').children();
        for (var i = 1; i < mapNodes.length; i++) {
         $(mapNodes[i]).removeClass('blueBoxShadow')
