@@ -1,7 +1,14 @@
 var mapData = [];
 jQuery(document).ready(function()
 {
-	if (location.search != "")
+    var xScale = $(window).width() / 640;
+    var yScale = $(window).height() / 530;
+
+    var scale = Math.floor(Math.max(1,Math.min(xScale, yScale)));
+
+    $('#wrapper').css('zoom', scale);
+
+    if (location.search != "")
 	{
 		var queryString = location.search.split("=");
 		data.currentLevel = parseInt(queryString[1]);
