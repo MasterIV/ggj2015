@@ -450,7 +450,7 @@ function generateCredits (amount)
 		data.currentCredits += amount;
 		setTimeout (function () { generateCredits(amount); }, 2500);
         var childs = $('#buildMenu').children();
-        for (var i = 1; i < childs.length - 1; i++)
+        for (var i = 1; i < childs.length; i++)
         {
             var child = $(childs[i]).children()[1];
             if((parseInt($('#creditIcon').text()) + amount) >= $(child).text().split(' ')[1])
