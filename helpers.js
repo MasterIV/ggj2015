@@ -300,6 +300,7 @@ function checkForHittingProjectile (projectileID)
                 data.currentEnemies[data.currentProjectiles[projectileID].targetID].hitpoints -= data.currentProjectiles[projectileID].damage;
             }
 			$("#lifebar" + data.currentProjectiles[projectileID].targetID + " .currentLife").css("width", (Math.floor(data.currentEnemies[data.currentProjectiles[projectileID].targetID].hitpoints / data.currentEnemies[data.currentProjectiles[projectileID].targetID].maxHitpoints * 20)) + "px");
+			
 			// apply slow effect
 			if (data.currentProjectiles[projectileID].special == "slow")
 			{
@@ -307,7 +308,7 @@ function checkForHittingProjectile (projectileID)
 			}
 			
 			// display explosion
-			if (data.currentProjectiles[projectileID].special == splash)
+			if (data.currentProjectiles[projectileID].special == "splash")
 			{
 				spawnEmitter ("explosion", 5, 40, 0, 0, data.currentEnemies[data.currentProjectiles[projectileID].targetID].posX, data.currentEnemies[data.currentProjectiles[projectileID].targetID].posY);
 			}
