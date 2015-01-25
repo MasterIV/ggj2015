@@ -18,16 +18,24 @@ data =			{
 					projectilesToDelete:[],
 					waypoints:			{
 											// Level
-											1:				[
-																// Waypoints in order
-																[3,0],
-																[3,6],
-																[6,6],
-																[6,10],
-																[9,10],
-																[9,9],
-																[14,9],
-															],
+											1:				{
+																// Different paths
+																		// Waypoints in order
+																1:		[
+																			[3,0],
+																			[3,6],
+																			[6,6],
+																			[6,10],
+																			[9,10],
+																			[9,9],
+																			[14,9],
+																		],
+																2:		[
+																			[3,6],
+																			[9,9],
+																			[14,9],
+																		],
+															},
 															
 											2:				[
 																[17,0],
@@ -145,14 +153,14 @@ data =			{
 					waves:				{
 											// Level
 											1:				{
-																// Wavetime & list
-																1000:		["marine"],
-																1000:		["marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine"],
+																// Wavetime & list, first item is path for that unit
+																800:		[2, "marine", "marine"],
+																1000:		[1, "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine"],
 																//1000:		["marine", "marine", "marine", "marine"],
-																3100:		["marine","marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine"],
-																4000:		["marine","marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine"],
-																10500:		["marine","marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine"],
-																15000:		["marine","marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine"],
+																3100:		[2, "marine","marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine"],
+																//4000:		[1, "marine","marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine"],
+																//10500:		[2, "marine","marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine"],
+																//15000:		[1, "marine","marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine"],
 															},
 											// Level
 											2:				{
