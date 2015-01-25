@@ -10,8 +10,7 @@ jQuery(document).ready(function()
 		data.currentLevel = 1;
 	}
    var mapVersion = data.currentLevel;
-   $('#mapData').attr('href', 'maps/Map'+mapVersion+'.js');
-   renderMap(mapData.layers.mapData, mapData.layers.objectData);
+   renderMap(mapData[mapVersion].layers.mapData, mapData[mapVersion].layers.objectData);
    initiateLevel();
    buildBuilderMenu();
 
