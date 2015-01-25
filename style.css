@@ -28,6 +28,10 @@ table {
 	background-image: url("images/ui/start.png");
 }
 
+#wrapper.credits {
+	background-image: url("images/ui/credits.png");
+}
+
 .startScreen .intro {
 	width: 640px;
 	height: 530px;
@@ -132,6 +136,11 @@ table {
 .button#viewCredits {
 	top: 353px;
 	left: 339px;
+}
+
+.button#backToStartMenu {
+	top: 453px;
+	left: 84px;
 }
 
 #interface {
