@@ -106,8 +106,7 @@ function updateGame ()
 	}
 	processEnemiesToDelete();
 	processProjectilesToDelete();
-	
-	console.log("Kills: "+ data.kills + " / " + data.requiredKills);
+
 	//check win condition
 	if (data.kills == data.requiredKills)
 	{
