@@ -120,7 +120,7 @@ function updateGame ()
 }
 
 function initiateLevel(){
-	data.currentCredits += data.startCredits[data.currentLevel];
+	//data.currentCredits += data.startCredits[data.currentLevel];
 	setTimeout (function() { generateCredits(50); }, 2500);
     for(key in data.waves[data.currentLevel])
     (function(key) {
