@@ -312,6 +312,7 @@ function checkForHittingProjectile (projectileID)
 			if (data.currentProjectiles[projectileID].special == "splash")
 			{
 				spawnEmitter ("explosion", 5, 40, 0, 0, data.currentEnemies[data.currentProjectiles[projectileID].targetID].posX, data.currentEnemies[data.currentProjectiles[projectileID].targetID].posY);
+				sound.play("sound/explosion.mp3");
 				for (var key in data.currentEnemies)
 				{
 					if (checkCollision(data.currentEnemies[key].domElement, data.currentProjectiles[projectileID].domElement, 50) && key != data.currentProjectiles[projectileID].targetID)
