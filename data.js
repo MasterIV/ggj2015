@@ -514,7 +514,7 @@ data =			{
 											
 											6:				{
 																// Wavetime & list
-																8000:		[1, "marine", "marine", "marine", "marine", "marine"]
+																8000:		[1, "marine", "marine", "marine", "marine", "marine"],
 																12000:		[1, "jeep", "jeep"],
 																13000:		[1, "marine", "marine", "marine", "marine", "elite"],
 																18000:		[1, "marine", "marine", "marine", "marine", "elite"],
@@ -527,7 +527,7 @@ data =			{
 																51000:		[1, "elite", "specOps", "elite", "specOps"],
 																62000:		[1, "hoverBike", "hoverBike", "hoverBike", "hoverBike"],
 																65000:		[1, "jeep"],
-																68000:		[1, "marine", "marine", "marine", "elite" "marine", "marine", "elite"],
+																68000:		[1, "marine", "marine", "marine", "elite", "marine", "marine", "elite"],
 																69500:		[2, "specOps", "specOps", "specOps", "specOps", "specOps", "specOps"],
 																72000:		[1, "tank"],
 																78000:		[1, "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "elite"],
@@ -538,12 +538,12 @@ data =			{
 																98000:		[1, "marine", "marine", "marine", "marine", "marine"],
 																99000:		[2, "specOps", "specOps", "specOps", "specOps", "specOps", "specOps"],
 																100000:		[1, "tank"],
-																104000:		[1, "marine", "marine", "marine", "elite" "marine", "marine", "elite"],
+																104000:		[1, "marine", "marine", "marine", "elite", "marine", "marine", "elite"],
 																106000:		[2, "specOps", "specOps", "specOps", "specOps", "specOps", "specOps"],
 																107000:		[1, "hoverBike", "hoverBike", "hoverBike", "hoverBike"],
-																112000:		[1, "marine", "marine", "marine", "elite" "marine", "marine", "elite"],
+																112000:		[1, "marine", "marine", "marine", "elite", "marine", "marine", "elite"],
 																127000:		[1, "specOps", "specOps", "specOps", "specOps", "specOps", "specOps", "specOps"],
-																132000:		[1, "elite", "marine", "marine", "elite" "marine", "marine", "elite"],
+																132000:		[1, "elite", "marine", "marine", "elite", "marine", "marine", "elite"],
 																133000:		[2, "tank"],
 																142000:		[1, "tank"],
 																143000:		[1, "elite", "elite", "elite", "elite"],
@@ -582,8 +582,8 @@ data =			{
 																127000:		[1, "tank", "tank", "tank", "tank", "specOps", "specOps", "specOps", "specOps", "specOps", "specOps"],
 																137000:		[2, "rocketeer", "rocketeer"],
 																144000:		[1, "hoverBike", "hoverBike", "hoverBike", "hoverBike", "hoverBike", "hoverBike", "hoverBike", "hoverBike", "hoverBike", "hoverBike"],
-																160000:		[2, "jet", "jet"]
-																165000:		[2, "jet", "jet", "jet", "jet", "jet", "jet"]
+																160000:		[2, "jet", "jet"],
+																165000:		[2, "jet", "jet", "jet", "jet", "jet", "jet"],
 																172000:		[1, "jeep", "jeep"],
 																174000:		[1, "tank", "tank"],
 																175000:		[1, "hoverBike", "hoverBike"],
@@ -660,7 +660,7 @@ data =			{
 																111250:		["elite", "elite", "elite", "elite"],
 																115000:		["hoverBike", "hoverBike", "hoverBike", "hoverBike", "hoverBike"],
 																125000:		["tank", "tank"],
-																127000:		["jeep, "jeep", "jeep", "jeep"],
+																127000:		["jeep", "jeep", "jeep", "jeep"],
 																150000:		["spaceKnight"],
 																165000:		["marine", "marine", "marine", "marine"],
 																166200:		["marine", "marine", "marine", "marine"],
