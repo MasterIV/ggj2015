@@ -229,7 +229,7 @@ function towerShoots (towerID)
 	{
 		// Tower turns towards target on shooting
 		var angle = calculateAngle (data.currentTowers[towerID].posX, data.currentTowers[towerID].posY, data.currentEnemies[target.id].posX, data.currentEnemies[target.id].posY);
-		rotate(data.currentTowers[towerID].domElement, angle);
+		rotate($("#tower" + towerID + " > .turret"), angle);
 		spawnProjectile (towerID, target.id);
 	}
 }

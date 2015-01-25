@@ -83,8 +83,8 @@ function updateGame ()
 	{
 		if (data.currentTowers[key].special == "moneyBoost")
 		{
-			data.currentTowers[key].angle += 5;
-			rotate(data.currentTowers[key].domElement, data.currentTowers[key].angle);
+			data.currentTowers[key].angle += 1;
+			rotate($("#tower" + key + " > .turret"), data.currentTowers[key].angle);
 		}
 	}
 	processEnemiesToDelete();
