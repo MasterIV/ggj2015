@@ -1,5 +1,14 @@
 jQuery(document).ready(function()
 {
+	if (location.search != null)
+	{
+		var queryString = location.search.split("=");
+		data.currentLevel = parseInt(queryString[1]);
+	}
+	else
+	{
+		data.currentLevel = 1;
+	}
    var mapVersion = data.currentLevel;
    $('#mapData').attr('href', 'maps/Map'+mapVersion+'.js');
    renderMap(mapData.layers.mapData, mapData.layers.objectData);
@@ -41,6 +50,14 @@ jQuery(document).ready(function()
     $("#buildMenu .close").on('click', function (){
         $('#buildMenu').css('display', 'none');
     });
+	
+	$(document).on("click", "#overlayLost .button", function(e) {
+		location.href = "index.html?level=" + data.currentLevel;
+	});
+	
+	$(document).on("click", "#overlayNextLevel .button", function(e) {
+		location.href = "index.html?level=" + (data.currentLevel + 1);
+	});
 });
 
 function updateGame ()
@@ -88,6 +105,21 @@ function updateGame ()
 	}
 	processEnemiesToDelete();
 	processProjectilesToDelete();
+
+	//check win condition
+	if (data.kills == data.requiredKills)
+	{
+		console.log("win!");
+		// next level possible
+		if (data.currentLevel < data.maxLevels)
+		{
+			winLevel();
+		}
+		else
+		{
+			winGame();
+		}
+	}
 }
 
 function initiateLevel(){
