@@ -472,7 +472,7 @@ data =			{
 																93000:		[1, "jeep", "jeep"],
 																95000:		[1, "tank"],
 																105000:		[1, "marine", "marine", "marine", "marine", "elite", "elite"],
-																108000:		[1, "spaceknight"],
+																108000:		[1, "spaceKnight"],
 																112000:		[1, "hoverBike", "hoverBike", "tank", "tank", "tank"],
 																
 															},
