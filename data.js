@@ -719,7 +719,7 @@ data =			{
 																125000:		[3, "rocketeer", "rocketeer", "rocketeer", "rocketeer"],
 															},
 															
-												9:				{
+												/*9:				{
 																// Wavetime & list
 																15000:		[1, "specOps"],
 																22000:		[5, "rocketeer", "rocketeer", "rocketeer", "rocketeer"],
@@ -772,7 +772,7 @@ data =			{
 																206000:		[3, "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer", "rocketeer"],
 																210000:		[1, "tank", "tank"],
 																238000:		[4, "ironclad"],
-															},
+															},*/
 															
 												9:				{
 																// Wavetime & list
