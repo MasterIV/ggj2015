@@ -30,7 +30,7 @@ data =			{
 											10: 500,
 											11: 800,
 											12: 800,
-											13: 800,
+											13: 2000,
 					
 					
 										},
@@ -415,15 +415,17 @@ data =			{
 					waves:				{
 											// Level
 											1:				{
-																// Wavetime & list, first item is path for that unit
-																//800:		[2, "marine", "marine"],
-																//7000:		[1, "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine"],
-																2000:		[1, "jeep","jeep","jeep","jeep","jeep","jeep"],
-																//1000:		["marine", "marine", "marine", "marine"],
-																//3100:		[2, "marine","marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine"],
-																//4000:		[1, "marine","marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine"],
-																//10500:		[2, "marine","marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine"],
-																//15000:		[1, "marine","marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine"],
+																8000:		[1, "marine"],
+																12000:		[1, "marine", "marine", "marine", "marine"],
+																17000:		[1, "hoverBike","marine","marine", "marine", "marine", "marine"],
+																21000:		[1, "hoverBike", "hoverBike", "marine", "marine"],
+																26000:		[1, "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine"],
+																31000:		[1, "hoverBike", "hoverBike", "hoverBike", "hoverBike"],
+																36000:		[1, "jeep"],
+																39000:		[1, "marine", "marine", "marine", "marine"],
+																42000:		[1, "jeep", "jeep", "jeep"],
+																48000:		[1, "jeep","jeep","jeep","jeep","jeep","jeep"],
+																50000:		[1, "marine","marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine", "marine"],
 															},
 											// Level
 											2:				{
@@ -1072,7 +1074,7 @@ data =			{
 																97000:		[1, "elite", "elite", "elite", "elite", "elite", "elite", "elite", "elite"],
 																98000:		[2, "elite", "elite", "elite", "elite", "elite", "elite", "elite", "elite"],
 																99000:		[3, "elite", "elite", "elite", "elite", "elite", "elite", "elite", "elite"],
-																10000:		[4, "elite", "elite", "elite", "elite", "elite", "elite", "elite", "elite"],
+																100000:		[4, "elite", "elite", "elite", "elite", "elite", "elite", "elite", "elite"],
 																101000:		[1, "specOps", "specOps", "specOps", "specOps", "specOps", "specOps", "specOps", "specOps"],
 																102000:		[2, "specOps", "specOps", "specOps", "specOps", "specOps", "specOps", "specOps", "specOps"],
 																103000:		[3, "specOps", "specOps", "specOps", "specOps", "specOps", "specOps", "specOps", "specOps"],
@@ -1094,7 +1096,18 @@ data =			{
 																143000:		[2, "tank", "tank", "tank", "tank"],
 																144000:		[3, "tank", "tank", "tank", "tank"],
 																145000:		[4, "tank", "tank", "tank", "tank"],
-																146000:		[1, "hoverBike", "hoverBike", "hoverBike", "hoverBike", "hoverBike", "hoverBike", "hoverBike", "hoverBike"],
+																146000:		[1, "spaceKnight", "spaceKnight"],
+																147000:		[2, "spaceKnight", "spaceKnight"],
+																148000:		[3, "spaceKnight", "spaceKnight"],
+																149000:		[4, "spaceKnight", "spaceKnight"],
+																150000:		[1, "ironclad", "ironclad"],
+																151000:		[2, "ironclad", "ironclad"],
+																152000:		[3, "ironclad", "ironclad"],
+																153000:		[4, "ironclad", "ironclad"],
+																154000:		[1, "spaceKnight", "spaceKnight", "ironclad", "ironclad"],
+																155000:		[2, "spaceKnight", "spaceKnight", "ironclad", "ironclad"],
+																156000:		[3, "spaceKnight", "spaceKnight", "ironclad", "ironclad"],
+																157000:		[4, "spaceKnight", "spaceKnight", "ironclad", "ironclad"],
 															},
 										},
 					
